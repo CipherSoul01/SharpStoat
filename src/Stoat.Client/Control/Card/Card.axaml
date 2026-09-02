@@ -1,0 +1,58 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:stoat="https://stoat.chat/controls"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!-- Add Resources Here -->
+    <Design.PreviewWith>
+        <Border Padding="20">
+            <stoat:Card Width="200"
+                        Height="200">
+                
+                <stoat:Card.Header>
+                    <TextBlock HorizontalAlignment="Center" FontSize="20">Header</TextBlock>
+                </stoat:Card.Header>
+                
+                <TextBlock HorizontalAlignment="Center" 
+                           VerticalAlignment="Center"
+                           FontSize="20">Content</TextBlock>
+                
+                <stoat:Card.Footer>
+                    <TextBlock HorizontalAlignment="Center" FontSize="20">Footer</TextBlock>
+                </stoat:Card.Footer>
+            </stoat:Card>
+        </Border>
+    </Design.PreviewWith>
+    
+    <ControlTheme x:Key="{x:Type stoat:Card}" 
+                  TargetType="{x:Type stoat:Card}">
+        
+        <Setter Property="Background" Value="{DynamicResource Surface}"/>
+        <Setter Property="Padding" Value="30"/>
+        <Setter Property="CornerRadius" Value="30"/>
+        <Setter Property="Spacing" Value="10"/>
+        
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border
+                    Width="{TemplateBinding Width}"
+                    Height="{TemplateBinding Height}"
+                    Background="{TemplateBinding Background}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    BorderBrush="{TemplateBinding}"
+                    CornerRadius="{TemplateBinding CornerRadius}"
+                    Padding="{TemplateBinding Padding}">
+                    <Grid RowDefinitions="Auto * Auto" RowSpacing="{TemplateBinding Spacing}">
+                        <Border Grid.Row="0">
+                            <ContentPresenter Content="{TemplateBinding Header}"/>
+                        </Border>
+                        
+                        <ContentPresenter Content="{TemplateBinding Content}" Grid.Row="1"/>
+                        
+                        <Border Grid.Row="2">
+                            <ContentPresenter Content="{TemplateBinding Footer}"/>
+                        </Border>
+                    </Grid>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+</ResourceDictionary>

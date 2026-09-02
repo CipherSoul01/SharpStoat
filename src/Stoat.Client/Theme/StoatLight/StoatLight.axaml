@@ -1,0 +1,19 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:system="clr-namespace:System;assembly=System.Runtime"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <SolidColorBrush x:Key="Foreground">#1b1b21</SolidColorBrush>
+    <SolidColorBrush x:Key="ForegroundMuted">#848389</SolidColorBrush>
+    
+    <SolidColorBrush x:Key="Background">#fbf8ff</SolidColorBrush>
+    <SolidColorBrush x:Key="Surface">#efedf4</SolidColorBrush>
+    
+    <SolidColorBrush x:Key="Primary">#505b92</SolidColorBrush>
+    <SolidColorBrush x:Key="PrimaryHover">#4b5588</SolidColorBrush>
+    
+    <SolidColorBrush x:Key="Secondary">#b9c3ff</SolidColorBrush>
+    <SolidColorBrush x:Key="SecondaryHover">#bcc5fd</SolidColorBrush>
+    
+    <SolidColorBrush x:Key="Link">#4f5fbd</SolidColorBrush>
+    
+    <system:String x:Key="LogoSvgCss">path { fill: #1b1b21 }</system:String>
+</ResourceDictionary>

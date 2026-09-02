@@ -1,0 +1,261 @@
+<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:stoat="https://stoat.chat/controls"
+    xmlns:theme="clr-namespace:Stoat.Client.Theme"
+    xmlns:icon="clr-namespace:Lucide.Avalonia;assembly=Lucide.Avalonia"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <Border Width="800"  Height="600">
+            <Grid Margin="2"
+                  RowDefinitions="Auto,*">
+                            <Panel Grid.Row="0"
+                                   Background="Transparent">
+
+                                <Grid ColumnDefinitions="*, Auto">
+
+                                    <Svg Path="../../Assets/logo.svg"
+                                         Width="60"
+                                         Height="30"
+                                         Margin="10, 0, 0, 0"
+                                         HorizontalAlignment="Left">
+                                        <Svg.Styles>
+                                            <Style Selector="Svg">
+                                                <Setter Property="(Svg.Css)" Value="{DynamicResource LogoSvgCss}" />
+                                            </Style>
+                                        </Svg.Styles>
+                                    </Svg>
+
+                                    <StackPanel
+                                        Grid.Column="1"
+                                        Orientation="Horizontal">
+
+                                        <Button Classes="ButtonGhost"
+                                                Padding="0"
+                                                Height="30"
+                                                Width="30"
+                                                HorizontalContentAlignment="Stretch"
+                                                VerticalContentAlignment="Stretch">
+
+                                            <icon:LucideIcon
+                                                Size="16"
+                                                Kind="Minus"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"/>
+                                        </Button>
+
+                                        <Button Classes="ButtonGhost"
+                                                Padding="0"
+                                                Height="30"
+                                                Width="30"
+                                                HorizontalContentAlignment="Stretch"
+                                                VerticalContentAlignment="Stretch">
+
+                                            <icon:LucideIcon
+                                                Size="14"
+                                                Kind="Maximize2"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"/>
+                                        </Button>
+
+                                        <Button Classes="ButtonGhost"
+                                                Padding="0"
+                                                Height="30"
+                                                Width="30"
+                                                HorizontalContentAlignment="Stretch"
+                                                VerticalContentAlignment="Stretch">
+
+                                            <icon:LucideIcon
+                                                Size="16"
+                                                Kind="X"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"/>
+                                        </Button>
+
+                                    </StackPanel>
+
+                                </Grid>
+
+                            </Panel>
+
+                            <!-- CONTENT -->
+                            <TextBlock Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"> Content</TextBlock>
+
+                        </Grid>
+        </Border>
+    </Design.PreviewWith>
+    
+    <ControlTheme
+        x:Key="{x:Type stoat:StoatWindow}"
+        TargetType="stoat:StoatWindow">
+
+        <Setter Property="WindowDecorations" Value="None"/>
+
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border Background="{DynamicResource Background}">
+                    <Panel>
+                        <Grid x:Name="PART_Root"
+                              Margin="2"
+                              RowDefinitions="Auto,*">
+
+                            <!-- TITLE BAR -->
+                            <Panel x:Name="PART_TitleBar"
+                                   Grid.Row="0"
+                                   Background="Transparent">
+
+                                <Grid ColumnDefinitions="*, Auto">
+
+                                    <Svg Path="../../Assets/logo.svg"
+                                         Width="60"
+                                         Height="30"
+                                         Margin="10, 0, 0, 0"
+                                         HorizontalAlignment="Left">
+                                        <Svg.Styles>
+                                            <Style Selector="Svg">
+                                                <Setter Property="(Svg.Css)" Value="{DynamicResource LogoSvgCss}" />
+                                            </Style>
+                                        </Svg.Styles>
+                                    </Svg>
+
+                                    <StackPanel
+                                        Grid.Column="1"
+                                        Orientation="Horizontal">
+
+                                        <Button x:Name="PART_MinimizeButton"
+                                                Classes="ButtonGhost"
+                                                Padding="0"
+                                                Height="30"
+                                                Width="30"
+                                                HorizontalContentAlignment="Stretch"
+                                                VerticalContentAlignment="Stretch">
+
+                                            <icon:LucideIcon
+                                                Size="16"
+                                                Kind="Minus"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"/>
+                                        </Button>
+
+                                        <Button x:Name="PART_MaximizeButton"
+                                                Classes="ButtonGhost"
+                                                Padding="0"
+                                                Height="30"
+                                                Width="30"
+                                                HorizontalContentAlignment="Stretch"
+                                                VerticalContentAlignment="Stretch">
+
+                                            <icon:LucideIcon
+                                                Size="14"
+                                                Kind="Maximize2"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"/>
+                                        </Button>
+
+                                        <Button x:Name="PART_CloseButton"
+                                                Classes="ButtonGhost"
+                                                Padding="0"
+                                                Height="30"
+                                                Width="30"
+                                                HorizontalContentAlignment="Stretch"
+                                                VerticalContentAlignment="Stretch">
+
+                                            <icon:LucideIcon
+                                                Size="16"
+                                                Kind="X"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"/>
+                                        </Button>
+
+                                    </StackPanel>
+
+                                </Grid>
+
+                            </Panel>
+
+                            <!-- CONTENT -->
+                            <ContentPresenter
+                                Grid.Row="1"
+                                Content="{TemplateBinding Content}"
+                                ContentTemplate="{TemplateBinding ContentTemplate}"
+                                HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
+
+                        </Grid>
+
+
+                        <Border
+                            x:Name="PART_ResizeLeft"
+                            Width="8"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Stretch"
+                            Background="Transparent"
+                            Cursor="SizeWestEast"/>
+
+                        <Border
+                            x:Name="PART_ResizeRight"
+                            Width="8"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Stretch"
+                            Background="Transparent"
+                            Cursor="SizeWestEast"/>
+
+                        <Border
+                            x:Name="PART_ResizeTop"
+                            Height="8"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Top"
+                            Background="Transparent"
+                            Cursor="SizeNorthSouth"/>
+
+                        <Border
+                            x:Name="PART_ResizeBottom"
+                            Height="8"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Bottom"
+                            Background="Transparent"
+                            Cursor="SizeNorthSouth"/>
+
+                        <Border
+                            x:Name="PART_ResizeTopLeft"
+                            Width="12"
+                            Height="12"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Background="Transparent"
+                            Cursor="TopLeftCorner"/>
+
+                        <Border
+                            x:Name="PART_ResizeTopRight"
+                            Width="6"
+                            Height="6"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            Background="Transparent"
+                            Cursor="TopRightCorner"/>
+
+                        <Border
+                            x:Name="PART_ResizeBottomLeft"
+                            Width="12"
+                            Height="12"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Bottom"
+                            Background="Transparent"
+                            Cursor="BottomLeftCorner"/>
+
+                        <Border
+                            x:Name="PART_ResizeBottomRight"
+                            Width="12"
+                            Height="12"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Bottom"
+                            Background="Transparent"
+                            Cursor="BottomRightCorner"/>
+
+                    </Panel>
+
+                </Border>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+
+</ResourceDictionary>

@@ -1,0 +1,33 @@
+{
+  "language": "Português",
+  "description": "Português",
+  "cultureName": "pt-BR",
+  "Localization": {
+    "Actions": {
+      "Confirm": "Confirmar",
+      "Cancel": "Cancelar",
+      "Next": "Próximo",
+      "Previous": "Voltar"
+    },
+    "Footer": {
+      "About": "Sobre",
+      "TermsOfService": "Termos de Serviço",
+      "PrivacyPolicy": "Política de Privacidade"
+    },
+    "Setup.Auth": {
+      "Title": "Encontre sua comunidade, conecte-se com o mundo.",
+      "Description": "Stoat é uma das melhores maneiras de se manter conectado com seus amigos e comunidade, em qualquer lugar, a qualquer hora.",
+      "SignIn": "Iniciar Sessão",
+      "SignUp": "Crie sua conta no site oficial do Stoat.",
+
+      "Welcome": "ENTRE", 
+      "Prompt": "Digite seu endereço de e-mail e senha para entrar.", 
+      "Email": "E-Mail", 
+      "Password": "Senha", 
+      "ForgotPassword": "Redefinir senha", 
+      "Back": "Voltar", 
+      "Login": "Entrar",
+      "RememberMe": "Lembre de mim"
+    }
+  }
+}

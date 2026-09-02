@@ -1,0 +1,61 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:Stoat.Client.ViewModel.Setup"
+             xmlns:lang="clr-namespace:Stoat.Client.I18n"
+             xmlns:stoat="https://stoat.chat/controls"
+             xmlns:c="https://codewf.com"
+             xmlns:rx="http://reactiveui.net"
+             xmlns:icon="clr-namespace:Lucide.Avalonia;assembly=Lucide.Avalonia"
+             
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:DataType="vm:SetupViewModel"
+             x:Class="Stoat.Client.View.Setup.SetupView">
+    <Panel>
+        <stoat:CustomRoutedViewHosted Router="{Binding Router}">
+            
+        </stoat:CustomRoutedViewHosted>
+        
+        <Border Padding="20">
+            <Panel>
+                <Button Classes="ButtonSecondary" 
+                        Command="{Binding ChangeThemeCommand}"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Right"
+                        CornerRadius="9999"
+                        Padding="10">
+                    <icon:LucideIcon Kind="{Binding Kind}"/>
+                </Button>
+                
+                <StackPanel Orientation="Horizontal" Spacing="10"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Bottom">
+                    <Button Padding="5"
+                            Classes="None">  
+                        <TextBlock Classes="Muted" Text="{c:I18n {x:Static lang:Lang.About}}"/>
+                    </Button>
+                    
+                    <Button Padding="5"
+                            Classes="None">
+                        <TextBlock Classes="Muted" Text="{c:I18n {x:Static lang:Lang.TermsOfService}}"/>
+                    </Button>
+                    
+                    <Button Padding="5"
+                            Classes="None">
+                        <TextBlock Classes="Muted" Text="{c:I18n {x:Static lang:Lang.PrivacyPolicy}}"/>
+                    </Button>
+                </StackPanel>
+                
+                <Border Background="{DynamicResource Surface}"
+                        Padding="5"
+                        CornerRadius="9999"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Bottom">
+                    <TextBlock Text="{x:Static lang:Lang.Version}"/>
+                </Border>
+            </Panel>
+            
+        </Border>
+    </Panel>
+</UserControl>

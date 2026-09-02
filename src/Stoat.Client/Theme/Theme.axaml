@@ -1,0 +1,22 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:theme="clr-namespace:Stoat.Client.Theme"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <ResourceDictionary.ThemeDictionaries>
+        <ResourceDictionary x:Key="{x:Static theme:StoatThemeVariants.Dark}">
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceInclude Source="StoatDark/StoatDark.axaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+        
+        <ResourceDictionary x:Key="{x:Static theme:StoatThemeVariants.Light}">
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceInclude Source="StoatLight/StoatLight.axaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ResourceDictionary.ThemeDictionaries>
+    
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceInclude Source="../Control/Controls.axaml"/>
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

@@ -1,0 +1,12 @@
+<control:StoatWindow xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:view="clr-namespace:Stoat.Client.View"
+        xmlns:control="https://stoat.chat/controls"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="Stoat.Client.MainWindow"
+        Title="Stoat.Client"
+        Icon="/Assets/icon.ico">
+    <view:MainView/>
+</control:StoatWindow>

@@ -1,0 +1,74 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:Stoat.Client.ViewModel.Setup.Auth"
+             xmlns:c="https://codewf.com"
+             xmlns:control="https://stoat.chat/controls"
+             xmlns:lang="clr-namespace:Stoat.Client.I18n"
+             Background="{DynamicResource Background}"
+             x:DataType="vm:AuthViewModel"
+             mc:Ignorable="d" d:DesignWidth="1000" d:DesignHeight="550"
+             x:Class="Stoat.Client.View.Setup.Auth.AuthView">
+    <Panel>
+        <control:Card HorizontalAlignment="Center" 
+                      VerticalAlignment="Center"
+                      Spacing="30">
+            <control:Card.Header>
+                <Svg Path="../../../Assets/logo.svg"
+                      Width="150"
+                      HorizontalAlignment="Center">
+                    <Svg.Styles>
+                        <Style Selector="Svg">
+                            <Setter Property="(Svg.Css)" Value="{DynamicResource LogoSvgCss}" />
+                        </Style>
+                    </Svg.Styles>
+                </Svg>
+                
+                
+            </control:Card.Header>
+            
+            <StackPanel Spacing="10">
+                <TextBlock Text="{c:I18n {x:Static lang:Lang.Title}}"
+                           Classes="h3"
+                           TextAlignment="Center"
+                           FontWeight="Bold"
+                           TextWrapping="Wrap"
+                           MaxWidth="300"/>
+                <TextBlock Text="{c:I18n {x:Static lang:Lang.Description}}" 
+                           Classes="Small Muted"
+                           TextWrapping="Wrap"
+                           MaxWidth="300"/>
+            </StackPanel>
+            
+            <control:Card.Footer>
+                <StackPanel Spacing="30">
+                    <Button Classes="ButtonPrimary" 
+                            CornerRadius="20"
+                            Padding="0, 12"
+                            HorizontalAlignment="Stretch"
+                            HorizontalContentAlignment="Center"
+                            Command="{Binding  OpenLoginPageCommand}">
+                        <TextBlock Foreground="#fff" Text="{c:I18n {x:Static lang:Lang.SignIn}}"/>
+                    </Button>
+                    
+                    <StackPanel HorizontalAlignment="Stretch" Spacing="5">
+                        <TextBlock Text="Ainda não tem uma conta?"
+                                   FontWeight="Bold"
+                                   HorizontalAlignment="Stretch"/>
+                        
+                        <Button Classes="None"
+                                HorizontalAlignment="Left"
+                                Command="{Binding OpenRegisterPageCommand}">
+                            <TextBlock
+                                Text="{c:I18n {x:Static lang:Lang.SignUp}}"
+                                Foreground="{DynamicResource Link}"
+                                FontWeight="SemiBold"/>
+                        </Button>
+                    </StackPanel>
+                    
+                </StackPanel>
+            </control:Card.Footer>
+        </control:Card>
+    </Panel>
+</UserControl>

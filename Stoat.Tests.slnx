@@ -1,0 +1,7 @@
+<Solution>
+  <Folder Name="/tests/">
+    <Project Path="tests/Stoat.Client.Tests/Stoat.Client.Tests.csproj" />
+    <Project Path="tests/Stoat.Core.Tests/Stoat.Core.Tests.csproj" />
+    <Project Path="tests/Stoat.SDK.Tests/Stoat.SDK.Tests.csproj" />
+  </Folder>
+</Solution>

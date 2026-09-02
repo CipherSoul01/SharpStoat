@@ -1,0 +1,139 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:c="https://codewf.com"
+             xmlns:vm="clr-namespace:Stoat.Client.ViewModel.Setup.Auth"
+             xmlns:lang="clr-namespace:Stoat.Client.I18n"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:stoat="https://stoat.chat/controls"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:DataType="vm:LoginViewModel"
+             x:Class="Stoat.Client.View.Setup.Auth.LoginView">
+    <stoat:Card HorizontalAlignment="Center" 
+                Spacing="30"
+                ClipToBounds="False"
+                Width="450"
+                VerticalAlignment="Center">
+        <stoat:Card.Header>
+            <Panel
+                ClipToBounds="False">
+                <Svg Path="../../../Assets/icon.svg"
+                     Width="90"
+                     Height="90">
+                    <Svg.RenderTransform>
+                        <TranslateTransform Y="-70"/>
+                    </Svg.RenderTransform>
+                </Svg>
+                
+                <StackPanel Margin="0, 40, 0, 0">
+                    <TextBlock  Classes="h2"
+                                HorizontalAlignment="Center"
+                                Text="{c:I18n {x:Static lang:Lang.Welcome}}"/>
+                
+                    <TextBlock  Classes="Muted"
+                                Margin="20, 0"
+                                Text="{c:I18n {x:Static lang:Lang.Prompt}}"/>
+                </StackPanel>
+                
+            </Panel>
+        </stoat:Card.Header>
+        
+        <StackPanel Spacing="30">
+            <StackPanel Spacing="10">
+                <TextBlock Classes="Small" Text="{c:I18n {x:Static lang:Lang.Email}}"/>
+                
+                <Border Padding="20, 0" 
+                        CornerRadius="5"
+                        BorderThickness="1"
+                        BorderBrush="{DynamicResource ForegroundMuted}"
+                        Background="{DynamicResource Background}">
+                    <Grid
+                        ColumnDefinitions="Auto, *, Auto">
+                    
+                        <LucideIcon Kind="Mail"
+                                    Foreground="{DynamicResource Foreground}"
+                                    Size="17"/>
+                    
+                        <TextBox Grid.Column="1" Watermark="username@email.com"
+                                 VerticalAlignment="Stretch"
+                                 Classes="None"
+                                 Padding="12"/>
+                    </Grid>
+                </Border>
+            </StackPanel>
+            
+            <StackPanel Spacing="10">
+                <TextBlock Classes="Small" Text="{c:I18n {x:Static lang:Lang.Password}}"/>
+                
+                <Border Padding="20, 0" 
+                        CornerRadius="5"
+                        BorderThickness="1"
+                        BorderBrush="{DynamicResource ForegroundMuted}"
+                        Background="{DynamicResource Background}">
+                    <Grid
+                          ColumnDefinitions="Auto, *, Auto">
+                    
+                        <LucideIcon Kind="UserKey"
+                                    Foreground="{DynamicResource Foreground}"
+                                    Size="17"/>
+                    
+                        <TextBox Grid.Column="1" Watermark="⬤⬤⬤⬤⬤⬤⬤" 
+                                 VerticalAlignment="Stretch"
+                                 Classes="None"
+                                 PasswordChar="⬤"
+                                 Padding="12"/>
+                    </Grid>
+                </Border>
+                
+                <Panel>
+                    <CheckBox Foreground="{DynamicResource Foreground}" Content="{c:I18n {x:Static lang:Lang.RememberMe}}"/>
+                    
+                    <Button Classes="None" Margin="0, 10, 0, 0"
+                            HorizontalAlignment="Right">
+                        <TextBlock
+                            Text="{c:I18n {x:Static lang:Lang.ForgotPassword}}"
+                            Foreground="{DynamicResource Link}"
+                            FontWeight="SemiBold"/>
+                    </Button>
+                </Panel>
+                
+            </StackPanel>
+        </StackPanel>
+        
+        <stoat:Card.Footer>
+            <StackPanel Spacing="10">
+                <Button Classes="ButtonPrimary"
+                        Foreground="{DynamicResource Background}"
+                        CornerRadius="20">
+                    <Panel>
+                        <TextBlock Foreground="#fff"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   Text="{c:I18n {x:Static lang:Lang.Login}}"/>
+                        
+                        <LucideIcon Kind="ArrowRight"
+                                    Foreground="#fff"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Right"/>
+                    </Panel>
+                </Button>
+                
+                <Grid ColumnDefinitions="*, Auto, *">
+                    <Separator Grid.Column="0"/>
+                    <TextBlock Grid.Column="1" Text="Ou"/>
+                    <Separator Grid.Column="2"/>
+                </Grid>
+                
+                <Button Classes="ButtonSecondary"
+                        Foreground="{DynamicResource Background}"
+                        CornerRadius="20"
+                        Command="{Binding  PreviousCommand}">
+                    <TextBlock Foreground="{DynamicResource Foreground}"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Text="{c:I18n {x:Static lang:Lang.Previous}}"/>
+                </Button>
+            </StackPanel>
+        </stoat:Card.Footer>
+    </stoat:Card>
+</UserControl>

@@ -1,0 +1,7 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Stoat.Client/Stoat.Client.csproj" />
+    <Project Path="src/Stoat.Core/Stoat.Core.csproj" />
+    <Project Path="src/Stoat.SDK/Stoat.SDK.csproj" />
+  </Folder>
+</Solution>

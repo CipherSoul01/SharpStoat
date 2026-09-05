@@ -87,8 +87,9 @@
     <ControlTheme
         x:Key="{x:Type stoat:StoatWindow}"
         TargetType="stoat:StoatWindow">
-
-        <Setter Property="WindowDecorations" Value="None"/>
+        
+        <Setter Property="WindowDecorations" Value="{OnPlatform BorderOnly, macOS=Full, Linux=None, x:TypeArguments=WindowDecorations}"/>
+        <Setter Property="ExtendClientAreaToDecorationsHint" Value="True" />
 
         <Setter Property="Template">
             <ControlTemplate>

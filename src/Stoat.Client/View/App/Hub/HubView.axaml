@@ -3,68 +3,37 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:personaltabstrip="using:Stoat.Client.Control.PersonalTabStrip"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             mc:Ignorable="d" d:DesignWidth="1024" d:DesignHeight="600"
              x:Class="Stoat.Client.View.App.Hub.HubView">
 
     <Grid ColumnDefinitions="auto, *">
 
-
-        <Grid Background="{DynamicResource BackgroundSecondary}">
-
-            <TabStrip>
-
-                <TabStrip.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <Grid RowDefinitions="Auto,Auto,Auto,*,Auto"/>
-                    </ItemsPanelTemplate>
-                </TabStrip.ItemsPanel>
-
-                <!-- Home -->
-                <TabStripItem Grid.Row="0" IsSelected="True">
-                    <Border
-                        Background="{DynamicResource Background}"
-                        CornerRadius="999"
-                        Padding="3">
-                        <LucideIcon Kind="House"/>
-                    </Border>
+       
+            
+          <TabStrip Background="{DynamicResource BackgroundTertiary}" Padding="5">
+              <TabStrip.ItemsPanel>
+                  <ItemsPanelTemplate>
+                      <Grid RowDefinitions="auto auto * auto"></Grid>
+                  </ItemsPanelTemplate>
+              </TabStrip.ItemsPanel>
+                      
+                <TabStripItem Grid.Row="0" Background="red">
+                    <LucideIcon Kind="House"/>
                 </TabStripItem>
-
-                <!-- Separador -->
+                    
                 <TabStripItem Grid.Row="1">
-                    <Separator
-                        Grid.Row=""
-                        Margin="0,5"
-                        Width="20"/>
+                    <LucideIcon Kind="Compass"/>
                 </TabStripItem>
-
-                <!-- Compass -->
-                <TabStripItem
-                    Grid.Row="2"
-                    VerticalAlignment="Top">
-                    <Border
-                        Background="{DynamicResource Background}"
-                        CornerRadius="999"
-                        Padding="3">
-                        <LucideIcon Kind="Compass"/>
-                    </Border>
+              
+              <TabStripItem Grid.Row="2"/>
+                
+              <TabStripItem Grid.Row="3">
+                    <LucideIcon Kind="Settings"/>
                 </TabStripItem>
-
-                <!-- Espaço restante -->
-                <TabStripItem
-                    Grid.Row="3"
-                    IsHitTestVisible="False">
-                </TabStripItem>
-
-            </TabStrip>
-
-            <Border>
-                <LucideIcon Kind="Settings"/>
-            </Border>
-
-
-        </Grid>
-
-        
+            
+          </TabStrip>
+            
+      
 
     </Grid>
 

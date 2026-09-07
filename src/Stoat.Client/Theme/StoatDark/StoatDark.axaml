@@ -11,7 +11,9 @@
     <SolidColorBrush x:Key="PrimaryHover">#4b5588</SolidColorBrush>
     
     
-    
+    <SolidColorBrush x:Key="BackgroundSecondary">#1b1b21</SolidColorBrush>
+    <SolidColorBrush x:Key="BackgroundTertiary">#292a2f</SolidColorBrush>
+
     <SolidColorBrush x:Key="Secondary">#424659</SolidColorBrush>
     <SolidColorBrush x:Key="SecondaryHover">#4f5264</SolidColorBrush>
     

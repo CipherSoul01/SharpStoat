@@ -7,5 +7,6 @@
         <ResourceInclude Source="./Image/AsyncImage.axaml"/>
         <ResourceInclude Source="./TextBox/TextBox.axaml"/>
         <ResourceInclude Source="./Window/StoatWindow.axaml"/>
+        <ResourceInclude Source="./PersonalTabStrip/PersonalTab.axaml"/>
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

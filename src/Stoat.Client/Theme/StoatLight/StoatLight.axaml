@@ -5,6 +5,12 @@
     <SolidColorBrush x:Key="ForegroundMuted">#848389</SolidColorBrush>
     
     <SolidColorBrush x:Key="Background">#fbf8ff</SolidColorBrush>
+
+    
+    <SolidColorBrush x:Key="BackgroundSecondary">#f5f2fA</SolidColorBrush>
+    <SolidColorBrush x:Key="BackgroundTertiary">#e9e7ef</SolidColorBrush>
+
+
     <SolidColorBrush x:Key="Surface">#efedf4</SolidColorBrush>
     
     <SolidColorBrush x:Key="Primary">#505b92</SolidColorBrush>

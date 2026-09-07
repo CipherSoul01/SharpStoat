@@ -29,7 +29,7 @@
             </control:Card.Header>
             
             <StackPanel Spacing="10">
-                <TextBlock Text="{c:I18n {x:Static lang:Lang.Title}}"
+                <!--<TextBlock Text="{c:I18n {x:Static lang:Lang.Title}}"
                            Classes="h3"
                            TextAlignment="Center"
                            FontWeight="Bold"
@@ -38,7 +38,9 @@
                 <TextBlock Text="{c:I18n {x:Static lang:Lang.Description}}" 
                            Classes="Small Muted"
                            TextWrapping="Wrap"
-                           MaxWidth="300"/>
+                           MaxWidth="300"/>-->
+
+                <control:AsyncImage Source="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExbXhmbnRwdG1ndDdvbzJkeDhjbnVkM200cjF2Z2drYW5weXFoYjN0aCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/f31DK1KpGsyMU/giphy.gif"></control:AsyncImage>
 
             </StackPanel>
             

@@ -28,12 +28,12 @@
             BorderBrush="{TemplateBinding BorderBrush}"
             BorderThickness="{TemplateBinding BorderThickness}"
             CornerRadius="{TemplateBinding CornerRadius}"
-            Padding="{TemplateBinding Padding}">
+            Padding="">
           <Panel>
             <ContentPresenter
                 Name="PART_ContentPresenter"
                 HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                VerticalAlignment=""
+                VerticalAlignment="Stretch"
                 Content="{TemplateBinding Content}"
                 ContentTemplate="{TemplateBinding ContentTemplate}" />
             <Border Name="PART_SelectedPipe"

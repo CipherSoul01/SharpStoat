@@ -8,7 +8,7 @@
              xmlns:lang="clr-namespace:Stoat.Client.I18n"
              Background="{DynamicResource Background}"
              x:DataType="vm:AuthViewModel"
-             mc:Ignorable="d" d:DesignWidth="1000" d:DesignHeight="550"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="550"
              x:Class="Stoat.Client.View.Setup.Auth.AuthView">
     <Panel>
         <control:Card HorizontalAlignment="Center" 
@@ -39,6 +39,7 @@
                            Classes="Small Muted"
                            TextWrapping="Wrap"
                            MaxWidth="300"/>
+
             </StackPanel>
             
             <control:Card.Footer>

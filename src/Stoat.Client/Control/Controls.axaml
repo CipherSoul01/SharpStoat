@@ -4,6 +4,7 @@
         <ResourceInclude Source="./Button/Button.axaml"/>
         <ResourceInclude Source="./Card/Card.axaml"/>
         <ResourceInclude Source="./TextBlock/TextBlock.axaml"/>
+        <ResourceInclude Source="./Image/AsyncImage.axaml"/>
         <ResourceInclude Source="./TextBox/TextBox.axaml"/>
         <ResourceInclude Source="./Window/StoatWindow.axaml"/>
     </ResourceDictionary.MergedDictionaries>

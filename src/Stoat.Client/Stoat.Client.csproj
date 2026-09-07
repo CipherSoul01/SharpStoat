@@ -47,4 +47,8 @@
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Stoat.Core\Stoat.Core.csproj" />
+  </ItemGroup>
 </Project>

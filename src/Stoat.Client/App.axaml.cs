@@ -6,6 +6,7 @@ using Avalonia.Input;
 using Avalonia.Markup.Xaml;
 using Avalonia.Platform;
 using Avalonia.Styling;
+using Avalonia.Svg;
 using Stoat.Client.Theme;
 
 namespace Stoat.Client;
@@ -19,7 +20,6 @@ public partial class App : Application
 
     public override void OnFrameworkInitializationCompleted()
     {
-        
         
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {

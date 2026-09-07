@@ -13,9 +13,14 @@
              x:DataType="vm:SetupViewModel"
              x:Class="Stoat.Client.View.Setup.SetupView">
     <Panel>
-        <stoat:CustomRoutedViewHosted Router="{Binding Router}">
-            
-        </stoat:CustomRoutedViewHosted>
+        <ScrollViewer Padding="0, 50">
+            <stoat:CustomRoutedViewHosted Router="{Binding Router}"/>
+        </ScrollViewer>
+        
+        <Border VerticalAlignment="Bottom" 
+                HorizontalAlignment="Stretch"
+                Background="{DynamicResource Background}"
+                Height="50"/>
         
         <Border Padding="20">
             <Panel>

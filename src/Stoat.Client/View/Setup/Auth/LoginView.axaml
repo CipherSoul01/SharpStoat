@@ -10,6 +10,7 @@
              x:DataType="vm:LoginViewModel"
              x:Class="Stoat.Client.View.Setup.Auth.LoginView">
     <stoat:Card HorizontalAlignment="Center" 
+                Margin="0, 40"
                 Spacing="30"
                 ClipToBounds="False"
                 Width="450"

@@ -1,0 +1,46 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:images="clr-namespace:Stoat.Core.Image.Decode;assembly=Stoat.Core"
+        xmlns:gif="clr-namespace:Avalonia.Labs.Gif;assembly=Avalonia.Labs.Gif"
+        xmlns:controls="using:Stoat.Client.Control.Image">
+    <Design.PreviewWith>
+        <controls:AsyncImage />
+    </Design.PreviewWith>
+
+    <ControlTheme TargetType="controls:AsyncImage"
+                  x:Key="{x:Type controls:AsyncImage}">
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border Padding="0"
+                        Width="{TemplateBinding Width}"
+                        Height="{TemplateBinding Height}"
+                        HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                        VerticalAlignment="{TemplateBinding VerticalAlignment}"
+                        CornerRadius="{TemplateBinding CornerRadius}"
+                        ClipToBounds="True">
+                    <Panel>
+                        <ContentControl Content="{TemplateBinding CurrentImage}">
+                            <ContentControl.DataTemplates>
+                                <DataTemplate DataType="images:ImageSvg">
+                                    <Svg Source="{Binding Image}"
+                                         Stretch="{Binding Stretch, RelativeSource={RelativeSource TemplatedParent}}"
+                                         StretchDirection="{Binding StretchDirection, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                </DataTemplate>
+                                <DataTemplate DataType="images:ImageGif">
+                                    <gif:GifImage Source="{Binding Image}"
+                                                  Stretch="{Binding Stretch, RelativeSource={RelativeSource TemplatedParent}}"
+                                                  StretchDirection="{Binding StretchDirection, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                </DataTemplate>
+                                <DataTemplate DataType="images:ImageBitmap">
+                                    <Image Source="{Binding Image}"
+                                           Stretch="{Binding StretchDirection, RelativeSource={RelativeSource TemplatedParent}}"
+                                           StretchDirection="{Binding StretchDirection, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                </DataTemplate>
+                            </ContentControl.DataTemplates>
+                        </ContentControl>
+                    </Panel>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+</ResourceDictionary>

@@ -5,17 +5,16 @@
              xmlns:vm="clr-namespace:Stoat.Client.ViewModel.Setup.Auth"
              xmlns:lang="clr-namespace:Stoat.Client.I18n"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:stoat="https://stoat.chat/controls"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:DataType="vm:LoginViewModel"
              x:Class="Stoat.Client.View.Setup.Auth.LoginView">
-    <stoat:Card HorizontalAlignment="Center" 
+    <Card HorizontalAlignment="Center" 
                 Margin="0, 40"
                 Spacing="30"
                 ClipToBounds="False"
                 Width="450"
                 VerticalAlignment="Center">
-        <stoat:Card.Header>
+        <Card.Header>
             <Panel
                 ClipToBounds="False">
                 <Svg Path="../../../Assets/icon.svg"
@@ -37,7 +36,7 @@
                 </StackPanel>
                 
             </Panel>
-        </stoat:Card.Header>
+        </Card.Header>
         
         <StackPanel Spacing="30">
             <StackPanel Spacing="10">
@@ -101,7 +100,7 @@
             </StackPanel>
         </StackPanel>
         
-        <stoat:Card.Footer>
+        <Card.Footer>
             <StackPanel Spacing="10">
                 <Button Classes="ButtonPrimary"
                         Foreground="{DynamicResource Background}"
@@ -135,6 +134,6 @@
                                Text="{c:I18n {x:Static lang:Lang.Previous}}"/>
                 </Button>
             </StackPanel>
-        </stoat:Card.Footer>
-    </stoat:Card>
+        </Card.Footer>
+    </Card>
 </UserControl>

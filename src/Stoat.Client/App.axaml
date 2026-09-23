@@ -11,13 +11,6 @@
              
     <Application.Styles>
         <FluentTheme />
+        <ThemeStoat />
     </Application.Styles>
-             
-    <Application.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceInclude Source="./Theme/Theme.axaml"/>
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </Application.Resources>
 </Application>

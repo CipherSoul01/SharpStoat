@@ -1,0 +1,65 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <AvaloniaResource Include="Assets/**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Avalonia" Version="12.1.3" />
+    <PackageReference Include="Lucide.Avalonia" Version="0.2.23" />
+    <PackageReference Include="ReactiveUI.Avalonia" Version="12.1.2" />
+    <PackageReference Include="Svg.Controls.Avalonia" Version="12.0.0.17" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Controls\StoatWindow.axaml.cs">
+      <DependentUpon>StoatWindow.axaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\AsyncImage.axaml.cs">
+      <DependentUpon>AsyncImage.axaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Stoat.Core\Stoat.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AvaloniaResource Include="Assets\badges\-1.ico" />
+    <AvaloniaResource Include="Assets\badges\1.ico" />
+    <AvaloniaResource Include="Assets\badges\10.ico" />
+    <AvaloniaResource Include="Assets\badges\2.ico" />
+    <AvaloniaResource Include="Assets\badges\3.ico" />
+    <AvaloniaResource Include="Assets\badges\4.ico" />
+    <AvaloniaResource Include="Assets\badges\5.ico" />
+    <AvaloniaResource Include="Assets\badges\6.ico" />
+    <AvaloniaResource Include="Assets\badges\7.ico" />
+    <AvaloniaResource Include="Assets\badges\8.ico" />
+    <AvaloniaResource Include="Assets\badges\9.ico" />
+    <AvaloniaResource Include="Assets\badges\badges.penpot" />
+    <AvaloniaResource Include="Assets\hicolor\128x128.png" />
+    <AvaloniaResource Include="Assets\hicolor\16x16.png" />
+    <AvaloniaResource Include="Assets\hicolor\256x256.png" />
+    <AvaloniaResource Include="Assets\hicolor\32x32.png" />
+    <AvaloniaResource Include="Assets\hicolor\512x512.png" />
+    <AvaloniaResource Include="Assets\hicolor\64x64.png" />
+    <AvaloniaResource Include="Assets\icon.ico" />
+    <AvaloniaResource Include="Assets\icon.icon\Assets\Icon.png" />
+    <AvaloniaResource Include="Assets\icon.icon\icon.json" />
+    <AvaloniaResource Include="Assets\icon.png" />
+    <AvaloniaResource Include="Assets\icon.svg" />
+    <AvaloniaResource Include="Assets\icon@2x.png" />
+    <AvaloniaResource Include="Assets\icon@3x.png" />
+    <AvaloniaResource Include="Assets\iconTemplate.png" />
+    <AvaloniaResource Include="Assets\logo.svg" />
+  </ItemGroup>
+
+</Project>

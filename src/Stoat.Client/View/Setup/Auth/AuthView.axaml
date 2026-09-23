@@ -4,17 +4,16 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:Stoat.Client.ViewModel.Setup.Auth"
              xmlns:c="https://codewf.com"
-             xmlns:control="https://stoat.chat/controls"
              xmlns:lang="clr-namespace:Stoat.Client.I18n"
              Background="{DynamicResource Background}"
              x:DataType="vm:AuthViewModel"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="550"
              x:Class="Stoat.Client.View.Setup.Auth.AuthView">
     <Panel>
-        <control:Card HorizontalAlignment="Center" 
+        <Card HorizontalAlignment="Center" 
                       VerticalAlignment="Center"
                       Spacing="30">
-            <control:Card.Header>
+            <Card.Header>
                 <Svg Path="../../../Assets/logo.svg"
                       Width="150"
                       HorizontalAlignment="Center">
@@ -24,12 +23,10 @@
                         </Style>
                     </Svg.Styles>
                 </Svg>
-                
-                
-            </control:Card.Header>
+            </Card.Header>
             
             <StackPanel Spacing="10">
-                <!--<TextBlock Text="{c:I18n {x:Static lang:Lang.Title}}"
+                <TextBlock Text="{c:I18n {x:Static lang:Lang.Title}}"
                            Classes="h3"
                            TextAlignment="Center"
                            FontWeight="Bold"
@@ -38,13 +35,10 @@
                 <TextBlock Text="{c:I18n {x:Static lang:Lang.Description}}" 
                            Classes="Small Muted"
                            TextWrapping="Wrap"
-                           MaxWidth="300"/>-->
-
-                <control:AsyncImage Source="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExbXhmbnRwdG1ndDdvbzJkeDhjbnVkM200cjF2Z2drYW5weXFoYjN0aCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/f31DK1KpGsyMU/giphy.gif"></control:AsyncImage>
-
+                           MaxWidth="300"/>
             </StackPanel>
             
-            <control:Card.Footer>
+            <Card.Footer>
                 <StackPanel Spacing="30">
                     <Button Classes="ButtonPrimary" 
                             CornerRadius="20"
@@ -71,7 +65,7 @@
                     </StackPanel>
                     
                 </StackPanel>
-            </control:Card.Footer>
-        </control:Card>
+            </Card.Footer>
+        </Card>
     </Panel>
 </UserControl>

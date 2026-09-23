@@ -1,0 +1,69 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <ControlTheme TargetType="TextBox"
+                  x:Key="{x:Type TextBox}"
+                  BasedOn="{StaticResource {x:Type TextBox}}">
+          <!-- Unstyled / Bare TextBox -->
+          <Style Selector="^.None">
+              <Setter Property="Background" Value="Transparent" />
+              <Setter Property="BorderBrush" Value="Transparent" />
+              <Setter Property="BorderThickness" Value="0" />
+              <Setter Property="CornerRadius" Value="0" />
+              <Setter Property="Padding" Value="0" />
+              <Setter Property="MinWidth" Value="0" />
+              <Setter Property="MinHeight" Value="0" />
+              <Setter Property="FocusAdorner" Value="{x:Null}" />
+          </Style>
+
+          <!-- Unstyled + PointerOver -->
+          <Style Selector="^.None:pointerover">
+              <Setter Property="Background" Value="Transparent" />
+              <Setter Property="BorderBrush" Value="Transparent" />
+              <Setter Property="BorderThickness" Value="0" />
+              <Setter Property="Foreground"
+                      Value="{DynamicResource TextControlForeground}" />
+          </Style>
+
+          <Style Selector="^.None:pointerover /template/ Border#PART_BorderElement">
+              <Setter Property="Background" Value="Transparent" />
+              <Setter Property="BorderBrush" Value="Transparent" />
+              <Setter Property="BorderThickness" Value="0" />
+          </Style>
+
+          <!-- Unstyled + Focus -->
+          <Style Selector="^.None:focus">
+              <Setter Property="Background" Value="Transparent" />
+              <Setter Property="BorderBrush" Value="Transparent" />
+              <Setter Property="BorderThickness" Value="0" />
+              <Setter Property="Foreground"
+                      Value="{DynamicResource TextControlForeground}" />
+          </Style>
+
+          <Style Selector="^.None:focus /template/ Border#PART_BorderElement">
+              <Setter Property="Background" Value="Transparent" />
+              <Setter Property="BorderBrush" Value="Transparent" />
+              <Setter Property="BorderThickness" Value="0" />
+          </Style>
+
+          <!-- Unstyled + Disabled -->
+          <Style Selector="^.None:disabled">
+              <Setter Property="Background" Value="Transparent" />
+              <Setter Property="BorderBrush" Value="Transparent" />
+              <Setter Property="BorderThickness" Value="0" />
+          </Style>
+
+          <Style Selector="^.None:disabled /template/ Border#PART_BorderElement">
+              <Setter Property="Background" Value="Transparent" />
+              <Setter Property="BorderBrush" Value="Transparent" />
+              <Setter Property="BorderThickness" Value="0" />
+          </Style>
+
+          <!-- Unstyled + Validation Error -->
+          <Style Selector="^.None:error /template/ Border#PART_BorderElement">
+              <Setter Property="Background" Value="Transparent" />
+              <Setter Property="BorderBrush" Value="Transparent" />
+              <Setter Property="BorderThickness" Value="0" />
+          </Style>  
+    </ControlTheme>
+</ResourceDictionary>

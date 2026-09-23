@@ -1,5 +1,5 @@
-using Avalonia.Controls;
 using Stoat.Client.Control.Window;
+using Stoat.Theme.Controls;
 
 namespace Stoat.Client;
 

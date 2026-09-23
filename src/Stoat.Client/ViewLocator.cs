@@ -1,7 +1,7 @@
 using System;
 using Avalonia.Controls;
 using Avalonia.Controls.Templates;
-using Stoat.Client.ViewModel;
+using Stoat.Client.ViewModel.Shared;
 
 namespace Stoat.Client;
 

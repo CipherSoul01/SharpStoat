@@ -1,21 +1,20 @@
 using System.Threading.Tasks;
-using Avalonia.Threading;
+using ReactiveUI.Primitives.Signals;
 using ReactiveUI.SourceGenerators;
-using Stoat.Client.ViewModel.Home;
-using Stoat.Client.ViewModel.Setup;
+using Stoat.Client.ViewModel.Layout;
+using Stoat.Client.ViewModel.Setup.Auth;
 
 namespace Stoat.Client.ViewModel;
 
 public partial class MainViewModel
 {
     [ReactiveCommand]
-    private Task SetupAsync()
+    private async Task SetupAsync()
     {
-        Dispatcher.UIThread.Post(() =>
-        {
-            Router.Navigate.Execute(new SetupViewModel(this));
-        });
+        await Layout.SetLayoutCommand
+            .Execute(new SetupLayoutViewModel(this));
         
-        return Task.CompletedTask;
+        await Router.Navigate
+            .Execute(new AuthViewModel(this));
     }
 }

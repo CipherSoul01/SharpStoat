@@ -8,9 +8,12 @@
              x:DataType="vm:MainViewModel"
              x:Class="Stoat.Client.View.MainView"
              Background="{DynamicResource Background}">
-    <reactive:RoutedViewHost Router="{Binding Router}">
+    
+    <LayoutViewHost Layout="{Binding Layout}"/>
+    
+    <!--<reactive:RoutedViewHost Router="{Binding Layout}">
         <reactive:RoutedViewHost.PageTransition>
             <CrossFade Duration="0:0:0.300"/>
         </reactive:RoutedViewHost.PageTransition>
-    </reactive:RoutedViewHost>
+    </reactive:RoutedViewHost>-->
 </UserControl>

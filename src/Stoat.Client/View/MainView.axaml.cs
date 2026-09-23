@@ -1,7 +1,6 @@
-using System;
-using System.Reactive.Disposables.Fluent;
 using ReactiveUI;
 using ReactiveUI.Avalonia;
+using ReactiveUI.Primitives;
 using Stoat.Client.ViewModel;
 
 namespace Stoat.Client.View;

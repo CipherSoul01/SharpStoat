@@ -1,0 +1,66 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=System.Runtime">
+
+    <ResourceDictionary.ThemeDictionaries>
+
+        <ResourceDictionary x:Key="Light">
+            <!-- Content -->
+            <SolidColorBrush x:Key="TextPrimary">#1b1b21</SolidColorBrush>
+            <SolidColorBrush x:Key="TextSecondary">#848389</SolidColorBrush>
+
+            <!-- Backgrounds -->
+            <SolidColorBrush x:Key="Background">#fbf8ff</SolidColorBrush>
+            <SolidColorBrush x:Key="BackgroundElevated">#f5f2fa</SolidColorBrush>
+            <SolidColorBrush x:Key="BackgroundSubtle">#e9e7ef</SolidColorBrush>
+
+            <!-- Surfaces -->
+            <SolidColorBrush x:Key="Surface">#efedf4</SolidColorBrush>
+
+            <!-- Accent -->
+            <SolidColorBrush x:Key="Accent">#505b92</SolidColorBrush>
+            <SolidColorBrush x:Key="AccentHover">#4b5588</SolidColorBrush>
+
+            <!-- Secondary -->
+            <SolidColorBrush x:Key="Secondary">#b9c3ff</SolidColorBrush>
+            <SolidColorBrush x:Key="SecondaryHover">#bcc5fd</SolidColorBrush>
+
+            <!-- Interactive -->
+            <SolidColorBrush x:Key="Link">#4f5fbd</SolidColorBrush>
+
+            <system:String x:Key="LogoSvgCss">
+                path { fill: #1b1b21 }
+            </system:String>
+        </ResourceDictionary>
+
+        <ResourceDictionary x:Key="Dark">
+            <!-- Content -->
+            <SolidColorBrush x:Key="TextPrimary">#e3e1e9</SolidColorBrush>
+            <SolidColorBrush x:Key="TextSecondary">#848389</SolidColorBrush>
+
+            <!-- Backgrounds -->
+            <SolidColorBrush x:Key="Background">#121318</SolidColorBrush>
+            <SolidColorBrush x:Key="BackgroundElevated">#1b1b21</SolidColorBrush>
+            <SolidColorBrush x:Key="BackgroundSubtle">#292a2f</SolidColorBrush>
+
+            <!-- Surfaces -->
+            <SolidColorBrush x:Key="Surface">#1f1f25</SolidColorBrush>
+
+            <!-- Accent -->
+            <SolidColorBrush x:Key="Accent">#505b92</SolidColorBrush>
+            <SolidColorBrush x:Key="AccentHover">#4b5588</SolidColorBrush>
+
+            <!-- Secondary -->
+            <SolidColorBrush x:Key="Secondary">#424659</SolidColorBrush>
+            <SolidColorBrush x:Key="SecondaryHover">#4f5264</SolidColorBrush>
+
+            <!-- Interactive -->
+            <SolidColorBrush x:Key="Link">#b9c3ff</SolidColorBrush>
+
+            <system:String x:Key="LogoSvgCss">
+                path { fill: #e3e1e9 }
+            </system:String>
+        </ResourceDictionary>
+
+    </ResourceDictionary.ThemeDictionaries>
+</ResourceDictionary>

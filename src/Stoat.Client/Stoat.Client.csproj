@@ -52,9 +52,4 @@
     <ProjectReference Include="..\Stoat.Core\Stoat.Core.csproj" />
     <ProjectReference Include="..\Stoat.Theme\Stoat.Theme.csproj" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Control\TextBlock\" />
-    <Folder Include="Control\TextBox\" />
-  </ItemGroup>
 </Project>

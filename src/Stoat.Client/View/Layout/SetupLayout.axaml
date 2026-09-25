@@ -1,4 +1,4 @@
-<UserControl xmlns="https://github.com/avaloniaui"
+<ContentControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:c="https://codewf.com"
@@ -6,57 +6,71 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:Stoat.Client.ViewModel.Layout"
              xmlns:rx="http://reactiveui.net"
+             xmlns:layout="clr-namespace:Stoat.Client.View.Layout"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:DataType="vm:SetupLayoutViewModel"
              x:Class="Stoat.Client.View.Layout.SetupLayout">
-    <Panel>
-        <ScrollViewer Padding="0, 50">
-            <rx:RoutedViewHost Router="{Binding HostScreen.Router}"/>
-        </ScrollViewer>
-        
-        <Border VerticalAlignment="Bottom" 
-                HorizontalAlignment="Stretch"
-                Background="{DynamicResource Background}"
-                Height="50"/>
-        
-        <Border Padding="20">
+    <ContentControl.ContentTemplate>
+        <DataTemplate x:DataType="x:Object">
             <Panel>
-                <Button Classes="ButtonSecondary" 
-                        Command="{Binding ChangeThemeCommand}"
-                        VerticalAlignment="Top"
-                        HorizontalAlignment="Right"
-                        CornerRadius="9999"
-                        Padding="10">
-                    <LucideIcon Kind="{Binding Kind}"/>
-                </Button>
+                <ScrollViewer Padding="-1, 50">
+                   <ContentPresenter Content="{Binding}"/> 
+                </ScrollViewer>
                 
-                <StackPanel Orientation="Horizontal" Spacing="10"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Bottom">
-                    <Button Padding="5"
-                            Classes="None">  
-                        <TextBlock Classes="Muted" Text="{c:I18n {x:Static lang:Lang.About}}"/>
-                    </Button>
-                    
-                    <Button Padding="5"
-                            Classes="None">
-                        <TextBlock Classes="Muted" Text="{c:I18n {x:Static lang:Lang.TermsOfService}}"/>
-                    </Button>
-                    
-                    <Button Padding="5"
-                            Classes="None">
-                        <TextBlock Classes="Muted" Text="{c:I18n {x:Static lang:Lang.PrivacyPolicy}}"/>
-                    </Button>
-                </StackPanel>
+                <Border VerticalAlignment="Bottom" 
+                        HorizontalAlignment="Stretch"
+                        Background="{DynamicResource Background}"
+                        Height="49"/>
                 
-                <Border Background="{DynamicResource Surface}"
-                        Padding="5"
-                        CornerRadius="9999"
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Bottom">
-                    <TextBlock Text="{x:Static lang:Lang.Version}"/>
+                <Border Padding="19">
+                    <Panel>
+                        <StackPanel Spacing="10" 
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Top"
+                                    Orientation="Horizontal">
+                            <Button Classes="ButtonSecondary" 
+                                    Command="{ReflectionBinding $parent[layout:SetupLayout].ViewModel.ChangeThemeCommand}"
+                                    CornerRadius="9998"
+                                    Padding="9">
+                                <LucideIcon Kind="{ReflectionBinding $parent[layout:SetupLayout].ViewModel.KindTheme}"/>
+                            </Button>
+                            <Button Classes="ButtonSecondary" 
+                                    CornerRadius="9998"
+                                    Padding="9">
+                                <LucideIcon Kind="Server"/>
+                            </Button>
+                        </StackPanel>
+                        
+                        
+                        <StackPanel Orientation="Horizontal" Spacing="9"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Bottom">
+                            <Button Padding="4"
+                                    Classes="None">  
+                                <TextBlock Classes="Muted" Text="{c:I18n {x:Static lang:Lang.About}}"/>
+                            </Button>
+                            
+                            <Button Padding="4"
+                                    Classes="None">
+                                <TextBlock Classes="Muted" Text="{c:I18n {x:Static lang:Lang.TermsOfService}}"/>
+                            </Button>
+                            
+                            <Button Padding="4"
+                                    Classes="None">
+                                <TextBlock Classes="Muted" Text="{c:I18n {x:Static lang:Lang.PrivacyPolicy}}"/>
+                            </Button>
+                        </StackPanel>
+                        
+                        <Border Background="{DynamicResource Surface}"
+                                Padding="4"
+                                CornerRadius="9998"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Bottom">
+                            <TextBlock Text="{x:Static lang:Lang.Version}"/>
+                        </Border>
+                    </Panel>
                 </Border>
             </Panel>
-        </Border>
-    </Panel>
-</UserControl>
+        </DataTemplate>
+    </ContentControl.ContentTemplate>
+</ContentControl>

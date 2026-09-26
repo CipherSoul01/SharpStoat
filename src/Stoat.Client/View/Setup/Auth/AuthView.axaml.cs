@@ -1,4 +1,3 @@
-using Avalonia.Controls;
 using ReactiveUI.Avalonia;
 using Stoat.Client.ViewModel.Setup.Auth;
 

@@ -4,6 +4,7 @@
        <ResourceInclude Source="AsyncImage.axaml"/>
        <ResourceInclude Source="Button.axaml"/>
        <ResourceInclude Source="Card.axaml"/>
+       <ResourceInclude Source="Spinner.axaml"/>
        <ResourceInclude Source="StoatWindow.axaml"/>
        <ResourceInclude Source="TextBlock.axaml"/>
        <ResourceInclude Source="TextBox.axaml"/>

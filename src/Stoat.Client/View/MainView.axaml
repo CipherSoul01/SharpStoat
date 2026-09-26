@@ -9,11 +9,30 @@
              x:Class="Stoat.Client.View.MainView"
              Background="{DynamicResource Background}">
     
-    <LayoutViewHost Layout="{Binding Layout}"/>
-    
-    <!--<reactive:RoutedViewHost Router="{Binding Layout}">
-        <reactive:RoutedViewHost.PageTransition>
+    <LayoutViewHost Layout="{Binding Layout}"
+                    Router="{Binding Router}">
+        <LayoutViewHost.PageTransition>
             <CrossFade Duration="0:0:0.300"/>
-        </reactive:RoutedViewHost.PageTransition>
-    </reactive:RoutedViewHost>-->
+        </LayoutViewHost.PageTransition>
+        
+        <LayoutViewHost.DefaultContent>
+           <StackPanel Spacing="30"
+                       Orientation="Vertical"
+                       HorizontalAlignment="Center" VerticalAlignment="Center">
+               <Svg Path="../../../Assets/logo.svg"
+                    Width="150"
+                    HorizontalAlignment="Center">
+                   <Svg.Styles>
+                       <Style Selector="Svg">
+                           <Setter Property="(Svg.Css)" Value="{DynamicResource LogoSvgCss}" />
+                       </Style>
+                   </Svg.Styles>
+               </Svg>
+               
+               <StoatSpinner Classes="primary"
+                             Width="30" Height="30"
+                             HorizontalAlignment="Center"/>
+           </StackPanel> 
+        </LayoutViewHost.DefaultContent>
+    </LayoutViewHost>
 </UserControl>

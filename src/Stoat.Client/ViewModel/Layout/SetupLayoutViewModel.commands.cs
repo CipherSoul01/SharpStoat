@@ -9,7 +9,6 @@ public partial class SetupLayoutViewModel
     [ReactiveCommand]
     private async Task Setup()
     {
-        /*IsDarkTheme = ThemeService.Instance.Current == StoatThemeVariants.Dark;*/
         var variant = App.Current.ActualThemeVariant;
 
         IsDarkTheme = variant == ThemeVariant.Dark;
@@ -18,8 +17,6 @@ public partial class SetupLayoutViewModel
     [ReactiveCommand]
     private void ChangeTheme()
     {
-        /*var theme = IsDarkTheme ? StoatThemeVariants.Light :  StoatThemeVariants.Dark;
-        ThemeService.Instance.SetTheme(theme);*/
         var variant = App.Current.ActualThemeVariant;
 
         App.Current.RequestedThemeVariant = variant == ThemeVariant.Dark

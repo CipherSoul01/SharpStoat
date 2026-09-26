@@ -1,5 +1,7 @@
 using System;
 using System.Diagnostics;
+using System.Threading.Tasks;
+using ReactiveUI.Primitives.Signals;
 using ReactiveUI.SourceGenerators;
 
 namespace Stoat.Client.ViewModel.Setup.Auth;
@@ -7,9 +9,9 @@ namespace Stoat.Client.ViewModel.Setup.Auth;
 public partial class AuthViewModel
 {
     [ReactiveCommand]
-    private void OpenLoginPage()
+    private async Task OpenLoginPage()
     {
-        HostScreen.Router.Navigate.Execute(new LoginViewModel(HostScreen, SecondHostScreen));
+        await HostScreen.Router.Navigate.Execute(new LoginViewModel(HostScreen));
     }
 
     [ReactiveCommand]

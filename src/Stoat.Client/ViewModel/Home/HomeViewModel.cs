@@ -1,4 +1,5 @@
 using ReactiveUI;
+using Stoat.Client.ViewModel.Shared;
 
 namespace Stoat.Client.ViewModel.Home;
 

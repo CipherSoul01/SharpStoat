@@ -2,16 +2,16 @@
 using System;
 using System.Globalization;
 using System.IO;
-using System.Linq;
 using Lang.Avalonia;
 using Lang.Avalonia.Json;
+using Microsoft.Extensions.DependencyInjection;
 using ReactiveUI;
-using ReactiveUI.Avalonia;
 using ReactiveUI.Avalonia.Splat;
 using Splat;
+using Stoat.Client.View.Layout;
 using Stoat.Client.View.Setup;
 using Stoat.Client.View.Setup.Auth;
-using Stoat.Client.ViewModel.Setup;
+using Stoat.Client.ViewModel.Layout;
 using Stoat.Client.ViewModel.Setup.Auth;
 using AuthView = Stoat.Client.View.Setup.Auth.AuthView;
 
@@ -33,9 +33,9 @@ class Program
             .UseReactiveUIWithMicrosoftDependencyResolver(
                 services =>
                 {
-                    AppLocator.CurrentMutable.Register(() => new AuthView(), typeof(IViewFor<AuthViewModel>));
-                    AppLocator.CurrentMutable.Register(()  => new SetupView(), typeof(IViewFor<SetupViewModel>));
-                    AppLocator.CurrentMutable.Register(() => new LoginView(), typeof(IViewFor<LoginViewModel>));
+                    services.AddTransient<IViewFor<AuthViewModel>>((_) => new AuthView());
+                    services.AddTransient<IViewFor<LoginViewModel>>((_) => new LoginView());
+                    services.AddTransient<IViewFor<SetupLayoutViewModel>>((_) => new SetupLayout());
                 },
                 withResolver: sp =>
                 {

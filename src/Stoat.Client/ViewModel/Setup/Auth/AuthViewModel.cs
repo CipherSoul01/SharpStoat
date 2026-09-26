@@ -1,19 +1,15 @@
-using ReactiveUI;
-using Stoat.Client.Interfaces;
+using Stoat.Client.ViewModel.Shared;
+using Stoat.Theme.Interfaces.Routing;
 
 namespace Stoat.Client.ViewModel.Setup.Auth;
 
-public partial class AuthViewModel : ViewModelBase, IMultipleRoutableViewModel
+public partial class AuthViewModel : MainScreenRoutableViewModelBase
 {
-    public string? UrlPathSegment { get; } = "";
-    public IScreen HostScreen { get; }
+    public override string? UrlPathSegment => null;
     
-    public IScreen SecondHostScreen { get; }
-    
-    public AuthViewModel(IScreen hostScreen, IScreen secondHostScreen)
+    public AuthViewModel(IMainScreen screen) : base(screen)
     {
-        HostScreen = hostScreen;
-        SecondHostScreen = secondHostScreen;
+        
     }
 
 }

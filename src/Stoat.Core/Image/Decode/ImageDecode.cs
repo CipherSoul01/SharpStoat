@@ -1,7 +1,6 @@
 using System.Text;
 using Avalonia.Labs.Gif;
 using Avalonia.Media.Imaging;
-using Avalonia.Svg;
 using Stoat.Core.Image.Primitives;
 using Stoat.Core.Interfaces.Decode;
 

@@ -86,8 +86,9 @@
     <ControlTheme
         x:Key="{x:Type StoatWindow}"
         TargetType="StoatWindow">
-
-        <Setter Property="WindowDecorations" Value="None"/>
+        <!--{OnPlatform Linux=None, Windows=BorderOnly}-->
+        
+        <Setter Property="WindowDecorations" Value="{OnPlatform Linux=None, Windows=BorderOnly, macOS=Full, x:TypeArguments=WindowDecorations}"/>
 
         <Setter Property="Template">
             <ControlTemplate>

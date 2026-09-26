@@ -7,32 +7,39 @@
 
     <Grid ColumnDefinitions="auto, *">
 
-       
-            
-          <TabStrip Background="{DynamicResource BackgroundTertiary}" Padding="5">
-              <TabStrip.ItemsPanel>
-                  <ItemsPanelTemplate>
-                      <Grid RowDefinitions="auto auto * auto"></Grid>
-                  </ItemsPanelTemplate>
-              </TabStrip.ItemsPanel>
-                      
-                <TabStripItem Grid.Row="0" Background="red">
+
+
+        <TabStrip Background="{DynamicResource BackgroundTertiary}" Padding="5">
+            <TabStrip.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <Grid RowDefinitions="auto auto auto * auto"></Grid>
+                </ItemsPanelTemplate>
+            </TabStrip.ItemsPanel>
+
+            <TabStripItem Grid.Row="0">
+                <Border CornerRadius="99" Width="30" Height="30" Background="{DynamicResource Background}" >
                     <LucideIcon Kind="House"/>
-                </TabStripItem>
                     
-                <TabStripItem Grid.Row="1">
-                    <LucideIcon Kind="Compass"/>
-                </TabStripItem>
-              
-              <TabStripItem Grid.Row="2"/>
-                
-              <TabStripItem Grid.Row="3">
-                    <LucideIcon Kind="Settings"/>
-                </TabStripItem>
-            
-          </TabStrip>
-            
-      
+                </Border>
+            </TabStripItem>
+
+            <TabStripItem Grid.Row="1">
+                <Separator Width="20" Margin="0,5"></Separator>
+            </TabStripItem>
+
+            <TabStripItem Grid.Row="2">
+                <LucideIcon Kind="Compass"/>
+            </TabStripItem>
+
+            <TabStripItem Grid.Row="3"/>
+
+            <TabStripItem Grid.Row="4">
+                <LucideIcon Kind="Settings"/>
+            </TabStripItem>
+
+        </TabStrip>
+
+
 
     </Grid>
 

@@ -1,6 +1,7 @@
 using System.Runtime.ExceptionServices;
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Threading;
 using ReactiveUI;
 using ReactiveUI.Avalonia;
 using ReactiveUI.Primitives;
@@ -10,7 +11,10 @@ using Splat;
 
 namespace Stoat.Theme.Controls.ReactiveUI;
 
-public class LayoutViewHost : TransitioningContentControl, IActivatableView, IEnableLogger
+public class LayoutViewHost :
+    TransitioningContentControl,
+    IActivatableView,
+    IEnableLogger
 {
     private static void Throw(Exception error) =>
         ExceptionDispatchInfo.Capture(error).Throw();
@@ -31,7 +35,8 @@ public class LayoutViewHost : TransitioningContentControl, IActivatableView, IEn
             nameof(Layout));
 
     private MultipleDisposable? _navigationDisposables;
-    private ReactiveContentControlBase? _currentLayout = null;
+
+    private CancellationTokenSource? _navigationCancellation;
 
     public RoutingState? Router
     {
@@ -62,78 +67,18 @@ public class LayoutViewHost : TransitioningContentControl, IActivatableView, IEn
     protected override Type StyleKeyOverride =>
         typeof(TransitioningContentControl);
 
-    internal void NavigateToViewModel(
-        object? viewModel,
-        string? contract)
-    {
-        if (Router is null)
-        {
-            this.Log().Warn(
-                "Router property is null. Falling back to default content.");
-
-            Content = DefaultContent;
-            return;
-        }
-
-        if (viewModel is null)
-        {
-            this.Log().Info(
-                "ViewModel is null. Falling back to default content.");
-
-            Content = DefaultContent;
-            return;
-        }
-
-        var viewLocator =
-            ViewLocator ?? global::ReactiveUI.ViewLocator.Current;
-
-        var viewInstance = viewLocator.ResolveView(
-            viewModel,
-            contract);
-
-        if (viewInstance is null)
-        {
-            LogMissingView(viewModel, contract);
-            Content = DefaultContent;
-            return;
-        }
-
-        var resolvedMessage = contract is null
-            ? $"Ready to show {viewInstance} with autowired {viewModel}."
-            : $"Ready to show {viewInstance} with autowired {viewModel} and contract '{contract}'.";
-
-        this.Log().Info(resolvedMessage);
-
-        viewInstance.ViewModel = viewModel;
-
-        if (viewInstance is IDataContextProvider provider)
-        {
-            provider.DataContext = viewModel;
-        }
-
-        if (Layout?.Current is { } layoutViewModel)
-        {
-            var layoutInstance = viewLocator.ResolveView(layoutViewModel);
-
-            if (layoutInstance is ReactiveContentControlBase layoutControl)
-            {
-                layoutControl.Content = viewInstance;
-                
-                Content = layoutControl;
-                
-                return;
-            }
-        }
-
-        Content = viewInstance;
-    }
+    private static IObservable<object?> CreateRouterViewModelObservable(
+        RoutingState router) =>
+        router.CurrentViewModel
+            .Select(static viewModel => (object?)viewModel);
 
     protected override void OnAttachedToVisualTree(
         VisualTreeAttachmentEventArgs e)
     {
         base.OnAttachedToVisualTree(e);
 
-        _navigationDisposables ??= CreateNavigationDisposables();
+        _navigationDisposables ??=
+            CreateNavigationDisposables();
     }
 
     protected override void OnDetachedFromVisualTree(
@@ -146,17 +91,11 @@ public class LayoutViewHost : TransitioningContentControl, IActivatableView, IEn
 
     private void DisposeNavigationDisposables()
     {
-        var disposables = _navigationDisposables;
-
+        _navigationDisposables?.Dispose();
         _navigationDisposables = null;
 
-        disposables?.Dispose();
+        CancelNavigation();
     }
-
-    private static IObservable<object?> CreateRouterViewModelObservable(
-        RoutingState router) =>
-        router.CurrentViewModel
-            .Select(static viewModel => (object?)viewModel);
 
     private MultipleDisposable CreateNavigationDisposables()
     {
@@ -179,18 +118,155 @@ public class LayoutViewHost : TransitioningContentControl, IActivatableView, IEn
             .CombineLatest(
                 viewContract,
                 static (viewModel, contract) =>
-                    new NavigationTarget(viewModel, contract));
+                    new NavigationTarget(
+                        viewModel,
+                        contract));
 
         var subscription = LinqExtensions.SubscribeSafe(
             navigation,
-            target => NavigateToViewModel(
-                target.ViewModel,
-                target.Contract),
+            NavigateToViewModel,
             Throw);
 
         disposables.Add(subscription);
 
         return disposables;
+    }
+
+    private void NavigateToViewModel(
+        NavigationTarget target)
+    {
+        CancelNavigation();
+
+        var cancellation =
+            new CancellationTokenSource();
+
+        _navigationCancellation = cancellation;
+
+        _ = NavigateToViewModelAsync(
+            target.ViewModel,
+            target.Contract,
+            cancellation.Token);
+    }
+
+    private async Task NavigateToViewModelAsync(
+        object? viewModel,
+        string? contract,
+        CancellationToken cancellationToken)
+    {
+        try
+        {
+            if (Router is null)
+            {
+                this.Log().Warn(
+                    "Router property is null. Falling back to default content.");
+
+                Content = DefaultContent;
+                return;
+            }
+
+            if (viewModel is null)
+            {
+                this.Log().Info(
+                    "ViewModel is null. Falling back to default content.");
+
+                Content = DefaultContent;
+                return;
+            }
+
+            cancellationToken.ThrowIfCancellationRequested();
+
+            var viewLocator =
+                ViewLocator ??
+                global::ReactiveUI.ViewLocator.Current;
+
+            
+            var viewInstance =
+                viewLocator.ResolveView(
+                    viewModel,
+                    contract);
+
+            cancellationToken.ThrowIfCancellationRequested();
+
+            if (viewInstance is null)
+            {
+                LogMissingView(
+                    viewModel,
+                    contract);
+
+                Content = DefaultContent;
+                return;
+            }
+
+            var resolvedMessage = contract is null
+                ? $"Ready to show {viewInstance} with autowired {viewModel}."
+                : $"Ready to show {viewInstance} with autowired {viewModel} and contract '{contract}'.";
+
+            this.Log().Info(resolvedMessage);
+
+            viewInstance.ViewModel = viewModel;
+
+            if (viewInstance is IDataContextProvider provider)
+            {
+                provider.DataContext = viewModel;
+            }
+
+            cancellationToken.ThrowIfCancellationRequested();
+
+            ReactiveContentControlBase? layoutControl = null;
+
+            if (Layout?.Current is { } layoutViewModel)
+            {
+                var layoutInstance =
+                    viewLocator.ResolveView(layoutViewModel);
+
+                cancellationToken.ThrowIfCancellationRequested();
+
+                if (layoutInstance is ReactiveContentControlBase control)
+                {
+                    layoutControl = control;
+                }
+            }
+
+            
+            await Dispatcher.Resume(
+                DispatcherPriority.Background);
+
+            cancellationToken.ThrowIfCancellationRequested();
+
+            if (layoutControl is not null)
+            {
+                layoutControl.Content = viewInstance;
+
+                cancellationToken.ThrowIfCancellationRequested();
+
+                Content = layoutControl;
+            }
+            else
+            {
+                Content = viewInstance;
+            }
+        }
+        catch (OperationCanceledException)
+        {
+            
+        }
+        catch (Exception error)
+        {
+            Throw(error);
+        }
+    }
+
+    private void CancelNavigation()
+    {
+        var cancellation = _navigationCancellation;
+
+        _navigationCancellation = null;
+
+        if (cancellation is null)
+            return;
+
+        cancellation.Cancel();
+        cancellation.Dispose();
     }
 
     private void LogMissingView(

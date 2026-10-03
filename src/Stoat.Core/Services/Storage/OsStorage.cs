@@ -5,7 +5,7 @@ using Stoat.Core.Services.Storage.OS.Windows;
 
 namespace Stoat.Core.Services.Storage;
 
-public class OsStorage : IStoatOsStore
+public class OsStorage : ISecretStore
 {
     private readonly ISecretStore _systemStore;
     private const string Service = "stoat.chat";

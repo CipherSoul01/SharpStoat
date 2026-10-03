@@ -2,12 +2,14 @@
 using System;
 using System.Globalization;
 using System.IO;
+using Avalonia.Controls;
 using Lang.Avalonia;
 using Lang.Avalonia.Json;
 using Microsoft.Extensions.DependencyInjection;
 using ReactiveUI;
 using ReactiveUI.Avalonia.Splat;
 using Splat;
+using Stoat.Api.Extensions;
 using Stoat.Client.View.Layout;
 using Stoat.Client.View.Setup;
 using Stoat.Client.View.Setup.Auth;
@@ -35,12 +37,13 @@ class Program
             .UseReactiveUIWithMicrosoftDependencyResolver(
                 services =>
                 {
+                    services.AddStoatApi();
+                    
                     services.AddTransient<IViewFor<AuthViewModel>>((_) => new AuthView());
                     services.AddTransient<IViewFor<LoginViewModel>>((_) => new LoginView());
                     services.AddTransient<IViewFor<SetupLayoutViewModel>>((_) => new SetupLayout());
 
-                    services.AddSingleton<ISecretStore, LocalStorage>();
-                    services.AddSingleton<IStoatOsStore, OsStorage>();
+                    services.AddSingleton<ISecretStore, OsStorage>();
                 },
                 withResolver: sp =>
                 {

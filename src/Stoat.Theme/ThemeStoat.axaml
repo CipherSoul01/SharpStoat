@@ -15,7 +15,8 @@
                             <SolidColorBrush x:Key="Background">#fbf8ff</SolidColorBrush>
                             <SolidColorBrush x:Key="BackgroundElevated">#f5f2fa</SolidColorBrush>
                             <SolidColorBrush x:Key="BackgroundSubtle">#e9e7ef</SolidColorBrush>
-
+                            <SolidColorBrush x:Key="BackgroundDeep">#E7E4F0</SolidColorBrush>
+                            
                             <!-- Surfaces -->
                             <SolidColorBrush x:Key="Surface">#efedf4</SolidColorBrush>
 
@@ -44,6 +45,7 @@
                             <SolidColorBrush x:Key="Background">#121318</SolidColorBrush>
                             <SolidColorBrush x:Key="BackgroundElevated">#1b1b21</SolidColorBrush>
                             <SolidColorBrush x:Key="BackgroundSubtle">#292a2f</SolidColorBrush>
+                            <SolidColorBrush x:Key="BackgroundDeep">#262038</SolidColorBrush>
 
                             <!-- Surfaces -->
                             <SolidColorBrush x:Key="Surface">#1f1f25</SolidColorBrush>
@@ -66,6 +68,7 @@
                     </ResourceDictionary.ThemeDictionaries>
                     
                     <ResourceDictionary.MergedDictionaries>
+                        <ResourceInclude Source="./Themes/Tokens/Stoat.axaml"/>
                         <ResourceInclude Source="./Themes/Controls/_index.axaml" />
                     </ResourceDictionary.MergedDictionaries>
                 </ResourceDictionary>

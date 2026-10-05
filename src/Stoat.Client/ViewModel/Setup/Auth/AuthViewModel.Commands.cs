@@ -10,15 +10,18 @@ public partial class AuthViewModel
 {
     [ReactiveCommand]
     private async Task OpenLoginPage()
-    {
-        await HostScreen.Router.Navigate.Execute(new LoginViewModel(HostScreen));
-    }
+        => await HostScreen.Router.Navigate.Execute(new LoginViewModel(HostScreen));
 
     [ReactiveCommand]
     private void OpenRegisterPage()
     {
-        var url = "https://stoat.chat/login/create";
+        var url = $"{_stoat.Configuration.BaseAddress}login/create";
         
+        OpenBrowser(url);
+    }
+
+    private void OpenBrowser(string url)
+    {
         if (OperatingSystem.IsWindows())
         {
             Process.Start(new ProcessStartInfo
@@ -44,6 +47,6 @@ public partial class AuthViewModel
                 Arguments = url,
                 UseShellExecute = false
             });
-        }
+        } 
     }
 }

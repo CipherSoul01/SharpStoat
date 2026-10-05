@@ -1,3 +1,5 @@
+using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using Avalonia.Styling;
 using ReactiveUI.SourceGenerators;
@@ -24,5 +26,47 @@ public partial class SetupLayoutViewModel
             : ThemeVariant.Dark;
         
         IsDarkTheme = !IsDarkTheme;
+    }
+
+    [ReactiveCommand]
+    private void OpenAbout()
+        => OpenBrowser(_stoat.Configuration.Config?.Features?.LegalLinks?.Guidelines ?? "");
+
+    [ReactiveCommand]
+    private void OpenTermsOfService()
+        => OpenBrowser(_stoat.Configuration.Config?.Features?.LegalLinks?.Terms ?? "");
+
+    [ReactiveCommand]
+    private void OpenPrivatePolicy()
+        => OpenBrowser(_stoat.Configuration.Config?.Features?.LegalLinks?.PrivacyPolicy ?? "");
+    
+    private void OpenBrowser(string url)
+    {
+        if (OperatingSystem.IsWindows())
+        {
+            Process.Start(new ProcessStartInfo
+            {
+                FileName = url,
+                UseShellExecute = true
+            });
+        }
+        else if (OperatingSystem.IsLinux())
+        {
+            Process.Start(new ProcessStartInfo
+            {
+                FileName = "xdg-open",
+                Arguments = url,
+                UseShellExecute = false
+            });
+        }
+        else if (OperatingSystem.IsMacOS())
+        {
+            Process.Start(new ProcessStartInfo
+            {
+                FileName = "open",
+                Arguments = url,
+                UseShellExecute = false
+            });
+        } 
     }
 }

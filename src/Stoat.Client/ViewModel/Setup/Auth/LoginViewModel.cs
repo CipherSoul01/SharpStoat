@@ -7,7 +7,7 @@ public partial class LoginViewModel : MainScreenRoutableViewModelBase
 {
     public LoginViewModel(IMainScreen screen) : base(screen)
     {
-        
+        SetupRx();
     }
 
     public override string? UrlPathSegment => null;

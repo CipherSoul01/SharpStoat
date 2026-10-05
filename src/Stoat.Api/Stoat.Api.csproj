@@ -11,10 +11,7 @@
     <PackageReference Include="Microsoft.Extensions.Http.Resilience" Version="10.10.0" />
     <PackageReference Include="Refit" Version="16.3.0" />
     <PackageReference Include="Refit.HttpClientFactory" Version="16.3.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Services\" />
+    <PackageReference Include="Refit.Reflection" Version="16.3.0" />
   </ItemGroup>
 
 </Project>

@@ -1,4 +1,3 @@
-using System;
 using System.Threading.Tasks;
 using ReactiveUI.Primitives.Signals;
 using ReactiveUI.SourceGenerators;
@@ -12,6 +11,8 @@ public partial class MainViewModel
     [ReactiveCommand]
     private async Task SetupAsync()
     {
+        await _stoat.SetupConfigAsync();
+        await Task.Delay(1000);
         
         await Layout.SetLayoutCommand
             .Execute(new SetupLayoutViewModel(this));

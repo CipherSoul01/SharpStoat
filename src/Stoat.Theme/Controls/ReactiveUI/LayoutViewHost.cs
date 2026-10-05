@@ -12,7 +12,7 @@ using Splat;
 namespace Stoat.Theme.Controls.ReactiveUI;
 
 public class LayoutViewHost :
-    TransitioningContentControl,
+    ContentControl,
     IActivatableView,
     IEnableLogger
 {
@@ -65,7 +65,7 @@ public class LayoutViewHost :
     public IViewLocator? ViewLocator { get; set; }
 
     protected override Type StyleKeyOverride =>
-        typeof(TransitioningContentControl);
+        typeof(ContentControl);
 
     private static IObservable<object?> CreateRouterViewModelObservable(
         RoutingState router) =>
@@ -232,7 +232,7 @@ public class LayoutViewHost :
                 DispatcherPriority.Background);
 
             cancellationToken.ThrowIfCancellationRequested();
-
+            
             if (layoutControl is not null)
             {
                 layoutControl.Content = viewInstance;

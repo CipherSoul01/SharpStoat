@@ -9,4 +9,12 @@ public partial class LoginViewModel
     [ReactiveCommand]
     private async Task Previous()
         => await HostScreen.Router.NavigateBack.Execute();
+
+    [ReactiveCommand]
+    private void InvertShowPassword()
+        => ShowPassword = !ShowPassword;
+
+    [ReactiveCommand]
+    private void ClickLogo()
+        => LogoClick += 1;
 }

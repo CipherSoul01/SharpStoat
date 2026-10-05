@@ -8,132 +8,215 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:DataType="vm:LoginViewModel"
              x:Class="Stoat.Client.View.Setup.Auth.LoginView">
-    <Card HorizontalAlignment="Center" 
-                Margin="0, 40"
-                Spacing="30"
-                ClipToBounds="False"
-                Width="450"
-                VerticalAlignment="Center">
-        <Card.Header>
-            <Panel
-                ClipToBounds="False">
-                <Svg Path="../../../Assets/icon.svg"
-                     Width="90"
-                     Height="90">
-                    <Svg.RenderTransform>
-                        <TranslateTransform Y="-70"/>
-                    </Svg.RenderTransform>
-                </Svg>
+    <Border Padding="60"
+            Container.Name="RootLogin"
+            Container.Sizing="WidthAndHeight">
+        <Grid ColumnDefinitions="Auto, 1*">
+            <Border Grid.Column="0"
+                    Width="650"
+                    CornerRadius="100"
+                    Padding="60"
+                    Background="{DynamicResource BackgroundDeep}"
+                    Name="LoginDeep">
+                <Grid RowDefinitions="Auto, *"
+                      RowSpacing="40">
+                   
+                    <StackPanel Grid.Row="0" Spacing="40">
+                        <Button Classes="None"
+                                Command="{Binding ClickLogoCommand}">
+                            <Svg Path="../../../Assets/logo.svg"
+                                 HorizontalAlignment="Left"
+                                 Width="150">
+                                <Svg.Styles>
+                                    <Style Selector="Svg">
+                                        <Setter Property="(Svg.Css)" Value="{DynamicResource LogoSvgCss}" />
+                                    </Style>
+                                </Svg.Styles>
+                            </Svg> 
+                        </Button>
+                    
+                        <StackPanel Spacing="10"
+                                    HorizontalAlignment="Left">
+                            <TextBlock Text="{c:I18n {x:Static lang:Lang.LoginTitle}}"
+                                       Classes="h2"
+                                       FontWeight="Bold"
+                                       MaxWidth="500"
+                                       TextWrapping="Wrap"/>
+                            <TextBlock Text="{c:I18n {x:Static lang:Lang.LoginDescription}}" 
+                                       Classes="Small Muted"
+                                       MaxWidth="500"
+                                       TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </StackPanel> 
+                    
+                    <SnakeGame Grid.Row="1"
+                               Name="DeepSnake"
+                               HorizontalAlignment="Left"
+                               HorizontalAlignmentContent="Left"
+                               Width="500"
+                               Background="Transparent"
+                               PlayerControlled="{Binding ShowSecret}"
+                               CellColor="{DynamicResource GameCell}"
+                               FoodColor="{DynamicResource Link}"
+                               SnakeColor="{DynamicResource Accent}"
+                               SnakeHeadColor="{DynamicResource AccentHover}"
+                               OverlayColor="#40262038"
+                               TextColor="{DynamicResource Foreground}"
+                               SecondaryTextColor="{DynamicResource ForegroundSecondary}" /> 
+                </Grid>
+            </Border>
+            
+            <Card Grid.Column="1" 
+                  Spacing="30"
+                  ClipToBounds="False"
+                  Width="450"
+                  VerticalAlignment="Center">
+                <Card.Header>
+                    <Panel
+                        ClipToBounds="False">
+                        <Svg Path="../../../Assets/icon.svg"
+                             Width="80"
+                             Height="80">
+                            <Svg.RenderTransform>
+                                <TranslateTransform Y="-70"/>
+                            </Svg.RenderTransform>
+                        </Svg>
+                        
+                        <StackPanel Margin="0, 40, 0, 0">
+                            <TextBlock  Classes="h2"
+                                        HorizontalAlignment="Center"
+                                        Text="{c:I18n {x:Static lang:Lang.Welcome}}"/>
+                        
+                            <TextBlock  Classes="Muted"
+                                        HorizontalAlignment="Center"
+                                        Text="{c:I18n {x:Static lang:Lang.Prompt}}"/>
+                        </StackPanel>
+                        
+                    </Panel>
+                </Card.Header>
                 
-                <StackPanel Margin="0, 40, 0, 0">
-                    <TextBlock  Classes="h2"
-                                HorizontalAlignment="Center"
-                                Text="{c:I18n {x:Static lang:Lang.Welcome}}"/>
-                
-                    <TextBlock  Classes="Muted"
-                                Margin="20, 0"
-                                Text="{c:I18n {x:Static lang:Lang.Prompt}}"/>
+                <StackPanel Spacing="30">
+                    <StackPanel Spacing="10">
+                        <TextBlock Classes="Small" Text="{c:I18n {x:Static lang:Lang.Email}}"/>
+                        
+                        <Border Padding="20, 0" 
+                                CornerRadius="5"
+                                BorderThickness="1"
+                                BorderBrush="{DynamicResource ForegroundMuted}"
+                                Background="{DynamicResource Background}">
+                            <Grid ColumnDefinitions="Auto, *, Auto">
+                            
+                                <LucideIcon Kind="Mail"
+                                            Foreground="{DynamicResource Foreground}"
+                                            Size="17"/>
+                            
+                                <TextBox Grid.Column="1" Watermark="username@email.com"
+                                         Text="{Binding Email, Mode=TwoWay}"
+                                         VerticalAlignment="Stretch"
+                                         Classes="None"
+                                         Padding="12"/>
+                            </Grid>
+                        </Border>
+                    </StackPanel>
+                    
+                    <StackPanel Spacing="10">
+                        <TextBlock Classes="Small" Text="{c:I18n {x:Static lang:Lang.Password}}"/>
+                        
+                        <Border Padding="20, 0" 
+                                CornerRadius="5"
+                                BorderThickness="1"
+                                BorderBrush="{DynamicResource ForegroundMuted}"
+                                Background="{DynamicResource Background}">
+                            <Grid ColumnDefinitions="Auto, *, Auto">
+                            
+                                <LucideIcon Grid.Column="0" Kind="UserKey"
+                                            Foreground="{DynamicResource Foreground}"
+                                            Size="17"/>
+                                
+                                <Panel Grid.Column="1">
+                                    <TextBox Watermark="⬤⬤⬤⬤⬤⬤⬤" 
+                                             Text="{Binding Password, Mode=TwoWay}"
+                                             IsVisible="{Binding ShowPassword, 
+                                                Converter={x:Static BoolConverters.Not}}"
+                                             VerticalAlignment="Stretch"
+                                             Classes="None"
+                                             PasswordChar="⬤"
+                                             Padding="12"/>
+                                    
+                                    <TextBox Watermark="{c:I18n {x:Static lang:Lang.Password}}"
+                                             Text="{Binding Password, Mode=TwoWay}"
+                                             IsVisible="{Binding ShowPassword}"
+                                             VerticalAlignment="Stretch"
+                                             Classes="None"
+                                             Padding="12"/>
+                                </Panel>
+                                
+                                <Button Grid.Column="2" Classes="None"
+                                        Command="{Binding InvertShowPasswordCommand}">
+                                    <LucideIcon Kind="{Binding ShowPasswordIcon}"
+                                                Foreground="{DynamicResource Foreground}"
+                                                Size="17"/> 
+                                </Button>
+                            </Grid>
+                        </Border>
+                        
+                        <Button Classes="None" Margin="20, 10, 20, 0">
+                            <TextBlock
+                                Text="{c:I18n {x:Static lang:Lang.ForgotPassword}}"
+                                Foreground="{DynamicResource Link}"
+                                FontWeight="SemiBold"/>
+                        </Button>
+                        
+                    </StackPanel>
                 </StackPanel>
                 
-            </Panel>
-        </Card.Header>
-        
-        <StackPanel Spacing="30">
-            <StackPanel Spacing="10">
-                <TextBlock Classes="Small" Text="{c:I18n {x:Static lang:Lang.Email}}"/>
-                
-                <Border Padding="20, 0" 
-                        CornerRadius="5"
-                        BorderThickness="1"
-                        BorderBrush="{DynamicResource ForegroundMuted}"
-                        Background="{DynamicResource Background}">
-                    <Grid
-                        ColumnDefinitions="Auto, *, Auto">
-                    
-                        <LucideIcon Kind="Mail"
-                                    Foreground="{DynamicResource Foreground}"
-                                    Size="17"/>
-                    
-                        <TextBox Grid.Column="1" Watermark="username@email.com"
-                                 VerticalAlignment="Stretch"
-                                 Classes="None"
-                                 Padding="12"/>
-                    </Grid>
-                </Border>
-            </StackPanel>
-            
-            <StackPanel Spacing="10">
-                <TextBlock Classes="Small" Text="{c:I18n {x:Static lang:Lang.Password}}"/>
-                
-                <Border Padding="20, 0" 
-                        CornerRadius="5"
-                        BorderThickness="1"
-                        BorderBrush="{DynamicResource ForegroundMuted}"
-                        Background="{DynamicResource Background}">
-                    <Grid
-                          ColumnDefinitions="Auto, *, Auto">
-                    
-                        <LucideIcon Kind="UserKey"
-                                    Foreground="{DynamicResource Foreground}"
-                                    Size="17"/>
-                    
-                        <TextBox Grid.Column="1" Watermark="⬤⬤⬤⬤⬤⬤⬤" 
-                                 VerticalAlignment="Stretch"
-                                 Classes="None"
-                                 PasswordChar="⬤"
-                                 Padding="12"/>
-                    </Grid>
-                </Border>
-                
-                <Panel>
-                    <CheckBox Foreground="{DynamicResource Foreground}" Content="{c:I18n {x:Static lang:Lang.RememberMe}}"/>
-                    
-                    <Button Classes="None" Margin="0, 10, 0, 0"
-                            HorizontalAlignment="Right">
-                        <TextBlock
-                            Text="{c:I18n {x:Static lang:Lang.ForgotPassword}}"
-                            Foreground="{DynamicResource Link}"
-                            FontWeight="SemiBold"/>
-                    </Button>
-                </Panel>
-                
-            </StackPanel>
-        </StackPanel>
-        
-        <Card.Footer>
-            <StackPanel Spacing="10">
-                <Button Classes="ButtonPrimary"
-                        Foreground="{DynamicResource Background}"
-                        CornerRadius="20">
-                    <Panel>
-                        <TextBlock Foreground="#fff"
-                                   HorizontalAlignment="Center"
-                                   VerticalAlignment="Center"
-                                   Text="{c:I18n {x:Static lang:Lang.Login}}"/>
+                <Card.Footer>
+                    <StackPanel Spacing="10">
+                        <Button Classes="ButtonPrimary"
+                                Foreground="{DynamicResource Background}"
+                                CornerRadius="20">
+                            <Panel>
+                                <TextBlock Foreground="#fff"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           
+                                           Text="{c:I18n {x:Static lang:Lang.Login}}"/>
+                                
+                                <LucideIcon Kind="ArrowRight"
+                                            Foreground="#fff"
+                                            VerticalAlignment="Center"
+                                            HorizontalAlignment="Right"/>
+                            </Panel>
+                        </Button>
                         
-                        <LucideIcon Kind="ArrowRight"
-                                    Foreground="#fff"
-                                    VerticalAlignment="Center"
-                                    HorizontalAlignment="Right"/>
-                    </Panel>
-                </Button>
-                
-                <Grid ColumnDefinitions="*, Auto, *">
-                    <Separator Grid.Column="0"/>
-                    <TextBlock Grid.Column="1" Text="Ou"/>
-                    <Separator Grid.Column="2"/>
-                </Grid>
-                
-                <Button Classes="ButtonSecondary"
-                        Foreground="{DynamicResource Background}"
-                        CornerRadius="20"
-                        Command="{Binding  PreviousCommand}">
-                    <TextBlock Foreground="{DynamicResource Foreground}"
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center"
-                               Text="{c:I18n {x:Static lang:Lang.Previous}}"/>
-                </Button>
-            </StackPanel>
-        </Card.Footer>
-    </Card>
+                        <Grid ColumnDefinitions="*, Auto, *">
+                            <Separator Grid.Column="0"/>
+                            <TextBlock Grid.Column="1" Text="Ou"/>
+                            <Separator Grid.Column="2"/>
+                        </Grid>
+                        
+                        <Button Classes="ButtonSecondary"
+                                Foreground="{DynamicResource Background}"
+                                CornerRadius="20"
+                                Command="{Binding  PreviousCommand}">
+                            <TextBlock Foreground="{DynamicResource Foreground}"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       Text="{c:I18n {x:Static lang:Lang.Previous}}"/>
+                        </Button>
+                    </StackPanel>
+                </Card.Footer>
+            </Card> 
+        </Grid> 
+    </Border>
+    
+    <UserControl.Styles>
+        
+        <ContainerQuery Name="RootLogin" Query="max-width:1300">
+            <Style Selector="Border#LoginDeep">
+                <Setter Property="IsVisible"
+                        Value="False"/>
+            </Style>
+        </ContainerQuery>
+    </UserControl.Styles>
 </UserControl>

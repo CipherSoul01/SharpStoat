@@ -46,23 +46,26 @@
                                     HorizontalAlignment="Left"
                                     VerticalAlignment="Bottom">
                             <Button Padding="4"
+                                    Command="{ReflectionBinding $parent[layout:SetupLayout].ViewModel.OpenAboutCommand}"
                                     Classes="None">  
                                 <TextBlock Classes="Muted" Text="{c:I18n {x:Static lang:Lang.About}}"/>
                             </Button>
                             
                             <Button Padding="4"
+                                    Command="{ReflectionBinding $parent[layout:SetupLayout].ViewModel.OpenTermsOfServiceCommand}"
                                     Classes="None">
                                 <TextBlock Classes="Muted" Text="{c:I18n {x:Static lang:Lang.TermsOfService}}"/>
                             </Button>
                             
                             <Button Padding="4"
+                                    Command="{ReflectionBinding $parent[layout:SetupLayout].ViewModel.OpenPrivatePolicyCommand}"
                                     Classes="None">
                                 <TextBlock Classes="Muted" Text="{c:I18n {x:Static lang:Lang.PrivacyPolicy}}"/>
                             </Button>
                         </StackPanel>
                         
                         <Border Background="{DynamicResource Surface}"
-                                Padding="4"
+                                Padding="10, 5"
                                 CornerRadius="9998"
                                 HorizontalAlignment="Right"
                                 VerticalAlignment="Bottom">

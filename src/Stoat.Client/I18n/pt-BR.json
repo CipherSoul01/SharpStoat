@@ -17,11 +17,15 @@
     "Setup.Auth": {
       "Title": "Encontre sua comunidade, conecte-se com o mundo.",
       "Description": "Stoat é uma das melhores maneiras de se manter conectado com seus amigos e comunidade, em qualquer lugar, a qualquer hora.",
+      
+      "Login.Title": "Bom te ver por aqui.",
+      "Login.Description": "Enquanto você estava fora, suas comunidades continuaram acontecendo. Suas conversas, amigos e novidades estão esperando por você. Entre na sua conta e volte de onde parou.",
+      
       "SignIn": "Iniciar Sessão",
-      "SignUp": "Crie sua conta no site oficial do Stoat.",
+      "SignUp": "Crie sua conta no site do Stoat.",
 
       "Welcome": "ENTRE", 
-      "Prompt": "Digite seu endereço de e-mail e senha para entrar.", 
+      "Prompt": "Configure sua conta e sinta-se em casa.", 
       "Email": "E-Mail", 
       "Password": "Senha", 
       "ForgotPassword": "Redefinir senha", 

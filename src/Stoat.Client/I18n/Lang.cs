@@ -2,7 +2,7 @@ namespace Stoat.Client.I18n;
 
 public static class Lang
 {
-    public static readonly string Version = "beta 1.0";
+    public static readonly string Version = "dev-1.0.1";
     
     private static readonly string Action = "Localization.Actions";
     
@@ -21,6 +21,9 @@ public static class Lang
     
     public static readonly string Title = $"{SetupAuth}.Title";
     public static readonly string Description = $"{SetupAuth}.Description";
+    public static readonly string LoginTitle = $"{SetupAuth}.Login.Title";
+    public static readonly string LoginDescription = $"{SetupAuth}.Login.Description";
+    
     public static readonly string SignIn= $"{SetupAuth}.SignIn";
     public static readonly string SignUp = $"{SetupAuth}.SignUp";
 

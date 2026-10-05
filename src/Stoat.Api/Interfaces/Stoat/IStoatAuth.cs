@@ -7,5 +7,5 @@ namespace Stoat.Api.Interfaces.Stoat;
 public interface IStoatAuth : IStoatAccountApi, IStoatSessionApi
 {
     [Get("/api/?")]
-    Task<ApiResponse<StoatStatus>> GetStatus();
+    Task<ApiResponse<StoatConfig>> GetConfig();
 }

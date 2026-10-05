@@ -15,6 +15,7 @@ using Stoat.Client.View.Setup;
 using Stoat.Client.View.Setup.Auth;
 using Stoat.Client.ViewModel.Layout;
 using Stoat.Client.ViewModel.Setup.Auth;
+using Stoat.Core.Extensions;
 using Stoat.Core.Interfaces.Credential;
 using Stoat.Core.Services.Storage;
 using AuthView = Stoat.Client.View.Setup.Auth.AuthView;
@@ -37,13 +38,12 @@ class Program
             .UseReactiveUIWithMicrosoftDependencyResolver(
                 services =>
                 {
-                    services.AddStoatApi();
+                    services.AddStoatApi()
+                        .AddStoatCore();
                     
                     services.AddTransient<IViewFor<AuthViewModel>>((_) => new AuthView());
                     services.AddTransient<IViewFor<LoginViewModel>>((_) => new LoginView());
                     services.AddTransient<IViewFor<SetupLayoutViewModel>>((_) => new SetupLayout());
-
-                    services.AddSingleton<ISecretStore, OsStorage>();
                 },
                 withResolver: sp =>
                 {

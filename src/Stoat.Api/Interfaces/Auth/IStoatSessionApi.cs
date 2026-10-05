@@ -34,6 +34,7 @@ public interface IStoatSessionApi
     [Patch("/auth/session/{id}")]
     Task<ApiResponse<SessionData>> EditSessionAsync(
         [Header("x-session-token")] string sessionToken,
+        string id,
         [Body] SessionData.EditData editData,
         CancellationToken token = default);
 }

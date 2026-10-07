@@ -22,7 +22,9 @@
                       RowSpacing="40">
                    
                     <StackPanel Grid.Row="0" Spacing="40">
-                        <Button Classes="None"
+                        
+                        <Button Classes="none"
+                                HorizontalAlignment="Left"
                                 Command="{Binding ClickLogoCommand}">
                             <Svg Path="../../../Assets/logo.svg"
                                  HorizontalAlignment="Left"
@@ -69,26 +71,19 @@
             <Card Grid.Column="1" 
                   Spacing="30"
                   ClipToBounds="False"
+                  
+                  Background="Transparent"
                   Width="450"
                   VerticalAlignment="Center">
                 <Card.Header>
-                    <Panel
-                        ClipToBounds="False">
-                        <Svg Path="../../../Assets/icon.svg"
-                             Width="80"
-                             Height="80">
-                            <Svg.RenderTransform>
-                                <TranslateTransform Y="-70"/>
-                            </Svg.RenderTransform>
-                        </Svg>
-                        
+                    <Panel ClipToBounds="False">
                         <StackPanel Margin="0, 40, 0, 0">
-                            <TextBlock  Classes="h2"
-                                        HorizontalAlignment="Center"
+                            <TextBlock  Classes="h1"
+                                        HorizontalAlignment="Left"
                                         Text="{c:I18n {x:Static lang:Lang.Welcome}}"/>
                         
                             <TextBlock  Classes="Muted"
-                                        HorizontalAlignment="Center"
+                                        HorizontalAlignment="Left"
                                         Text="{c:I18n {x:Static lang:Lang.Prompt}}"/>
                         </StackPanel>
                         
@@ -106,7 +101,7 @@
                                 Background="{DynamicResource Background}">
                             <Grid ColumnDefinitions="Auto, *, Auto">
                             
-                                <LucideIcon Kind="Mail"
+                                <LucideIcon Kind="AtSign"
                                             Foreground="{DynamicResource Foreground}"
                                             Size="17"/>
                             
@@ -127,13 +122,9 @@
                                 BorderThickness="1"
                                 BorderBrush="{DynamicResource ForegroundMuted}"
                                 Background="{DynamicResource Background}">
-                            <Grid ColumnDefinitions="Auto, *, Auto">
+                            <Grid ColumnDefinitions="*, Auto">
                             
-                                <LucideIcon Grid.Column="0" Kind="UserKey"
-                                            Foreground="{DynamicResource Foreground}"
-                                            Size="17"/>
-                                
-                                <Panel Grid.Column="1">
+                                <Panel Grid.Column="0">
                                     <TextBox Watermark="⬤⬤⬤⬤⬤⬤⬤" 
                                              Text="{Binding Password, Mode=TwoWay}"
                                              IsVisible="{Binding ShowPassword, 
@@ -151,7 +142,7 @@
                                              Padding="12"/>
                                 </Panel>
                                 
-                                <Button Grid.Column="2" Classes="None"
+                                <Button Grid.Column="1" Classes="none"
                                         Command="{Binding InvertShowPasswordCommand}">
                                     <LucideIcon Kind="{Binding ShowPasswordIcon}"
                                                 Foreground="{DynamicResource Foreground}"
@@ -160,7 +151,8 @@
                             </Grid>
                         </Border>
                         
-                        <Button Classes="None" Margin="20, 10, 20, 0">
+                        <Button Classes="none" Margin="20, 10, 20, 0"
+                                HorizontalAlignment="Right">
                             <TextBlock
                                 Text="{c:I18n {x:Static lang:Lang.ForgotPassword}}"
                                 Foreground="{DynamicResource Link}"
@@ -172,18 +164,16 @@
                 
                 <Card.Footer>
                     <StackPanel Spacing="10">
-                        <Button Classes="ButtonPrimary"
-                                Foreground="{DynamicResource Background}"
-                                CornerRadius="20">
+                        <Button Classes="lg" HorizontalContentAlignment="Stretch">
                             <Panel>
-                                <TextBlock Foreground="#fff"
+                                <TextBlock Foreground="{DynamicResource ForegroundAccent}" 
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"
                                            
                                            Text="{c:I18n {x:Static lang:Lang.Login}}"/>
                                 
                                 <LucideIcon Kind="ArrowRight"
-                                            Foreground="#fff"
+                                            Foreground="{DynamicResource ForegroundAccent}" 
                                             VerticalAlignment="Center"
                                             HorizontalAlignment="Right"/>
                             </Panel>
@@ -195,9 +185,8 @@
                             <Separator Grid.Column="2"/>
                         </Grid>
                         
-                        <Button Classes="ButtonSecondary"
+                        <Button Classes="secondary lg"
                                 Foreground="{DynamicResource Background}"
-                                CornerRadius="20"
                                 Command="{Binding  PreviousCommand}">
                             <TextBlock Foreground="{DynamicResource Foreground}"
                                        HorizontalAlignment="Center"

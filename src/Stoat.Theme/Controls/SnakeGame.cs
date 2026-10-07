@@ -132,7 +132,7 @@ public sealed class SnakeGame : Control
             PlayerControlledProperty);
     }
 
-    private const int Columns = 25;
+    private const int Columns = 20;
     private const int Rows = 20;
 
     private readonly List<Point> _snake = [];
@@ -333,8 +333,6 @@ public sealed class SnakeGame : Control
 
     private void UpdateAutomaticDirection()
     {
-        var head = _snake[0];
-
         var possibleDirections = new[]
         {
             Direction.Up,
@@ -350,9 +348,21 @@ public sealed class SnakeGame : Control
         if (validDirections.Count == 0)
             return;
 
-        var preferredDirection = validDirections
-            .OrderBy(GetFoodDistance)
-            .First();
+        var distances = validDirections
+            .Select(direction => new
+            {
+                Direction = direction,
+                Distance = GetFoodDistance(direction)
+            })
+            .ToList();
+
+        var minDistance = distances.Min(x => x.Distance);
+
+        var preferredDirection = distances
+            .Where(x => x.Distance == minDistance)
+            .ElementAt(Random.Shared.Next(
+                distances.Count(x => x.Distance == minDistance)))
+            .Direction;
 
         SetDirection(preferredDirection);
     }
@@ -377,7 +387,27 @@ public sealed class SnakeGame : Control
 
             _ => head
         };
+        
 
+        return IsAllowedByPath(next, direction) && IsSafeIndex(next, direction);
+    }
+
+    private bool IsAllowedByPath(Point point, Direction direction)
+    {
+        return direction switch
+        {
+            Direction.Left  => point.Y % 2 != 0,
+            Direction.Right => point.Y % 2 == 0,
+
+            Direction.Down  => point.X % 2 != 0,
+            Direction.Up    => point.X % 2 == 0,
+
+            _ => false
+        };
+    }
+
+    private bool IsSafeIndex(Point next, Direction direction)
+    {
         if (next.X < 0 ||
             next.X >= Columns ||
             next.Y < 0 ||
@@ -437,8 +467,11 @@ public sealed class SnakeGame : Control
             _ => head
         };
 
-        return Math.Abs((int)(next.X - _food.X)) +
-               Math.Abs((int)(next.Y - _food.Y));
+        var dx = next.X - _food.X;
+        var dy = next.Y - _food.Y;
+            return (int)Math.Sqrt(
+            dx * dx +
+            dy * dy);
     }
 
     private void SpawnFood()

@@ -5,11 +5,29 @@
     
         <Styles.Resources>
                 <ResourceDictionary>
+                    
+                    
+                    <!-- Accent -->
+                    <SolidColorBrush x:Key="Accent">#505b92</SolidColorBrush>
+                    <SolidColorBrush x:Key="ForegroundAccent">#ffffff</SolidColorBrush>
+                    <SolidColorBrush x:Key="AccentPressed">#424B7A</SolidColorBrush>
+                    <SolidColorBrush x:Key="AccentHover">#4b5588</SolidColorBrush>
+                    
+                    <SolidColorBrush x:Key="Danger">#AC3A46</SolidColorBrush>
+                    <SolidColorBrush x:Key="DangerHover">#E87A80</SolidColorBrush>
+                    
+                    <SolidColorBrush x:Key="Success">#2A7A58</SolidColorBrush>
+                    <SolidColorBrush x:Key="SuccessHover">#6CC094</SolidColorBrush>
+                    
+                    <SolidColorBrush x:Key="Warning">#966814</SolidColorBrush>
+                    <SolidColorBrush x:Key="WarningHover">#DEB460</SolidColorBrush>
+                    
                     <ResourceDictionary.ThemeDictionaries>
                         <ResourceDictionary x:Key="Light">
                             <!-- Content -->
                             <SolidColorBrush x:Key="Foreground">#1b1b21</SolidColorBrush>
                             <SolidColorBrush x:Key="ForegroundSecondary">#848389</SolidColorBrush>
+                            <SolidColorBrush x:Key="ForegroundMuted">#5E5D66</SolidColorBrush>
 
                             <!-- Backgrounds -->
                             <SolidColorBrush x:Key="Background">#fbf8ff</SolidColorBrush>
@@ -20,13 +38,14 @@
                             <!-- Surfaces -->
                             <SolidColorBrush x:Key="Surface">#efedf4</SolidColorBrush>
 
-                            <!-- Accent -->
-                            <SolidColorBrush x:Key="Accent">#505b92</SolidColorBrush>
-                            <SolidColorBrush x:Key="AccentHover">#4b5588</SolidColorBrush>
-
+                            
+                            <!--States-->
+                            <SolidColorBrush x:Key="Hover">#EEEBF5</SolidColorBrush>
+                            <SolidColorBrush x:Key="Selected">#E2E5FC</SolidColorBrush>
+                            
                             <!-- Secondary -->
-                            <SolidColorBrush x:Key="Secondary">#b9c3ff</SolidColorBrush>
-                            <SolidColorBrush x:Key="SecondaryHover">#bcc5fd</SolidColorBrush>
+                            <SolidColorBrush x:Key="BackgroundSecondary">#b9c3ff</SolidColorBrush>
+                            <SolidColorBrush x:Key="BackgroundSecondaryHover">#bcc5fd</SolidColorBrush>
 
                             <!-- Interactive -->
                             <SolidColorBrush x:Key="Link">#4f5fbd</SolidColorBrush>
@@ -40,6 +59,7 @@
                             <!-- Content -->
                             <SolidColorBrush x:Key="Foreground">#e3e1e9</SolidColorBrush>
                             <SolidColorBrush x:Key="ForegroundSecondary">#848389</SolidColorBrush>
+                            <SolidColorBrush x:Key="ForegroundMuted">#ACAAB4</SolidColorBrush>
 
                             <!-- Backgrounds -->
                             <SolidColorBrush x:Key="Background">#121318</SolidColorBrush>
@@ -49,14 +69,14 @@
 
                             <!-- Surfaces -->
                             <SolidColorBrush x:Key="Surface">#1f1f25</SolidColorBrush>
-
-                            <!-- Accent -->
-                            <SolidColorBrush x:Key="Accent">#505b92</SolidColorBrush>
-                            <SolidColorBrush x:Key="AccentHover">#4b5588</SolidColorBrush>
+                            
+                            <!--States-->
+                            <SolidColorBrush x:Key="Hover">#24252C</SolidColorBrush>
+                            <SolidColorBrush x:Key="Selected">#323548</SolidColorBrush>
 
                             <!-- Secondary -->
-                            <SolidColorBrush x:Key="Secondary">#424659</SolidColorBrush>
-                            <SolidColorBrush x:Key="SecondaryHover">#4f5264</SolidColorBrush>
+                            <SolidColorBrush x:Key="BackgroundSecondary">#424659</SolidColorBrush>
+                            <SolidColorBrush x:Key="BackgroundSecondaryHover">#4f5264</SolidColorBrush>
 
                             <!-- Interactive -->
                             <SolidColorBrush x:Key="Link">#b9c3ff</SolidColorBrush>

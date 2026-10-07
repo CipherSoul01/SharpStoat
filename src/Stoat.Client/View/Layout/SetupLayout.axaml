@@ -28,13 +28,13 @@
                                     HorizontalAlignment="Right"
                                     VerticalAlignment="Top"
                                     Orientation="Horizontal">
-                            <Button Classes="ButtonSecondary" 
+                            <Button Classes="secondary" 
                                     Command="{ReflectionBinding $parent[layout:SetupLayout].ViewModel.ChangeThemeCommand}"
                                     CornerRadius="9998"
                                     Padding="9">
                                 <LucideIcon Kind="{ReflectionBinding $parent[layout:SetupLayout].ViewModel.KindTheme}"/>
                             </Button>
-                            <Button Classes="ButtonSecondary" 
+                            <Button Classes="secondary" 
                                     CornerRadius="9998"
                                     Padding="9">
                                 <LucideIcon Kind="Server"/>
@@ -47,19 +47,19 @@
                                     VerticalAlignment="Bottom">
                             <Button Padding="4"
                                     Command="{ReflectionBinding $parent[layout:SetupLayout].ViewModel.OpenAboutCommand}"
-                                    Classes="None">  
+                                    Classes="none">  
                                 <TextBlock Classes="Muted" Text="{c:I18n {x:Static lang:Lang.About}}"/>
                             </Button>
                             
                             <Button Padding="4"
                                     Command="{ReflectionBinding $parent[layout:SetupLayout].ViewModel.OpenTermsOfServiceCommand}"
-                                    Classes="None">
+                                    Classes="none">
                                 <TextBlock Classes="Muted" Text="{c:I18n {x:Static lang:Lang.TermsOfService}}"/>
                             </Button>
                             
                             <Button Padding="4"
                                     Command="{ReflectionBinding $parent[layout:SetupLayout].ViewModel.OpenPrivatePolicyCommand}"
-                                    Classes="None">
+                                    Classes="none">
                                 <TextBlock Classes="Muted" Text="{c:I18n {x:Static lang:Lang.PrivacyPolicy}}"/>
                             </Button>
                         </StackPanel>

@@ -40,13 +40,12 @@
             
             <Card.Footer>
                 <StackPanel Spacing="30">
-                    <Button Classes="ButtonPrimary" 
-                            CornerRadius="20"
-                            Padding="0, 12"
+                    <Button Classes="lg"
                             HorizontalAlignment="Stretch"
                             HorizontalContentAlignment="Center"
                             Command="{Binding  OpenLoginPageCommand}">
-                        <TextBlock Foreground="#fff" Text="{c:I18n {x:Static lang:Lang.SignIn}}"/>
+                        <TextBlock Foreground="{DynamicResource ForegroundAccent}" 
+                                   Text="{c:I18n {x:Static lang:Lang.SignIn}}"/>
                     </Button>
                     
                     <StackPanel HorizontalAlignment="Stretch" Spacing="5">
@@ -54,7 +53,7 @@
                                    FontWeight="Bold"
                                    HorizontalAlignment="Stretch"/>
                         
-                        <Button Classes="None"
+                        <Button Classes="none"
                                 HorizontalAlignment="Left"
                                 Command="{Binding OpenRegisterPageCommand}">
                             <TextBlock

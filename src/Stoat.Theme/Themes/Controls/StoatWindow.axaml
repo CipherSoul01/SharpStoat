@@ -2,86 +2,6 @@
     xmlns="https://github.com/avaloniaui"
     xmlns:stoat="https://stoat.chat/controls"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <Design.PreviewWith>
-        <Border Width="800"  Height="600">
-            <Grid Margin="2"
-                  RowDefinitions="Auto,*">
-                
-                <Panel Grid.Row="0"
-                       Background="Transparent">
-
-                    <Grid ColumnDefinitions="*, Auto">
-
-                        <Svg Path="../../Assets/logo.svg"
-                             Width="60"
-                             Height="30"
-                             Margin="10, 0, 0, 0"
-                             HorizontalAlignment="Left">
-                            <Svg.Styles>
-                                <Style Selector="Svg">
-                                    <Setter Property="(Svg.Css)" Value="{DynamicResource LogoSvgCss}" />
-                                </Style>
-                            </Svg.Styles>
-                        </Svg>
-
-                        <StackPanel
-                            Grid.Column="1"
-                            Orientation="Horizontal">
-
-                            <Button Classes="ButtonGhost"
-                                    Padding="0"
-                                    Height="30"
-                                    Width="30"
-                                    HorizontalContentAlignment="Stretch"
-                                    VerticalContentAlignment="Stretch">
-
-                                <LucideIcon
-                                    Size="16"
-                                    Kind="Minus"
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center"/>
-                            </Button>
-
-                            <Button Classes="ButtonGhost"
-                                    Padding="0"
-                                    Height="30"
-                                    Width="30"
-                                    HorizontalContentAlignment="Stretch"
-                                    VerticalContentAlignment="Stretch">
-
-                                <LucideIcon
-                                    Size="14"
-                                    Kind="Maximize2"
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center"/>
-                            </Button>
-
-                            <Button Classes="ButtonGhost"
-                                    Padding="0"
-                                    Height="30"
-                                    Width="30"
-                                    HorizontalContentAlignment="Stretch"
-                                    VerticalContentAlignment="Stretch">
-
-                                <LucideIcon
-                                    Size="16"
-                                    Kind="X"
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center"/>
-                            </Button>
-
-                        </StackPanel>
-
-                    </Grid>
-
-                </Panel>
-
-                <!-- CONTENT -->
-                <TextBlock Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"> Content</TextBlock>
-
-            </Grid>
-    </Border>
-    </Design.PreviewWith>
     
     <ControlTheme
         x:Key="{x:Type StoatWindow}"
@@ -123,7 +43,7 @@
                                         Orientation="Horizontal">
 
                                         <Button x:Name="PART_MinimizeButton"
-                                                Classes="ButtonGhost"
+                                                Classes="ghost"
                                                 Padding="0"
                                                 Height="30"
                                                 Width="30"
@@ -138,7 +58,7 @@
                                         </Button>
 
                                         <Button x:Name="PART_MaximizeButton"
-                                                Classes="ButtonGhost"
+                                                Classes="ghost"
                                                 Padding="0"
                                                 Height="30"
                                                 Width="30"
@@ -153,7 +73,7 @@
                                         </Button>
 
                                         <Button x:Name="PART_CloseButton"
-                                                Classes="ButtonGhost"
+                                                Classes="ghost"
                                                 Padding="0"
                                                 Height="30"
                                                 Width="30"

@@ -1,91 +1,105 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <Design.PreviewWith>
-        <Border Padding="20">
+   <ControlTheme TargetType="Button" x:Key="{x:Type Button}">
+       <Setter Property="Padding" Value="16, 8"/>
+       <Setter Property="HorizontalContentAlignment" Value="Center"/>
+       <Setter Property="VerticalContentAlignment" Value="Center"/>
+       <Setter Property="CornerRadius" Value="6"/>
+       <Setter Property="FontWeight" Value="Medium"/>
+       <Setter Property="Background" Value="{DynamicResource Accent}"/>
+       <Setter Property="Foreground" Value="{DynamicResource ForegroundAccent}"/>
+       <Setter Property="Cursor"
+               Value="Hand"/>
+       
+       <Setter Property="Template">
+           <ControlTemplate>
+               <Border Name="PART_Border"
+                       Background="{TemplateBinding Background}"
+                       BorderBrush="{TemplateBinding BorderBrush}"
+                       BorderThickness="{TemplateBinding BorderBrush}"
+                       CornerRadius="{TemplateBinding CornerRadius}">
+                   <Border.Transitions>
+                       <Transitions>
+                           <TransformOperationsTransition Property="RenderTransform" 
+                                                          Duration="0:0:0.10" Easing="CubicEaseOut" />
+                       </Transitions>
+                   </Border.Transitions>
+                   
+                   <ContentPresenter Name="PART_ContentPresenter"
+                                     Content="{TemplateBinding Content}"
+                                     ContentTemplate="{TemplateBinding ContentTemplate}"
+                                     Foreground="{TemplateBinding Foreground}"
+                                     Padding="{TemplateBinding Padding}"
+                                     HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                     VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
+               </Border>
+           </ControlTemplate>
+       </Setter>
+       
+       <Style Selector="^.none">
+           <Setter Property="Background"
+                   Value="Transparent" />
+           
+           <Setter Property="Padding"
+                   Value="0"/>
             
-        </Border>
-    </Design.PreviewWith>
-    
-    <ControlTheme TargetType="Button" 
-                  x:Key="{x:Type Button}">
-        
-        <Setter Property="Cursor"
-                Value="Hand"/>
-        
-        <Style Selector="^.None">
-            <Setter Property="Background"
-                    Value="Transparent" />
-            
-            <Setter Property="Foreground"
-                    Value="{DynamicResource Foreground}" />
+           <Setter Property="Foreground"
+                   Value="{DynamicResource Foreground}" />
 
-            <Style Selector="^:pointerover /template/ ContentPresenter">
-                <Setter Property="Background"
-                        Value="Transparent" />
-            </Style>
+           <Style Selector="^:pointerover /template/ ContentPresenter">
+               <Setter Property="Background"
+                       Value="Transparent" />
+           </Style>
 
-            <Style Selector="^:pressed /template/ ContentPresenter">
-                <Setter Property="Background"
-                        Value="Transparent" />
-            </Style>
+           <Style Selector="^:pressed /template/ ContentPresenter">
+               <Setter Property="Background"
+                       Value="Transparent" />
+           </Style>
 
-            <Style Selector="^:disabled /template/ ContentPresenter">
-                <Setter Property="Background"
-                        Value="Transparent" />
-            </Style>
+           <Style Selector="^:disabled /template/ ContentPresenter">
+               <Setter Property="Background"
+                       Value="Transparent" />
+           </Style>
 
-            <Style Selector="^:pressed /template/ ContentPresenter">
-                <Setter Property="Background"
-                        Value="Transparent" />
-            </Style>
-        </Style>
-        
-        <Style Selector="^.ButtonPrimary">
-            <Setter Property="Padding" 
-                    Value="16, 8"/>
-            <Setter Property="FontSize" 
-                    Value="14" />
-            <Setter Property="Background" 
-                    Value="{DynamicResource Accent}"/>
-            <Setter Property="Foreground" 
-                    Value="{DynamicResource Foreground}"/>
+           <Style Selector="^:pressed /template/ ContentPresenter">
+               <Setter Property="Background"
+                       Value="Transparent" />
+           </Style>
+       </Style>
+       
+       <Style Selector="^.sm">
+           <Setter Property="Height" Value="32" />
+           <Setter Property="Padding" Value="12,5,12,6" />
+       </Style>
+       
+       <Style Selector="^.lg">
+           <Setter Property="Height" Value="40" />
+           <Setter Property="Padding" Value="24,7,24,8" />
+       </Style>
+       
+       <Style Selector="^.icon">
+           <Setter Property="Height" Value="36" />
+           <Setter Property="Width" Value="36" />
+           <Setter Property="Padding" Value="0" />
+       </Style>
+       
+       <Style Selector="^.secondary">
+           <Setter Property="Background" Value="{DynamicResource BackgroundSecondary}"/>
+           <Setter Property="Foreground" Value="{DynamicResource Foreground}"/>
+           
+           <Style Selector="^:pointerover">
+               <Setter Property="Background" Value="{DynamicResource BackgroundSecondaryHover}"></Setter>
+           </Style>
+       </Style>
+       
+       <Style Selector="^.ghost">
+           <Setter Property="Background" Value="{DynamicResource Background}"/>
+           <Setter Property="Foreground" Value="{DynamicResource Foreground}"/>
             
-            <Style Selector="^:pointerover /template/ ContentPresenter">
-                <Setter Property="Background"
-                        Value="{DynamicResource AccentHover}" />
-                
-                
-            </Style>
-        </Style>
-        
-        <Style Selector="^.ButtonSecondary">
-            <Setter Property="Padding" 
-                    Value="16, 8"/>
-            <Setter Property="FontSize" 
-                    Value="14" />
-            <Setter Property="Background" 
-                    Value="{DynamicResource Secondary}"/>
-            <Setter Property="Foreground" 
-                    Value="{DynamicResource Foreground}"/>
-            
-            <Style Selector="^:pointerover /template/ ContentPresenter">
-                <Setter Property="Background"
-                        Value="{DynamicResource SecondaryHover}" />
-                
-                
-            </Style>
-        </Style>
-        
-        <Style Selector="^.ButtonGhost">
-                <Setter Property="Background" 
-                        Value="{DynamicResource Background}"/>
-                <Setter Property="Foreground" 
-                        Value="{DynamicResource Foreground}"/>
-            
-                <Style Selector="^:pointerover /template/ ContentPresenter">
-                        <Setter Property="Background"
-                                Value="{DynamicResource Surface}" />
-                </Style>
-        </Style>
-    </ControlTheme>
+           <Style Selector="^:pointerover /template/ ContentPresenter">
+               <Setter Property="Background"
+                       Value="{DynamicResource BackgroundSecondary}" />
+           </Style>
+       </Style>
+   </ControlTheme> 
 </ResourceDictionary>

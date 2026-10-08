@@ -1,9 +1,13 @@
 ﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:primitives="using:Avalonia.Controls.Primitives"
-                    xmlns:sharpstoat="using:">
+                    xmlns:utilities="clr-namespace:Stoat.Theme.Utilities">
+  
+  <Design.PreviewWith>
+    <Border Padding="20"><Dialog Width="200"></Dialog></Border>
+  </Design.PreviewWith>
 
-  <ControlTheme x:Key="{x:Type Dialog}" TargetType="sharpstoat:Dialog">
+  <ControlTheme x:Key="{x:Type Dialog}" TargetType="Dialog">
     <Setter Property="ZIndex" Value="1000" />
     <Setter Property="Template">
       <ControlTemplate>
@@ -29,10 +33,10 @@
 
           <!-- Card -->
           <Border Name="PART_Card"
-                  Background="{DynamicResource ShadowBackgroundBrush}"
-                  BorderBrush="{DynamicResource ShadowBorderBrush}"
+                  Background="{DynamicResource ButtonBackground}"
+                  BorderBrush="{DynamicResource ButtonBorderBrush}"
                   BorderThickness="1"
-                  CornerRadius="{DynamicResource ShadowRadiusLg}"
+                  CornerRadius="{DynamicResource ControlCornerRadius}"
                   BoxShadow="{DynamicResource ShadowShadowMd}"
                   Padding="24"
                   Width="{TemplateBinding CardWidth}"
@@ -43,7 +47,7 @@
                   VerticalAlignment="Center"
                   Margin="24">
             <Border.MaxHeight>
-              <MultiBinding Converter="{x:Static sharpstoat:DialogCardMaxHeightConverter.Instance}" ConverterParameter="48">
+              <MultiBinding Converter="{x:Static utilities:DialogCardMaxHeightConverter.Instance}" ConverterParameter="48">
                 <TemplateBinding Property="CardMaxHeight" />
                 <Binding Path="$parent[primitives:OverlayLayer].Bounds.Height" />
               </MultiBinding>

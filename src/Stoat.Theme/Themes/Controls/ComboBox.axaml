@@ -1,0 +1,94 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+   <ControlTheme TargetType="ComboBox" x:Key="{x:Type ComboBox}">
+       <Setter Property="Background" Value="{DynamicResource BackgroundElevated}" />
+       <Setter Property="Foreground" Value="{DynamicResource Foreground}" />
+       <Setter Property="BorderBrush" Value="{DynamicResource Border}" />
+       <Setter Property="BorderThickness" Value="1" />
+       <Setter Property="CornerRadius" Value="8" />
+       <Setter Property="MinHeight" Value="36" />
+       <Setter Property="Padding" Value="12,0" />
+       <Setter Property="FontSize" Value="14" />
+       <Setter Property="HorizontalContentAlignment" Value="Left" />
+       <Setter Property="VerticalContentAlignment" Value="Center" />
+       <Setter Property="PlaceholderForeground" Value="{DynamicResource ForegroundMuted}" />
+       <Setter Property="MaxDropDownHeight" Value="384" />
+       <Setter Property="ClipToBounds" Value="False" />
+       
+       <Setter Property="Template">
+           <ControlTemplate>
+               <Grid ColumnDefinitions="*, Auto">
+                   <Border Name="PART_Border"
+                           Grid.ColumnSpan="2"
+                           Background="{TemplateBinding Background}"
+                           BorderBrush="{TemplateBinding BorderBrush}"
+                           BorderThickness="{TemplateBinding BorderThickness}"
+                           CornerRadius="{TemplateBinding CornerRadius}" />
+                   
+                   <TextBlock Name="PlaceholderTextBlock"
+                              Grid.Column="0"
+                              Margin="{TemplateBinding Padding}"
+                              Text="{TemplateBinding PlaceholderText}"
+                              Foreground="{TemplateBinding PlaceholderForeground}"
+                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                              VerticalAlignment="Center"
+                              IsVisible="{TemplateBinding SelectionBoxItem, Converter={x:Static ObjectConverters.IsNull}}" />
+                    
+                   <ContentPresenter Name="PART_ContentPresenter"
+                                     Grid.Column="0"
+                                     Margin="{TemplateBinding Padding}"
+                                     Content="{TemplateBinding SelectionBoxItem}"
+                                     ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                                     HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                     VerticalAlignment="Center" />
+                   
+                   <Path Name="DropDownGlyph"
+                         Grid.Column="1"
+                         Margin="0,0,12,0"
+                         VerticalAlignment="Center"
+                         HorizontalAlignment="Center"
+                         Opacity="0.5"
+                         Stroke="{DynamicResource ForegroundMuted}"
+                         StrokeThickness="1.5"
+                         StrokeLineCap="Round" StrokeJoin="Round"
+                         Data="M0,0 L4.5,4.5 L9,0" />
+                   
+                   <Popup Name="PART_Popup"
+                          Grid.Column="0"
+                          WindowManagerAddShadowHint="False"
+                          IsLightDismissEnabled="True"
+                          IsOpen="{TemplateBinding IsDropDownOpen, Mode=TwoWay}"
+                          MinWidth="{Binding Bounds.Width, RelativeSource={RelativeSource TemplatedParent}}"
+                          MaxHeight="{TemplateBinding MaxDropDownHeight}"
+                          PlacementTarget="{TemplateBinding}"
+                          Placement="BottomEdgeAlignedLeft"
+                          VerticalOffset="4">
+                       <Border Background="{DynamicResource BackgroundElevated}"
+                               BorderBrush="{DynamicResource BorderHover}"
+                               BorderThickness="1"
+                               CornerRadius="8"
+                               ClipToBounds="True">
+                           <ScrollViewer Classes="gutter"
+                                         HorizontalScrollBarVisibility="Disabled"
+                                         VerticalScrollBarVisibility="Auto">
+                               <ItemsPresenter Name="PART_ItemsPresenter"
+                                               ItemsPanel="{TemplateBinding ItemsPanel}" />
+                           </ScrollViewer>
+                       </Border>
+                   </Popup>
+               </Grid>
+           </ControlTemplate>
+       </Setter>
+       
+       <Style Selector="^:pointerover /template/ Border#PART_Border">
+           <!--<Setter Property="Background" Value="{DynamicResource BackgroundSubtle}" />-->
+           <Setter Property="BorderBrush" Value="{DynamicResource BorderHover}"/>
+       </Style>
+       <Style Selector="^:selected /template/ Path#PART_Check">
+           <Setter Property="IsVisible" Value="True" />
+       </Style>
+       <Style Selector="^:disabled">
+           <Setter Property="Opacity" Value="0.5" />
+       </Style>
+   </ControlTheme> 
+</ResourceDictionary>

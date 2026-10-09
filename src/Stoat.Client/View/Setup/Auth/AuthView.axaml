@@ -33,9 +33,10 @@
                            TextWrapping="Wrap"
                            MaxWidth="300"/>
                 <TextBlock Text="{c:I18n {x:Static lang:Lang.Description}}" 
-                           Classes="Small Muted"
+                           Classes="small muted"
                            TextWrapping="Wrap"
                            MaxWidth="300"/>
+                
             </StackPanel>
             
             <Card.Footer>

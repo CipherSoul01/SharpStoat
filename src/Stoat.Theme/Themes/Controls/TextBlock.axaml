@@ -1,7 +1,7 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Design.PreviewWith>
-        <Border Padding="20">
+        <Border>
             
         </Border>
     </Design.PreviewWith>
@@ -10,21 +10,31 @@
                   x:Key="{x:Type TextBlock}">
         <Setter Property="Foreground" Value="{DynamicResource Foreground}"/>
         
-        <Style Selector="^.h1">
-            <Setter Property="FontSize" Value="36" />
-            <Setter Property="FontWeight" Value="ExtraBold" />
-            <Setter Property="LetterSpacing" Value="-0.9" />
+        <Style Selector="^.display">
+            <Setter Property="FontSize" Value="36"/>
+            <Setter Property="LineHeight" Value="44"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="LetterSpacing" Value="-0.022"/>
         </Style>
-        <Style Selector="^.h2">
-            <Setter Property="FontSize" Value="30" />
+        
+        <Style Selector="^.h1">
+            <Setter Property="FontSize" Value="28" />
+            <Setter Property="LineHeight" Value="36" />
             <Setter Property="FontWeight" Value="SemiBold" />
-            <Setter Property="LetterSpacing" Value="-0.75" />
+            <Setter Property="LetterSpacing" Value="-0.018" />
+        </Style>
+        
+        <Style Selector="^.h2">
+            <Setter Property="FontSize" Value="22" />
+            <Setter Property="LineHeight" Value="30" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="LetterSpacing" Value="-0.012" />
         </Style>
 
         <Style Selector="^.h3">
-            <Setter Property="FontSize" Value="24" />
+            <Setter Property="FontSize" Value="17" />
+            <Setter Property="LineHeight" Value="24" />
             <Setter Property="FontWeight" Value="SemiBold" />
-            <Setter Property="LetterSpacing" Value="-0.6" />
         </Style>
 
         <Style Selector="^.h4">
@@ -34,29 +44,38 @@
         </Style>
 
         <Style Selector="^.p">
-            <Setter Property="FontSize" Value="16" />
+            <Setter Property="FontSize" Value="15" />
+            <Setter Property="LineHeight" Value="24" />
+            <Setter Property="FontWeight" Value="Normal" />
+        </Style>
+        
+        <Style Selector="^.body-small">
+            <Setter Property="FontSize" Value="13" />
+            <Setter Property="LineHeight" Value="20" />
+            <Setter Property="FontWeight" Value="Normal" />
         </Style>
 
-        <Style Selector="^.Lead">
+        <Style Selector="^.lead">
             <Setter Property="FontSize" Value="20" />
         </Style>
 
-        <Style Selector="^.Large">
+        <Style Selector="^.large">
             <Setter Property="FontSize" Value="18" />
             <Setter Property="FontWeight" Value="SemiBold" />
         </Style>
 
-        <Style Selector="^.Small">
+        <Style Selector="^.small">
             <Setter Property="FontSize" Value="14" />
             <Setter Property="FontWeight" Value="Medium" />
         </Style>
 
-        <Style Selector="^.Caption">
+        <Style Selector="^.caption">
             <Setter Property="FontSize" Value="12" />
-            <Setter Property="FontWeight" Value="Medium" />
+            <Setter Property="LineHeight" Value="16" />
+            <Setter Property="FontWeight" Value="Normal" />
         </Style>
 
-        <Style Selector="^.Muted">
+        <Style Selector="^.muted">
             <Setter Property="Foreground" Value="{DynamicResource ForegroundSecondary}" />
         </Style>
     </ControlTheme>

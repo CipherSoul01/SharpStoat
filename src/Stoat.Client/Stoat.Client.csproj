@@ -53,4 +53,8 @@
     <ProjectReference Include="..\Stoat.Core\Stoat.Core.csproj" />
     <ProjectReference Include="..\Stoat.Theme\Stoat.Theme.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="View\App\Hub\" />
+  </ItemGroup>
 </Project>

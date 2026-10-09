@@ -8,44 +8,43 @@
              x:DataType="vm:MainViewModel"
              x:Class="Stoat.Client.View.MainView"
              Background="{DynamicResource Background}">
-    
-    <LayoutViewHost Layout="{Binding Layout}"
-                    Router="{Binding Router}">
-        <!--<LayoutViewHost.PageTransition>
-            <CrossFade Duration="0:0:0.300"/>
-        </LayoutViewHost.PageTransition>-->
-        
-        <LayoutViewHost.DefaultContent>
-            <Border Padding="50">
-                <Panel>
+    <Panel>
+        <LayoutViewHost Layout="{Binding Layout}"
+                        Router="{Binding Router}">
+            <LayoutViewHost.DefaultContent>
+                <Border Padding="50">
+                    <Panel>
                    
-                    <Svg Path="../../../Assets/logo.svg"
-                         Width="240"
-                         VerticalAlignment="Center"
-                         HorizontalAlignment="Center">
-                        <Svg.Styles>
-                            <Style Selector="Svg">
-                                <Setter Property="(Svg.Css)" Value="{DynamicResource LogoSvgCss}" />
-                            </Style>
-                        </Svg.Styles>
-                    </Svg> 
+                        <Svg Path="../../../Assets/logo.svg"
+                             Width="240"
+                             VerticalAlignment="Center"
+                             HorizontalAlignment="Center">
+                            <Svg.Styles>
+                                <Style Selector="Svg">
+                                    <Setter Property="(Svg.Css)" Value="{DynamicResource LogoSvgCss}" />
+                                </Style>
+                            </Svg.Styles>
+                        </Svg> 
                     
-                    <StackPanel
-                        Spacing="12"
-                        VerticalAlignment="Bottom"
-                        HorizontalAlignment="Center">
+                        <StackPanel
+                            Spacing="12"
+                            VerticalAlignment="Bottom"
+                            HorizontalAlignment="Center">
 
-                        <StoatSpinner
-                            Classes="primary dots"
-                            Width="200"
-                            Height="70"
-                            Size="16"
-                            HorizontalAlignment="Center"/>
+                            <StoatSpinner
+                                Classes="primary dots"
+                                Width="200"
+                                Height="70"
+                                Size="16"
+                                HorizontalAlignment="Center"/>
 
 
-                    </StackPanel>
-                </Panel>
-            </Border>
-        </LayoutViewHost.DefaultContent>
-    </LayoutViewHost>
+                        </StackPanel>
+                    </Panel>
+                </Border>
+            </LayoutViewHost.DefaultContent>
+        </LayoutViewHost> 
+        
+        <ContentControl Content="{Binding Dialog}"/>
+    </Panel>
 </UserControl>

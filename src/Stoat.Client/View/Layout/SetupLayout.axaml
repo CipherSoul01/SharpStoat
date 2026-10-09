@@ -5,7 +5,6 @@
              xmlns:lang="clr-namespace:Stoat.Client.I18n"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:Stoat.Client.ViewModel.Layout"
-             xmlns:rx="http://reactiveui.net"
              xmlns:layout="clr-namespace:Stoat.Client.View.Layout"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:DataType="vm:SetupLayoutViewModel"
@@ -48,19 +47,19 @@
                             <Button Padding="4"
                                     Command="{ReflectionBinding $parent[layout:SetupLayout].ViewModel.OpenAboutCommand}"
                                     Classes="none">  
-                                <TextBlock Classes="Muted" Text="{c:I18n {x:Static lang:Lang.About}}"/>
+                                <TextBlock Classes="muted" Text="{c:I18n {x:Static lang:Lang.About}}"/>
                             </Button>
                             
                             <Button Padding="4"
                                     Command="{ReflectionBinding $parent[layout:SetupLayout].ViewModel.OpenTermsOfServiceCommand}"
                                     Classes="none">
-                                <TextBlock Classes="Muted" Text="{c:I18n {x:Static lang:Lang.TermsOfService}}"/>
+                                <TextBlock Classes="muted" Text="{c:I18n {x:Static lang:Lang.TermsOfService}}"/>
                             </Button>
                             
                             <Button Padding="4"
                                     Command="{ReflectionBinding $parent[layout:SetupLayout].ViewModel.OpenPrivatePolicyCommand}"
                                     Classes="none">
-                                <TextBlock Classes="Muted" Text="{c:I18n {x:Static lang:Lang.PrivacyPolicy}}"/>
+                                <TextBlock Classes="muted" Text="{c:I18n {x:Static lang:Lang.PrivacyPolicy}}"/>
                             </Button>
                         </StackPanel>
                         

@@ -1,13 +1,11 @@
-﻿namespace Stoat.Theme.Controls;
-
-using System;
-using Avalonia;
+﻿using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
 using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.Media;
 
+namespace Stoat.Theme.Controls;
 
 /// <summary>
 /// Modal dialog (shadcn Dialog analogue): scrim overlay + centred card.

@@ -45,7 +45,7 @@
                                        MaxWidth="500"
                                        TextWrapping="Wrap"/>
                             <TextBlock Text="{c:I18n {x:Static lang:Lang.LoginDescription}}" 
-                                       Classes="Small Muted"
+                                       Classes="small muted"
                                        MaxWidth="500"
                                        TextWrapping="Wrap"/>
                         </StackPanel>
@@ -82,7 +82,7 @@
                                         HorizontalAlignment="Left"
                                         Text="{c:I18n {x:Static lang:Lang.Welcome}}"/>
                         
-                            <TextBlock  Classes="Muted"
+                            <TextBlock  Classes="muted"
                                         HorizontalAlignment="Left"
                                         Text="{c:I18n {x:Static lang:Lang.Prompt}}"/>
                         </StackPanel>
@@ -92,7 +92,7 @@
                 
                 <StackPanel Spacing="30">
                     <StackPanel Spacing="10">
-                        <TextBlock Classes="Small" Text="{c:I18n {x:Static lang:Lang.Email}}"/>
+                        <TextBlock Classes="small" Text="{c:I18n {x:Static lang:Lang.Email}}"/>
                         
                         <Border Padding="20, 0" 
                                 CornerRadius="5"
@@ -115,7 +115,7 @@
                     </StackPanel>
                     
                     <StackPanel Spacing="10">
-                        <TextBlock Classes="Small" Text="{c:I18n {x:Static lang:Lang.Password}}"/>
+                        <TextBlock Classes="small" Text="{c:I18n {x:Static lang:Lang.Password}}"/>
                         
                         <Border Padding="20, 0" 
                                 CornerRadius="5"
@@ -164,7 +164,8 @@
                 
                 <Card.Footer>
                     <StackPanel Spacing="10">
-                        <Button Classes="lg" HorizontalContentAlignment="Stretch">
+                        <Button Classes="lg" HorizontalContentAlignment="Stretch"
+                                Command="{Binding ClickLoginCommand}">
                             <Panel>
                                 <TextBlock Foreground="{DynamicResource ForegroundAccent}" 
                                            HorizontalAlignment="Center"

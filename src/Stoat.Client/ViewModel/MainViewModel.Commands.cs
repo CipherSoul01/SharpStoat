@@ -11,13 +11,7 @@ public partial class MainViewModel
     [ReactiveCommand]
     private async Task SetupAsync()
     {
-        await _stoat.SetupConfigAsync();
-        await Task.Delay(1000);
-        
-        await Layout.SetLayoutCommand
-            .Execute(new SetupLayoutViewModel(this));
-        
         await Router.Navigate
-            .Execute(new AuthViewModel(this));
+            .Execute(new SetupViewModel(this));
     }
 }

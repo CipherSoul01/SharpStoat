@@ -2,48 +2,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:reactive="clr-namespace:ReactiveUI.Avalonia;assembly=ReactiveUI.Avalonia"
              xmlns:vm="clr-namespace:Stoat.Client.ViewModel"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:DataType="vm:MainViewModel"
              x:Class="Stoat.Client.View.MainView"
              Background="{DynamicResource Background}">
     <Panel>
-        <LayoutViewHost Layout="{Binding Layout}"
-                        Router="{Binding Router}">
-            <LayoutViewHost.DefaultContent>
-                <Border Padding="50">
-                    <Panel>
-                   
-                        <Svg Path="../../../Assets/logo.svg"
-                             Width="240"
-                             VerticalAlignment="Center"
-                             HorizontalAlignment="Center">
-                            <Svg.Styles>
-                                <Style Selector="Svg">
-                                    <Setter Property="(Svg.Css)" Value="{DynamicResource LogoSvgCss}" />
-                                </Style>
-                            </Svg.Styles>
-                        </Svg> 
-                    
-                        <StackPanel
-                            Spacing="12"
-                            VerticalAlignment="Bottom"
-                            HorizontalAlignment="Center">
-
-                            <StoatSpinner
-                                Classes="primary dots"
-                                Width="200"
-                                Height="70"
-                                Size="16"
-                                HorizontalAlignment="Center"/>
-
-
-                        </StackPanel>
-                    </Panel>
-                </Border>
-            </LayoutViewHost.DefaultContent>
-        </LayoutViewHost> 
+        <LayoutViewHost Router="{Binding Router}"
+                        MainScreen="{Binding}" /> 
         
         <ContentControl Content="{Binding Dialog}"/>
     </Panel>

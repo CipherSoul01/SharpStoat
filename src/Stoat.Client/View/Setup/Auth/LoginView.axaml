@@ -5,7 +5,7 @@
              xmlns:vm="clr-namespace:Stoat.Client.ViewModel.Setup.Auth"
              xmlns:lang="clr-namespace:Stoat.Client.I18n"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="750"
              x:DataType="vm:LoginViewModel"
              x:Class="Stoat.Client.View.Setup.Auth.LoginView">
     <Border Padding="60"
@@ -14,6 +14,7 @@
         <Grid ColumnDefinitions="Auto, 1*">
             <Border Grid.Column="0"
                     Width="650"
+                    MaxHeight="700"
                     CornerRadius="100"
                     Padding="60"
                     Background="{DynamicResource BackgroundDeep}"
@@ -67,11 +68,10 @@
                                SecondaryTextColor="{DynamicResource ForegroundSecondary}" /> 
                 </Grid>
             </Border>
-            
+           
             <Card Grid.Column="1" 
                   Spacing="30"
                   ClipToBounds="False"
-                  
                   Background="Transparent"
                   Width="450"
                   VerticalAlignment="Center">
@@ -125,20 +125,11 @@
                             <Grid ColumnDefinitions="*, Auto">
                             
                                 <Panel Grid.Column="0">
-                                    <TextBox Watermark="⬤⬤⬤⬤⬤⬤⬤" 
-                                             Text="{Binding Password, Mode=TwoWay}"
-                                             IsVisible="{Binding ShowPassword, 
-                                                Converter={x:Static BoolConverters.Not}}"
+                                    <TextBox Text="{Binding Password, Mode=TwoWay}"
                                              VerticalAlignment="Stretch"
                                              Classes="None"
-                                             PasswordChar="⬤"
-                                             Padding="12"/>
-                                    
-                                    <TextBox Watermark="{c:I18n {x:Static lang:Lang.Password}}"
-                                             Text="{Binding Password, Mode=TwoWay}"
-                                             IsVisible="{Binding ShowPassword}"
-                                             VerticalAlignment="Stretch"
-                                             Classes="None"
+                                             PasswordChar="●"
+                                             RevealPassword="{Binding ShowPassword}"
                                              Padding="12"/>
                                 </Panel>
                                 
@@ -170,7 +161,6 @@
                                 <TextBlock Foreground="{DynamicResource ForegroundAccent}" 
                                            HorizontalAlignment="Center"
                                            VerticalAlignment="Center"
-                                           
                                            Text="{c:I18n {x:Static lang:Lang.Login}}"/>
                                 
                                 <LucideIcon Kind="ArrowRight"
@@ -196,7 +186,7 @@
                         </Button>
                     </StackPanel>
                 </Card.Footer>
-            </Card> 
+            </Card>
         </Grid> 
     </Border>
     

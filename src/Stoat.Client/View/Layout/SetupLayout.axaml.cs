@@ -2,6 +2,7 @@ using ReactiveUI;
 using ReactiveUI.Avalonia;
 using ReactiveUI.Primitives;
 using Stoat.Client.ViewModel.Layout;
+using Stoat.Theme.Attributes;
 using Stoat.Theme.Controls.ReactiveUI;
 
 namespace Stoat.Client.View.Layout;

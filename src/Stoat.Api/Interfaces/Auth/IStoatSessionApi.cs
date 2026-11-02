@@ -5,33 +5,33 @@ namespace Stoat.Api.Interfaces.Auth;
 
 public interface IStoatSessionApi
 { 
-    [Post("/auth/session/login")]
+    [Post("/api/auth/session/login")]
     Task<ApiResponse<LoginData.Response?>> LoginAsync(
         [Body] LoginData.Request? request, 
         CancellationToken token = default);
     
-    [Post("/auth/session/logout")]
+    [Post("/api/auth/session/logout")]
     Task<ApiResponse<object?>> LogoutAsync(
         [Header("x-session-token")] string sessionToken,
         CancellationToken token = default);
     
-    [Get("/auth/session/all")]
+    [Get("/api/auth/session/all")]
     Task<ApiResponse<ICollection<SessionData>>> GetAllAsync(
         [Header("x-session-token")] string sessionToken,
         CancellationToken token = default);
 
-    [Delete("/auth/session/all")]
+    [Delete("/api/auth/session/all")]
     Task<ApiResponse<object?>> DeleteAllAsync(
         [Header("x-mfa-ticket")] string ticket,
         CancellationToken token = default);
     
-    [Delete("/auth/session/{id}")]
+    [Delete("/api/auth/session/{id}")]
     Task<ApiResponse<object?>> DeleteAllAsync(
         string id,
         [Header("x-mfa-ticket")] string ticket,
         CancellationToken token = default);
 
-    [Patch("/auth/session/{id}")]
+    [Patch("/api/auth/session/{id}")]
     Task<ApiResponse<SessionData>> EditSessionAsync(
         [Header("x-session-token")] string sessionToken,
         string id,

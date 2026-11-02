@@ -1,0 +1,65 @@
+<ContentControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:c="https://codewf.com"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:lang="clr-namespace:Stoat.Client.I18n"
+             xmlns:layout="clr-namespace:Stoat.Client.View.Layout"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Stoat.Client.View.Layout.AuthLayout">
+   <ContentControl.ContentTemplate>
+       <DataTemplate x:DataType="x:Object">
+           <Panel>
+               <ScrollViewer Padding="-1, 50">
+                   <ContentPresenter Content="{Binding}"/> 
+               </ScrollViewer>
+               
+               <Border VerticalAlignment="Bottom"
+                       HorizontalAlignment="Stretch"
+                       Background="{DynamicResource Background}"
+                       Height="49"/>
+               
+               <Border Padding="20">
+                   <Panel>
+                       <Button Classes="secondary" 
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Top"
+                               Command="{ReflectionBinding $parent[layout:AuthLayout].ViewModel.ChangeThemeCommand}"
+                               CornerRadius="9998"
+                               Padding="9">
+                           <LucideIcon Kind="{ReflectionBinding $parent[layout:AuthLayout].ViewModel.KindTheme}"/>
+                       </Button>
+               
+                       <StackPanel Orientation="Horizontal" Spacing="9"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Bottom">
+                           <Button Padding="4"
+                                   Command="{ReflectionBinding $parent[layout:AuthLayout].ViewModel.OpenAboutCommand}"
+                                   Classes="none">  
+                               <TextBlock Classes="muted" Text="{c:I18n {x:Static lang:Lang.About}}"/>
+                           </Button>
+                            
+                           <Button Padding="4"
+                                   Command="{ReflectionBinding $parent[layout:AuthLayout].ViewModel.OpenTermsOfServiceCommand}"
+                                   Classes="none">
+                               <TextBlock Classes="muted" Text="{c:I18n {x:Static lang:Lang.TermsOfService}}"/>
+                           </Button>
+                            
+                           <Button Padding="4"
+                                   Command="{ReflectionBinding $parent[layout:AuthLayout].ViewModel.OpenPrivatePolicyCommand}"
+                                   Classes="none">
+                               <TextBlock Classes="muted" Text="{c:I18n {x:Static lang:Lang.PrivacyPolicy}}"/>
+                           </Button>
+                           
+                           <TextBlock Classes="muted" 
+                                      Margin="10,0"
+                                      VerticalAlignment="Center"
+                                      Text="{ReflectionBinding $parent[layout:AuthLayout].ViewModel.Language}"/>
+                       </StackPanel> 
+                   </Panel> 
+               </Border>
+               
+           </Panel>
+       </DataTemplate>
+   </ContentControl.ContentTemplate> 
+</ContentControl>

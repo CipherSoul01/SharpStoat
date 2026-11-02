@@ -5,13 +5,13 @@ using Stoat.Theme.Interfaces.Routing;
 
 namespace Stoat.Client.ViewModel.Setup.Auth;
 
-public partial class AuthViewModel : MainScreenRoutableViewModelBase
+public partial class SetupViewModel : MainScreenRoutableViewModelBase
 {
     public override string? UrlPathSegment => null;
     
     private readonly IStoatService _stoat;
     
-    public AuthViewModel(IMainScreen screen) : base(screen)
+    public SetupViewModel(IMainScreen screen) : base(screen)
     {
         _stoat = AppLocator.Current.GetService<IStoatService>()!;
     }

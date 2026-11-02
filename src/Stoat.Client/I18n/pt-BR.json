@@ -3,10 +3,14 @@
   "description": "Português",
   "cultureName": "pt-BR",
   "Localization": {
+    "Errors": {
+      "UnknownError": "Ocorreu um erro inesperado. Tente novamente.",
+      "InvalidCredentials": "O e-mail ou a senha informados estão incorretos."
+    },
     "Actions": {
       "Confirm": "Confirmar",
       "Cancel": "Cancelar",
-      "Next": "Próximo",
+      "Next": "Avançar",
       "Previous": "Voltar"
     },
     "Footer": {
@@ -15,23 +19,23 @@
       "PrivacyPolicy": "Política de Privacidade"
     },
     "Setup.Auth": {
-      "Title": "Encontre sua comunidade, conecte-se com o mundo.",
-      "Description": "Stoat é uma das melhores maneiras de se manter conectado com seus amigos e comunidade, em qualquer lugar, a qualquer hora.",
-      
-      "Login.Title": "Bom te ver por aqui.",
-      "Login.Description": "Enquanto você estava fora, suas comunidades continuaram acontecendo. Suas conversas, amigos e novidades estão esperando por você. Entre na sua conta e volte de onde parou.",
-      
-      "SignIn": "Iniciar Sessão",
-      "SignUp": "Crie sua conta no site do Stoat.",
-
-      "Welcome": "Entrar no Stoat", 
-      "Prompt": "Configure sua conta e sinta-se em casa.", 
-      "Email": "E-Mail", 
-      "Password": "Senha", 
-      "ForgotPassword": "Redefinir senha", 
-      "Back": "Voltar", 
+      "Title": "Encontre sua comunidade. Conecte-se com o mundo.",
+      "Description": "O Stoat é uma maneira simples de manter contato com seus amigos e comunidades, onde quer que você esteja e a qualquer momento.",
+      "Login.Title": "Que bom ter você de volta!",
+      "Login.Description": "Enquanto você esteve fora, suas comunidades continuaram ativas. Suas conversas, seus amigos e todas as novidades estão esperando por você. Entre na sua conta e continue de onde parou.",
+      "Register.Title": "Crie sua conta",
+      "Register.Description": "Faça parte da comunidade e comece a se conectar.",
+      "SignIn": "Iniciar sessão",
+      "SignIn.Failure": "Não foi possível iniciar sua sessão.",
+      "SignUp": "Crie sua conta no site oficial do Stoat.",
+      "Welcome": "Entre no Stoat",
+      "Prompt": "Acesse sua conta e sinta-se em casa.",
+      "Email": "E-mail",
+      "Password": "Senha",
+      "ForgotPassword": "Esqueceu sua senha?",
+      "Back": "Voltar",
       "Login": "Entrar",
-      "RememberMe": "Lembre de mim"
+      "RememberMe": "Lembrar de mim"
     }
   }
 }

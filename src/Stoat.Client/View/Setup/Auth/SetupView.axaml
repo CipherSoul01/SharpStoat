@@ -6,12 +6,13 @@
              xmlns:c="https://codewf.com"
              xmlns:lang="clr-namespace:Stoat.Client.I18n"
              Background="{DynamicResource Background}"
-             x:DataType="vm:AuthViewModel"
+             x:DataType="vm:SetupViewModel"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="550"
-             x:Class="Stoat.Client.View.Setup.Auth.AuthView">
+             x:Class="Stoat.Client.View.Setup.Auth.SetupView">
     <Panel>
         <Card HorizontalAlignment="Center" 
                       VerticalAlignment="Center"
+                      MaxWidth="400"
                       Spacing="30">
             <Card.Header>
                 <Svg Path="../../../Assets/logo.svg"
@@ -30,12 +31,10 @@
                            Classes="h3"
                            TextAlignment="Center"
                            FontWeight="Bold"
-                           TextWrapping="Wrap"
-                           MaxWidth="300"/>
+                           TextWrapping="Wrap"/>
                 <TextBlock Text="{c:I18n {x:Static lang:Lang.Description}}" 
                            Classes="small muted"
-                           TextWrapping="Wrap"
-                           MaxWidth="300"/>
+                           TextWrapping="Wrap"/>
                 
             </StackPanel>
             

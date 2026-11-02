@@ -1,13 +1,18 @@
+using System.Collections.Concurrent;
+using System.Reflection;
 using System.Runtime.ExceptionServices;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Threading;
+using Microsoft.Extensions.DependencyInjection;
 using ReactiveUI;
 using ReactiveUI.Avalonia;
 using ReactiveUI.Primitives;
 using ReactiveUI.Primitives.Disposables;
 using ReactiveUI.Primitives.Signals;
 using Splat;
+using Stoat.Theme.Attributes;
+using Stoat.Theme.Interfaces.Routing;
 
 namespace Stoat.Theme.Controls.ReactiveUI;
 
@@ -16,6 +21,8 @@ public class LayoutViewHost :
     IActivatableView,
     IEnableLogger
 {
+    private static readonly ConcurrentDictionary<Type, Type?> LayoutTypes = new();
+    
     private static void Throw(Exception error) =>
         ExceptionDispatchInfo.Capture(error).Throw();
 
@@ -30,14 +37,19 @@ public class LayoutViewHost :
     public static readonly StyledProperty<object?> DefaultContentProperty =
         ViewModelViewHost.DefaultContentProperty.AddOwner<LayoutViewHost>();
 
-    public static readonly StyledProperty<LayoutState?> LayoutProperty =
-        AvaloniaProperty.Register<LayoutViewHost, LayoutState?>(
-            nameof(Layout));
+    public static readonly StyledProperty<IMainScreen> MainScreenProperty = AvaloniaProperty.Register<LayoutViewHost, IMainScreen>(
+        nameof(MainScreen));
+
+    public IMainScreen MainScreen
+    {
+        get => GetValue(MainScreenProperty);
+        set => SetValue(MainScreenProperty, value);
+    }
 
     private MultipleDisposable? _navigationDisposables;
-
     private CancellationTokenSource? _navigationCancellation;
-
+    private object? _currentLayout;
+    
     public RoutingState? Router
     {
         get => GetValue(RouterProperty);
@@ -56,13 +68,8 @@ public class LayoutViewHost :
         set => SetValue(DefaultContentProperty, value);
     }
 
-    public LayoutState? Layout
-    {
-        get => GetValue(LayoutProperty);
-        set => SetValue(LayoutProperty, value);
-    }
-
     public IViewLocator? ViewLocator { get; set; }
+    public IServiceProvider? Provider { get; set; } 
 
     protected override Type StyleKeyOverride =>
         typeof(ContentControl);
@@ -99,6 +106,7 @@ public class LayoutViewHost :
 
     private MultipleDisposable CreateNavigationDisposables()
     {
+        
         var disposables = new MultipleDisposable();
 
         var routerChanges =
@@ -179,6 +187,10 @@ public class LayoutViewHost :
                 ViewLocator ??
                 global::ReactiveUI.ViewLocator.Current;
 
+            var serviceProvider = Provider ??
+                AppLocator.Current.GetService<IServiceProvider>() ??
+                throw new NullReferenceException(typeof(IServiceProvider).FullName);
+
             
             var viewInstance =
                 viewLocator.ResolveView(
@@ -213,20 +225,19 @@ public class LayoutViewHost :
             cancellationToken.ThrowIfCancellationRequested();
 
             ReactiveContentControlBase? layoutControl = null;
+            
+            var viewType = viewInstance.GetType();
 
-            if (Layout?.Current is { } layoutViewModel)
+            var attribute = viewType.GetCustomAttribute<LayoutHostAttribute>();
+            
+            if (attribute is { } layoutViewModel)
             {
-                var layoutInstance =
-                    viewLocator.ResolveView(layoutViewModel);
-
                 cancellationToken.ThrowIfCancellationRequested();
-
-                if (layoutInstance is ReactiveContentControlBase control)
-                {
-                    layoutControl = control;
-                }
+                
+                layoutControl = GetLayoutControl(serviceProvider, viewLocator, attribute);
             }
-
+            else
+                _currentLayout = null;
             
             await Dispatcher.Resume(
                 DispatcherPriority.Background);
@@ -254,6 +265,51 @@ public class LayoutViewHost :
         {
             Throw(error);
         }
+    }
+
+    private ReactiveContentControlBase? GetLayoutControl(
+        IServiceProvider provider,
+        IViewLocator locator,
+        LayoutHostAttribute hostAttribute)
+    {
+        var viewModelType = GetViewModelType(hostAttribute.LayoutControl);
+
+        if (viewModelType is null)
+            throw new NotSupportedException(
+                $"Unsupported layout type: {hostAttribute.LayoutControl.FullName}");
+
+        if (_currentLayout is IDataContextProvider context && context.DataContext?.GetType() == viewModelType)
+            return null;
+
+        var instance = ActivatorUtilities.CreateInstance(
+            provider,
+            viewModelType,
+            MainScreen);
+
+        var layoutInstance = locator.ResolveView(instance);
+
+        if (layoutInstance is not ReactiveContentControlBase control)
+            throw new InvalidOperationException(
+                $"Layout must resolve to {nameof(ReactiveContentControlBase)}.");
+
+        _currentLayout = layoutInstance;
+
+        return control;
+    }
+    
+    private static Type? GetViewModelType(Type type)
+    {
+        return LayoutTypes.GetOrAdd(type, static type =>
+        {
+            if (typeof(ReactiveObject).IsAssignableFrom(type))
+                return type;
+
+            return type.GetInterfaces()
+                .FirstOrDefault(x =>
+                    x.IsGenericType &&
+                    x.GetGenericTypeDefinition() == typeof(IViewFor<>))
+                ?.GetGenericArguments()[0];
+        });
     }
 
     private void CancelNavigation()

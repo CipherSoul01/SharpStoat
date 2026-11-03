@@ -1,6 +1,7 @@
 using Lucide.Avalonia;
 using ReactiveUI;
 using ReactiveUI.Primitives;
+using ReactiveUI.SourceGenerators;
 
 namespace Stoat.Client.ViewModel.Setup.Auth;
 
@@ -13,38 +14,25 @@ public partial class LoginViewModel
     private ObservableAsPropertyHelper<bool>? _showSecretHelper;
     public bool ShowSecret => _showSecretHelper?.Value ?? false;
     
+    [Reactive]
+    private bool _isRegister;
+    
+    [Reactive]
     private string _email;
-    public string Email
-    {
-        get => _email;
-        set => this.RaiseAndSetIfChanged(ref _email, value);
-    }
     
+    [Reactive]
     private string _password;
-    public string Password
-    {
-        get => _password;
-        set => this.RaiseAndSetIfChanged(ref _password, value);
-    }
     
+    [Reactive]
     private bool _showPassword;
-    public bool ShowPassword
-    {
-        get => _showPassword;
-        set => this.RaiseAndSetIfChanged(ref _showPassword, value);
-    }
 
+    [Reactive]
     private int _logoClick;
-    public int LogoClick
-    {
-        get => _logoClick;
-        set => this.RaiseAndSetIfChanged(ref _logoClick, value);
-    }
 
     protected sealed override void SetupRx()
     {
         _showPasswordIconHelper = this.WhenAnyValue(x => x.ShowPassword)
-            .Select(x => x ? LucideIconKind.Eye : LucideIconKind.EyeOff)
+            .Select(x => x ? LucideIconKind.EyeOff : LucideIconKind.Eye)
             .ToProperty(this, x => x.ShowPasswordIcon, out _showPasswordIconHelper);
         
         _showSecretHelper = this.WhenAnyValue(x => x.LogoClick)

@@ -1,20 +1,14 @@
-using Splat;
-using Stoat.Client.ViewModel.Shared;
+using Stoat.Client.ViewModel.Layout.Shared;
 using Stoat.Core.Interfaces;
 using Stoat.Theme.Interfaces.Routing;
 
 namespace Stoat.Client.ViewModel.Layout;
 
-public sealed partial class SetupLayoutViewModel : MainScreenRoutableViewModelBase, ILayoutViewModel
+public sealed partial class SetupLayoutViewModel : SetupViewModelBase, ILayoutViewModel
 {
-    private readonly IStoatService _stoat;
     
-    public SetupLayoutViewModel(IMainScreen hostScreen) : base(hostScreen)
+    public SetupLayoutViewModel(IMainScreen hostScreen, IStoatService stoat) : base(hostScreen, stoat)
     {
-        _stoat = AppLocator.Current.GetService<IStoatService>()!;
-        
         SetupRx();
     }
-
-    public override string? UrlPathSegment => null;
 }

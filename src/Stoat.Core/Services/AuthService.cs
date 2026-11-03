@@ -1,5 +1,6 @@
 using System.Security.Cryptography;
 using System.Text.Json;
+using Refit;
 using Stoat.Api.Interfaces.Auth;
 using Stoat.Api.Interfaces.Stoat;
 using Stoat.Api.Model;
@@ -26,21 +27,36 @@ public class AuthService : IAuthService
         _mfa = mfa;
     }
 
-    public async Task<StoatResponse<bool>> LoginAsync(string email, string username, string password, CancellationToken token = default)
+    public async Task<StoatResponse> LoginAsync(string email, string service_name, string password, CancellationToken token = default)
     {
         var request = new LoginData.Request()
         {
             Email = email,
             Password = password,
-            FriendlyName = username
+            FriendlyName = service_name
         };
 
         token.ThrowIfCancellationRequested();
         
         var response = await _session.LoginAsync(request, token);
 
+
+
         if (!response.IsSuccessful)
-            return new StoatResponse<bool>(false);
+        {
+            if (response.HasResponseError(out var error))
+            {
+                using var document = JsonDocument.Parse(error?.Content ?? "{}");
+                
+                var type = document.RootElement
+                    .GetProperty("type")
+                    .GetString();
+                
+                return StoatResponse.Failure(type ?? "unknownError", diagnostics:[response.Error?.Message ?? "Unknown error"]);  
+            }
+            
+            return StoatResponse.Failure("unknownError", diagnostics:[response.Error?.Message ?? "Unknown error"]); 
+        }
 
         if (response.HasContent)
         {
@@ -59,20 +75,20 @@ public class AuthService : IAuthService
             await _store.SetAsync("stoat-iv", Convert.ToBase64String(aes.IV), token);
         }
         
-        return new StoatResponse<bool>(response.HasContent);
+        return StoatResponse.Success();
     }
 
-    public async Task<StoatResponse<bool>> LogoutAsync(CancellationToken token = default)
+    public async Task<StoatResponse> LogoutAsync(CancellationToken token = default)
     {
         if(Session == null || Session.Token == null)
-            return new StoatResponse<bool>([ "Session is null" ]);
+            return StoatResponse.Failure("SessionNullError");
         
         token.ThrowIfCancellationRequested();
         
         var response = await _session.LogoutAsync(Session.Token, token);
 
         if (!response.IsSuccessful)
-            return new StoatResponse<bool>([ response.Error?.Message ?? "Unknown error" ]);
+            return StoatResponse.Failure(response.Error?.Message ?? "Unknown error");
 
         var sessionPath = Path.Combine(StoatDir.Local, "session.bin");
         
@@ -82,20 +98,22 @@ public class AuthService : IAuthService
         await _store.DeleteAsync("stoat-key", token);
         await _store.DeleteAsync("stoat-iv", token);
         
-        return new StoatResponse<bool>(true);
+        Session = null;
+        
+        return StoatResponse.Success();
     }
 
-    public async Task<StoatResponse<bool>> RestoreSessionAsync(CancellationToken token = default)
+    public async Task<StoatResponse> RestoreSessionAsync(CancellationToken token = default)
     {
         if (Session is not null)
-            return new(true);
+            return StoatResponse.Success();
 
         token.ThrowIfCancellationRequested();
 
         var sessionPath = Path.Combine(StoatDir.Local, "session.bin");
 
         if (!File.Exists(sessionPath))
-            return new StoatResponse<bool>(["Session not found"]);
+            return StoatResponse.NotFound();
 
         try
         {
@@ -105,9 +123,7 @@ public class AuthService : IAuthService
             if (string.IsNullOrWhiteSpace(keyString?.Password) ||
                 string.IsNullOrWhiteSpace(ivString?.Password))
             {
-                return new StoatResponse<bool>([
-                    "Session encryption keys not found"
-                ]);
+                return StoatResponse.NotFound("Session encryption keys not found");
             }
 
             var key = Convert.FromBase64String(keyString.Password);
@@ -117,35 +133,34 @@ public class AuthService : IAuthService
 
             Session = await DecryptAsync(encrypted, key, iv);
 
-            return new(true);
+            return StoatResponse.Success();
         }
         catch (CryptographicException ex)
         {
-            return new StoatResponse<bool>([
-                $"Failed to decrypt session: {ex.Message}"
-            ]);
+            return StoatResponse.Failure(
+                $"Failed to decrypt session: {ex.Message}");
         }
         catch (JsonException ex)
         {
-            return new StoatResponse<bool>([
-                $"Failed to deserialize session: {ex.Message}"
-            ]);
+            return StoatResponse.Failure(
+                $"Failed to deserialize session: {ex.Message}");
         }
     }
 
     public async Task<StoatResponse<ICollection<SessionData>>> GetAllAsync(CancellationToken token = default)
     {
         if(Session == null || Session.Token == null)
-            return new StoatResponse<ICollection<SessionData>>([ "Session is null" ]);
+            return StoatResponse.Failure("SessionNullError" );
         
         token.ThrowIfCancellationRequested();
 
         var response = await _session.GetAllAsync(Session.Token, token);
         
         if (!response.IsSuccessful || !response.HasContent)
-            return new StoatResponse<ICollection<SessionData>>([response.Error?.Message ?? "Unknown error"]);
+            return StoatResponse.Failure("ResponseError", 
+                diagnostics:[response.Error?.Message ?? "Unknown error"]);
 
-        return new StoatResponse<ICollection<SessionData>>(response.Content);
+        return response.Content.ToList();
     }
 
     private async Task<byte[]> EncryptAsync(StoatSession data, byte[] key, byte[] iv)

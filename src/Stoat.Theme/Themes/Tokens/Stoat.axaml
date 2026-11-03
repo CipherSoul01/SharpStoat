@@ -4,71 +4,97 @@
 
     <ResourceDictionary.ThemeDictionaries>
 
-                        <ResourceDictionary x:Key="Light">
-                            <!-- Content -->
-                            <SolidColorBrush x:Key="TextPrimary">#1b1b21</SolidColorBrush>
-                            <SolidColorBrush x:Key="TextSecondary">#848389</SolidColorBrush>
+        <ResourceDictionary x:Key="Light">
+            <!-- Content -->
+            <SolidColorBrush x:Key="TextPrimary">#1b1b21</SolidColorBrush>
+            <SolidColorBrush x:Key="TextSecondary">#848389</SolidColorBrush>
 
-                            <!-- Backgrounds -->
-                            <SolidColorBrush x:Key="Background">#fbf8ff</SolidColorBrush>
-                            <SolidColorBrush x:Key="BackgroundElevated">#f5f2fa</SolidColorBrush>
-                            <SolidColorBrush x:Key="BackgroundSubtle">#e9e7ef</SolidColorBrush>
-                            <SolidColorBrush x:Key="BackgroundDeep">#262038</SolidColorBrush>
+            <!-- Backgrounds -->
+            <SolidColorBrush x:Key="Background">#fbf8ff</SolidColorBrush>
+            <SolidColorBrush x:Key="BackgroundElevated">#f5f2fa</SolidColorBrush>
+            <SolidColorBrush x:Key="BackgroundSubtle">#e9e7ef</SolidColorBrush>
+            <SolidColorBrush x:Key="BackgroundDeep">#262038</SolidColorBrush>
 
-                            <!-- Game -->
-                            <SolidColorBrush x:Key="GameCell">#DDD9E8</SolidColorBrush>
-                            
-                            <!-- Surfaces -->
-                            <SolidColorBrush x:Key="Surface">#efedf4</SolidColorBrush>
+            <!-- Game -->
+            <SolidColorBrush x:Key="GameCell">#DDD9E8</SolidColorBrush>
 
-                            <!-- Accent -->
-                            <SolidColorBrush x:Key="Accent">#505b92</SolidColorBrush>
-                            <SolidColorBrush x:Key="AccentHover">#4b5588</SolidColorBrush>
+            <!-- Surfaces -->
+            <SolidColorBrush x:Key="Surface">#efedf4</SolidColorBrush>
 
-                            <!-- Secondary -->
-                            <SolidColorBrush x:Key="Secondary">#b9c3ff</SolidColorBrush>
-                            <SolidColorBrush x:Key="SecondaryHover">#bcc5fd</SolidColorBrush>
+            <!-- Accent -->
+            <SolidColorBrush x:Key="Accent">#505b92</SolidColorBrush>
+            <SolidColorBrush x:Key="AccentHover">#4b5588</SolidColorBrush>
 
-                            <!-- Interactive -->
-                            <SolidColorBrush x:Key="Link">#4f5fbd</SolidColorBrush>
+            <!-- Secondary -->
+            <SolidColorBrush x:Key="Secondary">#b9c3ff</SolidColorBrush>
+            <SolidColorBrush x:Key="SecondaryHover">#bcc5fd</SolidColorBrush>
 
-                            <system:String x:Key="LogoSvgCss">
-                                path { fill: #1b1b21 }
-                            </system:String>
-                        </ResourceDictionary>
+            <!-- Interactive -->
+            <SolidColorBrush x:Key="Link">#4f5fbd</SolidColorBrush>
 
-                        <ResourceDictionary x:Key="Dark">
-                            <!-- Content -->
-                            <SolidColorBrush x:Key="TextPrimary">#e3e1e9</SolidColorBrush>
-                            <SolidColorBrush x:Key="TextSecondary">#848389</SolidColorBrush>
+            <!-- Feedback -->
+            <SolidColorBrush x:Key="FeedbackDanger">#c43d4b</SolidColorBrush>
+            <SolidColorBrush x:Key="FeedbackDangerHover">#a92f3d</SolidColorBrush>
 
-                            <!-- Backgrounds -->
-                            <SolidColorBrush x:Key="Background">#121318</SolidColorBrush>
-                            <SolidColorBrush x:Key="BackgroundElevated">#1b1b21</SolidColorBrush>
-                            <SolidColorBrush x:Key="BackgroundSubtle">#292a2f</SolidColorBrush>
-                            <SolidColorBrush x:Key="BackgroundDeep">#262038</SolidColorBrush>
-                            
-                            <!-- Game -->
-                            <SolidColorBrush x:Key="GameCell">#302B43</SolidColorBrush>
+            <SolidColorBrush x:Key="FeedbackSuccess">#27845b</SolidColorBrush>
+            <SolidColorBrush x:Key="FeedbackSuccessHover">#206e4b</SolidColorBrush>
 
-                            <!-- Surfaces -->
-                            <SolidColorBrush x:Key="Surface">#1f1f25</SolidColorBrush>
+            <SolidColorBrush x:Key="FeedbackWarning">#a96b16</SolidColorBrush>
+            <SolidColorBrush x:Key="FeedbackWarningHover">#8e5911</SolidColorBrush>
 
-                            <!-- Accent -->
-                            <SolidColorBrush x:Key="Accent">#505b92</SolidColorBrush>
-                            <SolidColorBrush x:Key="AccentHover">#4b5588</SolidColorBrush>
+            <SolidColorBrush x:Key="FeedbackInfo">#4269bd</SolidColorBrush>
+            <SolidColorBrush x:Key="FeedbackInfoHover">#35569e</SolidColorBrush>
 
-                            <!-- Secondary -->
-                            <SolidColorBrush x:Key="Secondary">#424659</SolidColorBrush>
-                            <SolidColorBrush x:Key="SecondaryHover">#4f5264</SolidColorBrush>
+            <system:String x:Key="LogoSvgCss">
+                path { fill: #1b1b21 }
+            </system:String>
+        </ResourceDictionary>
 
-                            <!-- Interactive -->
-                            <SolidColorBrush x:Key="Link">#b9c3ff</SolidColorBrush>
+        <ResourceDictionary x:Key="Dark">
+            <!-- Content -->
+            <SolidColorBrush x:Key="TextPrimary">#e3e1e9</SolidColorBrush>
+            <SolidColorBrush x:Key="TextSecondary">#848389</SolidColorBrush>
 
-                            <system:String x:Key="LogoSvgCss">
-                                path { fill: #e3e1e9 }
-                            </system:String>
-                        </ResourceDictionary>
+            <!-- Backgrounds -->
+            <SolidColorBrush x:Key="Background">#121318</SolidColorBrush>
+            <SolidColorBrush x:Key="BackgroundElevated">#1b1b21</SolidColorBrush>
+            <SolidColorBrush x:Key="BackgroundSubtle">#292a2f</SolidColorBrush>
+            <SolidColorBrush x:Key="BackgroundDeep">#262038</SolidColorBrush>
 
-                    </ResourceDictionary.ThemeDictionaries>
+            <!-- Game -->
+            <SolidColorBrush x:Key="GameCell">#302B43</SolidColorBrush>
+
+            <!-- Surfaces -->
+            <SolidColorBrush x:Key="Surface">#1f1f25</SolidColorBrush>
+
+            <!-- Accent -->
+            <SolidColorBrush x:Key="Accent">#505b92</SolidColorBrush>
+            <SolidColorBrush x:Key="AccentHover">#4b5588</SolidColorBrush>
+
+            <!-- Secondary -->
+            <SolidColorBrush x:Key="Secondary">#424659</SolidColorBrush>
+            <SolidColorBrush x:Key="SecondaryHover">#4f5264</SolidColorBrush>
+
+            <!-- Interactive -->
+            <SolidColorBrush x:Key="Link">#b9c3ff</SolidColorBrush>
+
+            <!-- Feedback -->
+            <SolidColorBrush x:Key="FeedbackDanger">#f07178</SolidColorBrush>
+            <SolidColorBrush x:Key="FeedbackDangerHover">#ff858b</SolidColorBrush>
+
+            <SolidColorBrush x:Key="FeedbackSuccess">#69c99a</SolidColorBrush>
+            <SolidColorBrush x:Key="FeedbackSuccessHover">#83d9ad</SolidColorBrush>
+
+            <SolidColorBrush x:Key="FeedbackWarning">#e9b563</SolidColorBrush>
+            <SolidColorBrush x:Key="FeedbackWarningHover">#f3c77e</SolidColorBrush>
+
+            <SolidColorBrush x:Key="FeedbackInfo">#83a9f5</SolidColorBrush>
+            <SolidColorBrush x:Key="FeedbackInfoHover">#a0bbfa</SolidColorBrush>
+
+            <system:String x:Key="LogoSvgCss">
+                path { fill: #e3e1e9 }
+            </system:String>
+        </ResourceDictionary>
+
+    </ResourceDictionary.ThemeDictionaries>
 </ResourceDictionary>

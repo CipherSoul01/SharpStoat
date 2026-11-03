@@ -2,15 +2,18 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:primitives="using:Avalonia.Controls.Primitives"
                     xmlns:utilities="clr-namespace:Stoat.Theme.Utilities">
+
     <Design.PreviewWith>
         <Border Width="600" Height="500">
-            <Dialog Title="Delete Project?"
+            <Dialog Classes="destructive"
+                    Title="Delete Project?"
                     Description="This action cannot be undone."
                     IsOpen="True">
                 <StackPanel Spacing="8">
                     <Label Content="Project name" />
                     <TextBox PlaceholderText="my-project" />
                 </StackPanel>
+
                 <Dialog.Footer>
                     <StackPanel Orientation="Horizontal" Spacing="8">
                         <Button Classes="outline" Content="Cancel" />
@@ -20,87 +23,117 @@
             </Dialog>
         </Border>
     </Design.PreviewWith>
-    
+
     <ControlTheme TargetType="Dialog" x:Key="{x:Type Dialog}">
         <Setter Property="ZIndex" Value="1000"/>
+
         <Setter Property="Template">
             <ControlTemplate>
                 <Panel Name="PART_Root" IsVisible="False">
                     <Border Name="PART_Scrim"
                             Background="#99000000"
-                            Width="{Binding  $parent[primitives:OverlayLayer].Bounds.Width}"
+                            Width="{Binding $parent[primitives:OverlayLayer].Bounds.Width}"
                             Height="{Binding $parent[primitives:OverlayLayer].Bounds.Height}"
                             Focusable="False"
                             IsHitTestVisible="False"
                             Opacity="0">
+
                         <Border.Transitions>
                             <Transitions>
-                                <DoubleTransition Property="Opacity" Duration="0:0:0.15" />
+                                <DoubleTransition Property="Opacity"
+                                                  Duration="0:0:0.15"/>
                             </Transitions>
                         </Border.Transitions>
-                        
-                        <Border Name="PART_Card" 
+
+                        <Border Name="PART_Card"
                                 ClipToBounds="True"
                                 Margin="24"
-                                BorderThickness="1" BorderBrush="{DynamicResource Border}" 
+                                BorderThickness="1"
+                                BorderBrush="{DynamicResource Border}"
                                 CornerRadius="10"
-                                Width="{TemplateBinding CardWidth}" Height="{TemplateBinding CardHeight}"
+                                Width="{TemplateBinding CardWidth}"
+                                Height="{TemplateBinding CardHeight}"
                                 MaxWidth="{TemplateBinding CardMaxWidth}"
                                 MinWidth="{TemplateBinding CardMinWidth}"
-                                HorizontalAlignment="Center" VerticalAlignment="Center"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
                                 Background="{DynamicResource Background}">
+
                             <Border.MaxHeight>
-                                <MultiBinding Converter="{x:Static DialogCardMaxHeightConverter.Instance}" ConverterParameter="48">
-                                    <TemplateBinding Property="CardMaxHeight" />
-                                    <Binding Path="$parent[primitives:OverlayLayer].Bounds.Height" />
+                                <MultiBinding Converter="{x:Static DialogCardMaxHeightConverter.Instance}"
+                                              ConverterParameter="48">
+                                    <TemplateBinding Property="CardMaxHeight"/>
+                                    <Binding Path="$parent[primitives:OverlayLayer].Bounds.Height"/>
                                 </MultiBinding>
                             </Border.MaxHeight>
-                            
+
                             <Grid RowDefinitions="*, Auto">
                                 <Border Grid.Row="0" Padding="24">
-                                   <Grid RowDefinitions="Auto, Auto, *">
-                                        <ContentPresenter Grid.Row="0"
-                                                          Name="PART_Title"
-                                                          Content="{TemplateBinding Title}"
-                                                          TextElement.Foreground="{DynamicResource Foreground}"
-                                                          IsVisible="{TemplateBinding Title, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"
-                                                          TextElement.FontSize="18" TextElement.FontWeight="SemiBold"
-                                                          TextBlock.TextWrapping="Wrap"
-                                                          Margin="0,0,0,20"/>
-                                        
+                                    <Grid RowDefinitions="Auto, Auto, *">
+
+                                        <!-- Header -->
+                                        <Grid Grid.Row="0"
+                                              ColumnDefinitions="Auto, *"
+                                              ColumnSpacing="12"
+                                              Margin="0,0,0,20">
+
+                                            <Viewbox Width="24"
+                                                     Height="24"
+                                                     VerticalAlignment="Top">
+                                                <LucideIcon Name="PART_Icon"
+                                                            Kind="Info"
+                                                            Width="24"
+                                                            Height="24"
+                                                            Foreground="{DynamicResource FeedbackInfo}"/>
+                                            </Viewbox>
+
+                                            <ContentPresenter Grid.Column="1"
+                                                              Name="PART_Title"
+                                                              Content="{TemplateBinding Title}"
+                                                              TextElement.Foreground="{DynamicResource Foreground}"
+                                                              IsVisible="{TemplateBinding Title, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"
+                                                              TextElement.FontSize="18"
+                                                              TextElement.FontWeight="SemiBold"
+                                                              TextBlock.TextWrapping="Wrap"/>
+                                        </Grid>
+
+                                        <!-- Description -->
                                         <ContentPresenter Grid.Row="1"
                                                           Name="PART_Description"
                                                           Content="{TemplateBinding Description}"
                                                           IsVisible="{TemplateBinding Description, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"
-                                                          TextElement.FontSize="14" 
+                                                          TextElement.FontSize="14"
                                                           TextElement.Foreground="{DynamicResource ForegroundMuted}"
                                                           TextBlock.TextWrapping="Wrap"
                                                           Margin="0,0,24,0"/>
-                                        
+
+                                        <!-- Content -->
                                         <ScrollViewer Grid.Row="2"
                                                       VerticalScrollBarVisibility="Auto"
                                                       HorizontalScrollBarVisibility="Disabled">
                                             <ContentPresenter Content="{TemplateBinding Content}"
-                                                                      ContentTemplate="{TemplateBinding ContentTemplate}"/>
+                                                              ContentTemplate="{TemplateBinding ContentTemplate}"/>
                                         </ScrollViewer>
-                                   </Grid> 
+                                    </Grid>
                                 </Border>
-                                
-                                
+
+                                <!-- Footer -->
                                 <ContentPresenter Grid.Row="1"
                                                   Name="PART_Footer"
-                                                  Padding="24, 20"
+                                                  Padding="24,20"
                                                   Content="{TemplateBinding Footer}"
-                                                  BorderThickness="0, 1, 0, 0"
+                                                  BorderThickness="0,1,0,0"
                                                   BorderBrush="{DynamicResource Border}"
                                                   Background="{DynamicResource BackgroundElevated}"
                                                   IsVisible="{TemplateBinding Footer, Converter={x:Static ObjectConverters.IsNotNull}}"
                                                   HorizontalContentAlignment="Right"/>
-                                
+
+                                <!-- Close -->
                                 <Button Name="PART_CloseButton"
                                         Grid.Row="0"
                                         Classes="ghost icon"
-                                        Width="28" Height="28"
+                                        Width="28"
+                                        Height="28"
                                         Padding="0"
                                         HorizontalAlignment="Right"
                                         VerticalAlignment="Top"
@@ -110,18 +143,53 @@
                                     <Viewbox Width="16" Height="16">
                                         <LucideIcon Kind="X"
                                                     Size="24"
-                                                    Width="24" Height="24"
+                                                    Width="24"
+                                                    Height="24"
                                                     Foreground="{DynamicResource Foreground}"/>
-                                       
                                     </Viewbox>
                                 </Button>
                             </Grid>
                         </Border>
-                        
                     </Border>
-                    
                 </Panel>
             </ControlTemplate>
         </Setter>
+
+        <!-- Error -->
+        <Style Selector="^.error /template/ LucideIcon#PART_Icon">
+            <Setter Property="Kind" Value="CircleAlert"/>
+            <Setter Property="Foreground" Value="{DynamicResource FeedbackDanger}"/>
+        </Style>
+
+        <!-- Success -->
+        <Style Selector="^.success /template/ LucideIcon#PART_Icon">
+            <Setter Property="Kind" Value="CircleCheck"/>
+            <Setter Property="Foreground" Value="{DynamicResource FeedbackSuccess}"/>
+        </Style>
+
+        <!-- Warning -->
+        <Style Selector="^.warning /template/ LucideIcon#PART_Icon">
+            <Setter Property="Kind" Value="TriangleAlert"/>
+            <Setter Property="Foreground" Value="{DynamicResource FeedbackWarning}"/>
+        </Style>
+
+        <!-- Information -->
+        <Style Selector="^.info /template/ LucideIcon#PART_Icon">
+            <Setter Property="Kind" Value="Info"/>
+            <Setter Property="Foreground" Value="{DynamicResource FeedbackInfo}"/>
+        </Style>
+
+        <!-- Confirmation -->
+        <Style Selector="^.confirm /template/ LucideIcon#PART_Icon">
+            <Setter Property="Kind" Value="HandHelping"/>
+            <Setter Property="Foreground" Value="{DynamicResource FeedbackInfo}"/>
+        </Style>
+
+        <!-- Destructive -->
+        <Style Selector="^.destructive /template/ LucideIcon#PART_Icon">
+            <Setter Property="Kind" Value="Trash"/>
+            <Setter Property="Foreground" Value="{DynamicResource FeedbackDanger}"/>
+        </Style>
+
     </ControlTheme>
 </ResourceDictionary>

@@ -281,6 +281,12 @@ public sealed class SnakeGame : Control
 
     private void UpdateGame()
     {
+        if (_snake.Count == Columns * Rows)
+        {
+            GameOver();
+            return;
+        }
+        
         if (!PlayerControlled)
         {
             UpdateAutomaticDirection();

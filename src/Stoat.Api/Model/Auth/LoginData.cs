@@ -13,6 +13,7 @@ public class LoginData
     
     public class Response
     {
+        [JsonPropertyName("type")] public string? Type { get; set; }
         [JsonPropertyName("result")] public string? Result { get; set; }
         [JsonPropertyName("_id")] public string? Id { get; set; }
         

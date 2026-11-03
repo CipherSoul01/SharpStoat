@@ -22,7 +22,7 @@ public class StoatService : IStoatService
         _configuration = configuration;
     }
 
-    public async Task<StoatResponse<bool>> SetBaseAddressAsync(Uri address)
+    public async Task<StoatResponse> SetBaseAddressAsync(Uri address)
     {
         var outAddress = _configuration.BaseAddress;
         
@@ -34,7 +34,7 @@ public class StoatService : IStoatService
         {
             _configuration.SetBaseAddress(outAddress ?? new Uri("https://stoat.chat/"));
 
-            return new StoatResponse<bool>([result.Error?.Message ?? "Unknown error"]);
+            return StoatResponse.Failure(result.Error?.Message ?? "Unknown error");
         }
         
         _configuration.SetConfig(result.Content);
@@ -46,10 +46,10 @@ public class StoatService : IStoatService
             Path.Combine(StoatDir.Options, "server.json"), 
             JsonSerializer.Serialize(result.Content));
         
-        return new StoatResponse<bool>(true);
+        return StoatResponse.Success();
     }
 
-    public async Task<StoatResponse<bool>> SetupConfigAsync()
+    public async Task<StoatResponse> SetupConfigAsync()
     {
         var serverConfig = Path.Combine(StoatDir.Options, "server.json");
 
@@ -66,13 +66,13 @@ public class StoatService : IStoatService
             _configuration.SetBaseAddress(new Uri(config.App ?? "https://stoat.chat/"));
             _configuration.SetConfig(config);
             
-            return new StoatResponse<bool>(true);
+            return StoatResponse.Success();
         }
         catch(Exception e)
         {
             await SetBaseAddressAsync(new Uri("https://stoat.chat/"));
             
-            return new StoatResponse<bool>([ e.Message ]);
+            return StoatResponse.Success(diagnostics:[e.Message]);
         }
     }
 }

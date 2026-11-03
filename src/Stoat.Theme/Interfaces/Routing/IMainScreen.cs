@@ -5,7 +5,6 @@ namespace Stoat.Theme.Interfaces.Routing;
 
 public interface IMainScreen : IScreen
 {
-    public LayoutState Layout { get; } 
     public object Dialog { get; set; }
 }
 

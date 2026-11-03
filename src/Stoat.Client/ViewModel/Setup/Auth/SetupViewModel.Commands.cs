@@ -6,7 +6,7 @@ using ReactiveUI.SourceGenerators;
 
 namespace Stoat.Client.ViewModel.Setup.Auth;
 
-public partial class AuthViewModel
+public partial class SetupViewModel
 {
     [ReactiveCommand]
     private async Task OpenLoginPage()

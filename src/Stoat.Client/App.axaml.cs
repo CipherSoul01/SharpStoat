@@ -11,17 +11,26 @@ public partial class App : Application
         AvaloniaXamlLoader.Load(this);
     }
 
-    public override void OnFrameworkInitializationCompleted()
+    public override async void OnFrameworkInitializationCompleted()
     {
-        
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
-            /*ThemeService.Instance.SetupDefaultTheme();
+            var plash = new SplashWindow();
             
-            if(Design.IsDesignMode)
-                ThemeService.Instance.SetTheme(StoatThemeVariants.Dark);*/
+            desktop.MainWindow = plash;
             
-            desktop.MainWindow = new MainWindow();
+            plash.Show();
+
+            await plash.InitializeServicesAsync();
+            
+            var mainWindow = new MainWindow();
+            
+            desktop.MainWindow = mainWindow;
+            
+            mainWindow.Show();
+            plash.Close();
+            
+            //desktop.MainWindow = new SplashWindow();
         }
 
         base.OnFrameworkInitializationCompleted();

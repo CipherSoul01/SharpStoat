@@ -62,7 +62,7 @@ public partial class SplashWindow : Window
     public async Task InitializeServicesAsync()
     {
         await _stoat.SetupConfigAsync();
-        await Task.Delay(10000);
+        await Task.Delay(5000);
     }
 
     private void Animate(object? sender, EventArgs e)

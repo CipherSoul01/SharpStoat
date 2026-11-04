@@ -132,8 +132,8 @@ public sealed class SnakeGame : Control
             PlayerControlledProperty);
     }
 
-    private const int Columns = 20;
-    private const int Rows = 20;
+    private int Columns = 50;
+    private int Rows = 20;
 
     private readonly List<Point> _snake = [];
     private readonly DispatcherTimer _timer;
@@ -189,11 +189,15 @@ public sealed class SnakeGame : Control
 
         _snake.Clear();
 
-        _snake.Add(new Point(5, 10));
-        _snake.Add(new Point(4, 10));
-        _snake.Add(new Point(3, 10));
+        var rows = Rows - 1;
 
-        _food = new Point(15, 10);
+        var snakeRow = Math.Min(10, rows);
+
+        _snake.Add(new Point(4, snakeRow - 1));
+        _snake.Add(new Point(3, snakeRow - 1));
+        _snake.Add(new Point(2, snakeRow - 1));
+
+        _food = new Point(Math.Min(15, Columns - 1), Math.Min(10, rows));
 
         _direction = Direction.Right;
         _nextDirection = Direction.Right;
@@ -281,7 +285,7 @@ public sealed class SnakeGame : Control
 
     private void UpdateGame()
     {
-        if (_snake.Count == Columns * Rows)
+        if (_snake.Count == Columns * Rows - 1)
         {
             GameOver();
             return;

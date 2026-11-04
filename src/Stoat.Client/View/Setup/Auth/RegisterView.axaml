@@ -1,8 +1,147 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:lang="clr-namespace:Stoat.Client.I18n"
+             xmlns:c="https://codewf.com"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             xmlns:vm="clr-namespace:Stoat.Client.ViewModel.Setup.Auth"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="850"
+             x:DataType="vm:RegisterViewModel"
              x:Class="Stoat.Client.View.Setup.Auth.RegisterView">
-    Welcome to Avalonia!
+    <Card Spacing="30"
+          ClipToBounds="False"
+          Background="Transparent"
+          Width="450"
+          VerticalAlignment="Center">
+        <Card.Header>
+            <Panel ClipToBounds="False">
+                <StackPanel Margin="0, 40, 0, 0">
+                    <TextBlock Classes="h1"
+                               HorizontalAlignment="Left"
+                               Text="{c:I18n {x:Static lang:Lang.RegisterTitle}}" />
+
+                    <TextBlock Classes="muted"
+                               HorizontalAlignment="Left"
+                               Text="{c:I18n {x:Static lang:Lang.RegisterDescription}}" />
+                </StackPanel>
+            </Panel>
+        </Card.Header>
+
+        <StackPanel Spacing="30">
+            <StackPanel Spacing="10">
+                <TextBlock Classes="small" Text="{c:I18n {x:Static lang:Lang.Email}}" />
+
+                <Border Padding="20, 0"
+                        CornerRadius="5"
+                        BorderThickness="1"
+                        BorderBrush="{DynamicResource ForegroundMuted}"
+                        Background="{DynamicResource Background}">
+                    <Grid ColumnDefinitions="Auto, *, Auto">
+                        <LucideIcon Kind="Mail"
+                                    Foreground="{DynamicResource Foreground}"
+                                    Size="17" />
+
+                        <TextBox Grid.Column="1" Watermark="username@email.com"
+                                 Text="{Binding Email, Mode=TwoWay}"
+                                 VerticalAlignment="Stretch"
+                                 Classes="None"
+                                 Padding="12" />
+                    </Grid>
+                </Border>
+            </StackPanel>
+
+            <StackPanel Spacing="10">
+                <TextBlock Classes="small" Text="{c:I18n {x:Static lang:Lang.Password}}" />
+
+                <Border Padding="20, 0"
+                        CornerRadius="5"
+                        BorderThickness="1"
+                        BorderBrush="{DynamicResource ForegroundMuted}"
+                        Background="{DynamicResource Background}">
+                    <Grid ColumnDefinitions="*, Auto, Auto" ColumnSpacing="20">
+
+                        <Panel Grid.Column="0">
+                            <TextBox Text="{Binding Password, Mode=TwoWay}"
+                                     VerticalAlignment="Stretch"
+                                     Classes="None"
+                                     PasswordChar="●"
+                                     RevealPassword="{Binding ShowPassword}"
+                                     Padding="12" />
+                        </Panel>
+                        
+                        <Button Grid.Column="1" Classes="none"
+                                Command="{Binding GeneratePasswordCommand}">
+                            <LucideIcon 
+                                Kind="Dices"
+                                Foreground="{DynamicResource Foreground}"
+                                Size="17" />
+                        </Button>
+                        
+                        <Button Grid.Column="2" Classes="none"
+                                Command="{Binding InvertShowPasswordCommand}">
+                            <LucideIcon Kind="{Binding ShowPasswordIconKind}"
+                                        Foreground="{DynamicResource Foreground}"
+                                        Size="17" />
+                        </Button>
+                    </Grid>
+                </Border>
+            </StackPanel>
+            
+            <StackPanel Spacing="10">
+                <TextBlock Classes="small" Text="{c:I18n {x:Static lang:Lang.ConfirmPassword}}" />
+
+                <Border Padding="20, 0"
+                        CornerRadius="5"
+                        BorderThickness="1"
+                        BorderBrush="{DynamicResource ForegroundMuted}"
+                        Background="{DynamicResource Background}">
+                    <Grid ColumnDefinitions="*, Auto">
+
+                        <Panel Grid.Column="0">
+                            <TextBox Text="{Binding ConfirmPassword, Mode=TwoWay}"
+                                     VerticalAlignment="Stretch"
+                                     Classes="None"
+                                     PasswordChar="●"
+                                     RevealPassword="{Binding ShowConfirmPassword}"
+                                     Padding="12" />
+                        </Panel>
+
+                        <Button Grid.Column="1" Classes="none"
+                                Command="{Binding  InvertShowConfirmPasswordCommand}">
+                            <LucideIcon Kind="{Binding ShowConfirmPasswordIconKind}"
+                                Foreground="{DynamicResource Foreground}"
+                                Size="17" />
+                        </Button>
+                    </Grid>
+                </Border>
+            </StackPanel>
+        </StackPanel>
+
+        <Card.Footer>
+            <StackPanel Spacing="10">
+                <Button Classes="lg" HorizontalContentAlignment="Stretch">
+                    <TextBlock Foreground="{DynamicResource ForegroundAccent}"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Text="{c:I18n {x:Static lang:Lang.Register}}" />
+                </Button>
+
+                <Grid ColumnDefinitions="*, Auto, *">
+                    <Separator Grid.Column="0" />
+                    <TextBlock Grid.Column="1" Text="Ou" />
+                    <Separator Grid.Column="2" />
+                </Grid>
+
+                <Button Classes="secondary lg"
+                        
+                        Command="{Binding PreviousCommand}"
+                        Foreground="{DynamicResource Background}">
+                    <TextBlock Foreground="{DynamicResource Foreground}"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Text="{c:I18n {x:Static lang:Lang.Previous}}" />
+                </Button>
+            </StackPanel>
+        </Card.Footer>
+    </Card>
 </UserControl>

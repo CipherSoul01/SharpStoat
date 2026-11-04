@@ -13,12 +13,8 @@ public partial class SetupViewModel
         => await HostScreen.Router.Navigate.Execute(new LoginViewModel(HostScreen));
 
     [ReactiveCommand]
-    private void OpenRegisterPage()
-    {
-        var url = $"{_stoat.Configuration.BaseAddress}login/create";
-        
-        OpenBrowser(url);
-    }
+    private async Task OpenRegisterPage()
+        => await HostScreen.Router.Navigate.Execute(new RegisterViewModel(HostScreen));
 
     private void OpenBrowser(string url)
     {

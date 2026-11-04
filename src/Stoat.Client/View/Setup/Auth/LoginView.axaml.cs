@@ -7,7 +7,7 @@ using Stoat.Theme.Attributes;
 
 namespace Stoat.Client.View.Setup.Auth;
 
-[LayoutHost(typeof(AuthLayout))]
+[LayoutHost(typeof(SetupLayout))]
 public partial class LoginView : ReactiveUserControl<LoginViewModel>
 {
     public LoginView()

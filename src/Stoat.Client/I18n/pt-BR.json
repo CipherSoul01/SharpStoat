@@ -27,14 +27,15 @@
       "Register.Description": "Faça parte da comunidade e comece a se conectar.",
       "SignIn": "Iniciar sessão",
       "SignIn.Failure": "Não foi possível iniciar sua sessão.",
-      "SignUp": "Crie sua conta no site oficial do Stoat.",
+      "SignUp": "Crie sua conta",
       "Welcome": "Entre no Stoat",
       "Prompt": "Acesse sua conta e sinta-se em casa.",
       "Email": "E-mail",
       "Password": "Senha",
+      "ConfirmPassword": "Confirmar senha",
       "ForgotPassword": "Esqueceu sua senha?",
-      "Back": "Voltar",
       "Login": "Entrar",
+      "Register": "Criar conta",
       "RememberMe": "Lembrar de mim"
     }
   }

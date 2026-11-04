@@ -21,8 +21,12 @@ public static class Lang
     
     public static readonly string Title = $"{SetupAuth}.Title";
     public static readonly string Description = $"{SetupAuth}.Description";
+    
     public static readonly string LoginTitle = $"{SetupAuth}.Login.Title";
     public static readonly string LoginDescription = $"{SetupAuth}.Login.Description";
+    
+    public static readonly string RegisterTitle = $"{SetupAuth}.Register.Title";
+    public static readonly string RegisterDescription = $"{SetupAuth}.Register.Description";
     
     public static readonly string SignIn= $"{SetupAuth}.SignIn";
     public static readonly string SignUp = $"{SetupAuth}.SignUp";
@@ -31,8 +35,10 @@ public static class Lang
     public static readonly string Prompt = $"{SetupAuth}.Prompt";
     public static readonly string Email = $"{SetupAuth}.Email";
     public static readonly string Password = $"{SetupAuth}.Password";
+    public static readonly string ConfirmPassword = $"{SetupAuth}.ConfirmPassword";
     public static readonly string ForgotPassword = $"{SetupAuth}.ForgotPassword";
-    public static readonly string Back = $"{SetupAuth}.Back";
+    
     public static readonly string Login = $"{SetupAuth}.Login";
+    public static readonly string Register = $"{SetupAuth}.Register";
     public static readonly string RememberMe = $"{SetupAuth}.RememberMe";
 }

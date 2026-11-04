@@ -18,11 +18,12 @@ using Stoat.Client.ViewModel.Setup.Auth;
 using Stoat.Core.Extensions;
 using Stoat.Core.Interfaces.Credential;
 using Stoat.Core.Services.Storage;
+using ReactiveUI.Primitives.Extensions;
 
 namespace Stoat.Client;
 
 class Program
-{
+{   
     // Initialization code. Don't use any Avalonia, third-party APIs or any
     // SynchronizationContext-reliant code before AppMain is called: things aren't initialized
     // yet and stuff might break.
@@ -45,6 +46,8 @@ class Program
                     
                     services.AddTransient<IViewFor<SetupLayoutViewModel>>((_) => new SetupLayout());
                     services.AddTransient<IViewFor<AuthLayoutViewModel>>((_) => new AuthLayout());
+                    
+                    
                 },
                 withResolver: sp =>
                 {

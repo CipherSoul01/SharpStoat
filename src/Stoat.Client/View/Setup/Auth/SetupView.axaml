@@ -11,12 +11,14 @@
              x:Class="Stoat.Client.View.Setup.Auth.SetupView">
     <Panel>
         <Card HorizontalAlignment="Center" 
+              Background="Transparent"
                       VerticalAlignment="Center"
-                      MaxWidth="400"
+                      MaxWidth="500"
                       Spacing="30">
             <Card.Header>
                 <Svg Path="../../../Assets/logo.svg"
-                      Width="150"
+                      MaxWidth="220"
+                      Margin="50, 20"
                       HorizontalAlignment="Center">
                     <Svg.Styles>
                         <Style Selector="Svg">
@@ -26,20 +28,21 @@
                 </Svg>
             </Card.Header>
             
-            <StackPanel Spacing="10">
+            <StackPanel Spacing="20">
                 <TextBlock Text="{c:I18n {x:Static lang:Lang.Title}}"
-                           Classes="h3"
+                           Classes="h2"
                            TextAlignment="Center"
                            FontWeight="Bold"
                            TextWrapping="Wrap"/>
                 <TextBlock Text="{c:I18n {x:Static lang:Lang.Description}}" 
+                           TextAlignment="Center"
                            Classes="small muted"
                            TextWrapping="Wrap"/>
                 
             </StackPanel>
             
             <Card.Footer>
-                <StackPanel Spacing="30">
+                <StackPanel Spacing="20" Margin="50, 50, 50, 0">
                     <Button Classes="lg"
                             HorizontalAlignment="Stretch"
                             HorizontalContentAlignment="Center"
@@ -48,20 +51,12 @@
                                    Text="{c:I18n {x:Static lang:Lang.SignIn}}"/>
                     </Button>
                     
-                    <StackPanel HorizontalAlignment="Stretch" Spacing="5">
-                        <TextBlock Text="Ainda não tem uma conta?"
-                                   FontWeight="Bold"
-                                   HorizontalAlignment="Stretch"/>
-                        
-                        <Button Classes="none"
-                                HorizontalAlignment="Left"
-                                Command="{Binding OpenRegisterPageCommand}">
-                            <TextBlock
-                                Text="{c:I18n {x:Static lang:Lang.SignUp}}"
-                                Foreground="{DynamicResource Link}"
-                                FontWeight="SemiBold"/>
-                        </Button>
-                    </StackPanel>
+                    <Button Classes="lg secondary"
+                            HorizontalAlignment="Stretch"
+                            HorizontalContentAlignment="Center"
+                            Command="{Binding OpenRegisterPageCommand}">
+                        <TextBlock Text="{c:I18n {x:Static lang:Lang.SignUp}}"/>
+                    </Button>
                     
                 </StackPanel>
             </Card.Footer>

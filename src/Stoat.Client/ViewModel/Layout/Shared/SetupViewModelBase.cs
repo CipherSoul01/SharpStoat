@@ -50,8 +50,11 @@ public partial class SetupViewModelBase : MainScreenRoutableViewModelBase
         IsDarkTheme = variant == ThemeVariant.Dark;
 
         var lang = I18nManager.Instance.Culture;
+        
 
-        Language = lang.DisplayName;
+        Language = lang!.DisplayName.Length > 0
+            ? string.Concat(char.ToUpper(lang.DisplayName[0]), lang.DisplayName[1..].ToLower())
+            : lang.DisplayName;
     }
     
     [ReactiveCommand]

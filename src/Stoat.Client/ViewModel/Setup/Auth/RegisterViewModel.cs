@@ -9,5 +9,6 @@ public partial class RegisterViewModel : MainScreenRoutableViewModelBase
     
     public RegisterViewModel(IMainScreen hostScreen) : base(hostScreen)
     {
+        SetupRx();
     }
 }

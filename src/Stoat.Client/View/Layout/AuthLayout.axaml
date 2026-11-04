@@ -31,7 +31,7 @@
                        </Button>
                
                        <StackPanel Orientation="Horizontal" Spacing="9"
-                                   HorizontalAlignment="Center"
+                                   HorizontalAlignment="Left"
                                    VerticalAlignment="Bottom">
                            <Button Padding="4"
                                    Command="{ReflectionBinding $parent[layout:AuthLayout].ViewModel.OpenAboutCommand}"
@@ -52,10 +52,18 @@
                            </Button>
                            
                            <TextBlock Classes="muted" 
-                                      Margin="10,0"
+                                      Margin="16, 8"
                                       VerticalAlignment="Center"
                                       Text="{ReflectionBinding $parent[layout:AuthLayout].ViewModel.Language}"/>
                        </StackPanel> 
+                       
+                       <Border Background="{DynamicResource Surface}"
+                               Padding="10, 5"
+                               CornerRadius="9998"
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Bottom">
+                           <TextBlock Text="{x:Static lang:Lang.Version}"/>
+                       </Border>
                    </Panel> 
                </Border>
                

@@ -21,7 +21,7 @@
                         Background="{DynamicResource Background}"
                         Height="49"/>
                 
-                <Border Padding="19">
+                <Border Padding="20">
                     <Panel>
                         <StackPanel Spacing="10" 
                                     HorizontalAlignment="Right"
@@ -61,6 +61,11 @@
                                     Classes="none">
                                 <TextBlock Classes="muted" Text="{c:I18n {x:Static lang:Lang.PrivacyPolicy}}"/>
                             </Button>
+                            
+                            <TextBlock Classes="muted" 
+                                       Margin="16, 8"
+                                       VerticalAlignment="Center"
+                                       Text="{ReflectionBinding $parent[layout:SetupLayout].ViewModel.Language}"/>
                         </StackPanel>
                         
                         <Border Background="{DynamicResource Surface}"
